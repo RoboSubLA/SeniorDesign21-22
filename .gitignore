@@ -1,0 +1,10 @@
+#ignore everything
+*
+
+#do not ignore
+!.gitignore
+!README.md
+
+#mac_hidden_files
+.DS_Store
+.directory
