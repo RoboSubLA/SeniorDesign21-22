@@ -5,6 +5,9 @@
 !.gitignore
 !README.md
 
+!ez_async_data
+!ex_async_data/**
+
 #mac_hidden_files
 .DS_Store
 .directory
