@@ -8,6 +8,9 @@
 !ez_async_data
 !ez_async_data/**
 
+!teledyne_dvl
+!teledyne_dvl/**
+
 #mac_hidden_files
 .DS_Store
 .directory
