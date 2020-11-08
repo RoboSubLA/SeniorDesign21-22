@@ -8,6 +8,9 @@
 !ez_async_data
 !ez_async_data/**
 
+!hydrophones
+!hydrophones/**
+
 #mac_hidden_files
 .DS_Store
 .directory
