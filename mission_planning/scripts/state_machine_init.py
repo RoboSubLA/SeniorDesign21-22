@@ -4,7 +4,7 @@ import roslib
 import rospy
 import smach
 import smach_ros
-from subscriber_state_machine import WaitForTwo
+from state_zero.state_zero import State_Zero
 
 
 #import the states
@@ -12,16 +12,16 @@ from subscriber_state_machine import WaitForTwo
 
 
 def main():
-    rospy.init_node('smach_example_state_machine')
+    rospy.init_node('Lanturn_State_Machine')
 
     # Create a SMACH state machine
-    sm = smach.StateMachine(outcomes=['win', 'lose'])
+    sm = smach.StateMachine(outcomes=['failed','complete'])
 
     # Open the container
     with sm:
         # Add states to the container
-        smach.StateMachine.add('SystemCheck', WaitForTwo(), 
-                               transitions={'success':'win', 'failed':'lose'})
+        smach.StateMachine.add('SystemCheck', State_Zero(), 
+                               transitions={'passed':'complete', 'failed':'failed'})
 
     # Execute SMACH plan
     outcome = sm.execute()
