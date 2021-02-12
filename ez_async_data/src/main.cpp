@@ -37,8 +37,8 @@ int main(int argc, char **argv)
 	// constant below as well.
 	// const string SensorPort = "COM1";                             // Windows format for physical and virtual (USB) serial port.
 	// const string SensorPort = "/dev/ttyS1";                    // Linux format for physical serial port.
-	// const string SensorPort = "/dev/ttyUSB1";                  // Linux format for virtual (USB) serial port.
-	const string SensorPort = "/dev/serial/by-id/usb-FTDI_USB-RS232_Cable_FT1GUJXT-if00-port0"; 
+	const string SensorPort = "/dev/ttyUSB0";                  // Linux format for virtual (USB) serial port.
+	// const string SensorPort = "/dev/serial/by-id/usb-FTDI_USB-RS232_Cable_FT1GUJXT-if00-port0"; 
 	// const string SensorPort = "/dev/tty.usbserial-FTXXXXXX";   // Mac OS X format for virtual (USB) serial port.
 	// const string SensorPort = "/dev/ttyS0";                    // CYGWIN format. Usually the Windows COM port number minus 1. This would connect to COM1.
 	const uint32_t SensorBaudrate = 115200;
@@ -69,7 +69,31 @@ int main(int argc, char **argv)
 			ypr.roll = cd_ypr[2];
 
 			ypr_pub.publish(ypr);
+			
+			//code for logging the data
+			rosbag::Bag bag;
+			bag.open("test.bag", rosbag::bagmode::Read);
+
+			std::vector<std::string> topics;
+			topics.push_back(std::string("chatter"));
+			topics.push_back(std::string("numbers"));
+
+			rosbag::View view(bag, rosbag::TopicQuery(topics));
+
+			foreach(rosbag::MessageInstance const m, view)
+			{
+				std_msgs::String::ConstPtr s = m.instantiate<std_msgs::String>();
+				if (s != NULL)
+				    std::cout << s->data << std::endl;
+
+				std_msgs::Int32::ConstPtr i = m.instantiate<std_msgs::Int32>();
+				if (i != NULL)
+				    std::cout << i->data << std::endl;
+			}
+
+			bag.close();
 		}
+
 
 		ros::spinOnce();
 		loop_rate.sleep();
