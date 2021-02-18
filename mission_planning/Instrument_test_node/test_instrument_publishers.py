@@ -4,15 +4,16 @@
 #issues when keyboard interrupting this node
 #terminal needs to be closed and relaunched
 
-
 import rospy
 import time
+import random
 
 #if possible use data type from package
 #ignore import error
 from ez_async_data.msg import Rotation
+from ez_async_data.msg import Barometer
 import threading
-from std_msgs.msg import String
+# from std_msgs.msg import String
 
 stopFlag = False
 
@@ -53,14 +54,20 @@ def imu_publisher_thread():
         rate.sleep()
 
 def barometer_publisher_thread():
-    pub = rospy.Publisher('barometer_data', String, queue_size=10)
-    rate = rospy.Rate(10) # 10hz
+    pub = rospy.Publisher('bar_data', Barometer, queue_size=10)
+    rate = rospy.Rate(500) # 10hz
+
+    data = Barometer()
+    data.atm = 0
+
     while not rospy.is_shutdown():
         if stopFlag:
             break
-        bar_string = "Barometer %s" % rospy.get_time()
+
+        data.atm = random.randint(700, 766)
+        # bar_string = "Barometer %s" % rospy.get_time()
         # rospy.loginfo(hello_str)
-        pub.publish(bar_string)
+        pub.publish(data)
         rate.sleep()
 
 if __name__ == '__main__':
@@ -83,3 +90,5 @@ if __name__ == '__main__':
         stopFlag = False
         time.sleep(1)
         pass
+
+    rospy.spin()
