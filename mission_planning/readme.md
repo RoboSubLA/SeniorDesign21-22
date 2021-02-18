@@ -2,21 +2,19 @@
 	required for each new package with custom
 	published message
 
-
-# create a new mission planning folder
-catkin_create_pkg mission_planning_temp [dependency][dependency]
-
-# copy contents of previous into temp
-cp mission_planning/* mission_planning_temp
-
-# remove previous folder
-rm -rf mission_planning
-
-# rename the temp folder to the original
-mv mission_planning_temp mission_planning
-
+# instrument test node directory
+test_instrument_publishers
+	starts a rosnode with dummy publishers for all instruments
+instrument_monitor
+	ROS node dedicated to monitoring all instrument communications
+	Publishes custom message
+		InstrumentStatus
+			bool imu
+			bool barometer
+	outputs true if there are no issues with instrument outputs and meets expected minimum data rates
 
 # list of dependencies currentyl installed
+### packages must be declared if using custom message from the package
 roscpp
 rospy
 std_msgs
