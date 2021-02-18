@@ -12,15 +12,9 @@ class State_Zero(smach.State):
 
     def execute(self, userdata):
 
-        #insert all test methods here
-
-        # return testFailedTransition(3)
+        #for 5 minuts check
+        #when we get all posiitive tests (for at least 5 seconds)
+            #return state1
         return testPassedTransition(3)
 
-        #rough idea of how tests will be executed
-        # if all tests passed:
-        #     return 'passed'
-
-        #triggers after predetermined amount of time
-        # if testTimeout():
-        #     return 'failed'
+        
