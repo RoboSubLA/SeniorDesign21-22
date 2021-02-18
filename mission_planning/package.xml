@@ -59,7 +59,9 @@
   <build_export_depend>rospy</build_export_depend>
   <build_export_depend>std_msgs</build_export_depend>
   <exec_depend>ez_async_data</exec_depend>
-  <exec_depend>message_runtime</exec_depend>
+  <!-- <exec_depend>message_runtime</exec_depend> -->
+  <depend>message_runtime</depend>
+  <!-- <run_depend>message_runtime</run_depend> -->
   <exec_depend>roscpp</exec_depend>
   <exec_depend>rospy</exec_depend>
   <exec_depend>std_msgs</exec_depend>
