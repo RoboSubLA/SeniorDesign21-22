@@ -1,26 +1,26 @@
 #!/usr/bin/env python
 
 
-#issues when keyboard interrupting this node
-#terminal needs to be closed and relaunched
+# issues when keyboard interrupting this node
+# terminal needs to be closed and relaunched
 
 import rospy
 import time
 import random
 
-#if possible use data type from package
-#ignore import error
-from ez_async_data.msg import Rotation
-from ez_async_data.msg import Barometer
+# if possible use data type from package
+# ignore import error
+from ez_async_data.msg import Barometer, Rotation, CV
 import threading
-# from std_msgs.msg import String
+
+from std_msgs.msg import String
 
 stopFlag = False
 
 
 def imu_publisher_thread():
     pub = rospy.Publisher('imu_data', Rotation, queue_size=10)
-    rate = rospy.Rate(500) # 10hz
+    rate = rospy.Rate(50)  # 10hz
 
     max_pitch = 15
     max_roll = 15
@@ -53,9 +53,10 @@ def imu_publisher_thread():
         pub.publish(data)
         rate.sleep()
 
+
 def barometer_publisher_thread():
     pub = rospy.Publisher('bar_data', Barometer, queue_size=10)
-    rate = rospy.Rate(500) # 10hz
+    rate = rospy.Rate(50)  # 10hz
 
     data = Barometer()
     data.atm = 0
@@ -70,18 +71,58 @@ def barometer_publisher_thread():
         pub.publish(data)
         rate.sleep()
 
+
+def dvl_publisher_thread():
+    pub = rospy.Publisher('dvl_data', String, queue_size=10)
+    rate = rospy.Rate(50)
+
+    while not rospy.is_shutdown():
+        if stopFlag:
+            break
+
+        data = random.randint(0, 100)
+        pub.publish(str(data))
+        rate.sleep()
+
+def cv_publisher_thread():
+    pub = rospy.Publisher('cv_data', CV, queue_size=10)
+    rate = rospy.Rate(50)
+
+    data = CV()
+    data.targetSeen = False
+    data.targetDis = -99
+    data.targetdiscenter = -99
+
+    while not rospy.is_shutdown():
+        if stopFlag:
+            break
+
+        data.targetDis = random.randint(0, 100)
+        data.targetdiscenter = random.randint(0, 100)
+        if data.targetDis < 50 and data.targetdiscenter < 50:
+            data.targetSeen = True
+        pub.publish(data)
+        rate.sleep()
+
+
 if __name__ == '__main__':
     rospy.init_node('dummy_instrument_node', anonymous=True)
 
     imuPub = threading.Thread(target=imu_publisher_thread, args=())
     barPub = threading.Thread(target=barometer_publisher_thread, args=())
+    dvlPub = threading.Thread(target=dvl_publisher_thread, args=())
+    cvPub = threading.Thread(target=cv_publisher_thread, args=())
 
     try:
         imuPub.daemon = True
         barPub.daemon = True
+        dvlPub.daemon = True
+        cvPub.daemon = True
 
         imuPub.start()
         barPub.start()
+        dvlPub.start()
+        cvPub.start()
 
         while True:
             time.sleep(1)
@@ -91,4 +132,3 @@ if __name__ == '__main__':
         time.sleep(1)
         pass
 
-    rospy.spin()
