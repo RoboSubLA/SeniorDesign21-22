@@ -12,7 +12,8 @@ def talker():
     while not rospy.is_shutdown():
         data.object = "Name"
         data.confidence = 99.00
-        data.coordinates = 100
+        data.x = 100
+        data.y = 300
         pub.publish(data)
         rate.sleep()
 

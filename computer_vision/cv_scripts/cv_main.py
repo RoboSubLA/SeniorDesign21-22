@@ -9,7 +9,7 @@ import random
 import rospy
 from computer_vision.msg import Cv_data
 """
-    Modifier: HERIBERTO GONZALEZ (gonzo.32)
+    Modifier: HERIBERTO GONZALEZ (gonzo-32), RICARDO MEDINA ()
     Main script (Non-Multithreading Version) for running the darknet+yolov4 Convolutional Neural Network:
         - import os:
         - import cv2:
@@ -83,6 +83,7 @@ def set_saved_video(input_video, output_video, size):
 
 
 def main():
+    # ROS
     rospy.init_node('cv_node')
     cv_pub = rospy.Publisher('cv_pub', Cv_data,queue_size=10)
     data = Cv_data()
@@ -123,7 +124,7 @@ def main():
             video.write(image)
         fps = int(1/(time.time() - prev_time))
         print("FPS: {}".format(fps))
-        robosub_darknet.print_detections(detections, True) #prints name of object along with cordinates of the bonding boxes
+        # robosub_darknet.print_detections(detections, True) #prints name of object along with cordinates of the bonding boxes
 
         # ROS
         ros_output = robosub_darknet.ros_package(detections, True)
@@ -139,15 +140,6 @@ def main():
             data.x = -999
             data.y = -999
             cv_pub.publish(data)
-
-
-
-
-
-
-
-
-
 
         if not args.dont_show:
             cv2.imshow('Inference', image)
