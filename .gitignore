@@ -4,10 +4,10 @@
 #do not ignore
 !.gitignore
 !README.md
-
 !ez_async_data
 !ez_async_data/**
-
+!computer_vision
+!computer_vision/**
 !mission_planning
 !mission_planning/**
 
