@@ -24,9 +24,12 @@ from computer_vision.msg import Cv_data
         def set_saved_video(input_video, output_video, size):
         
 """
+
+# rosrun computer_vision cv_main.py --input --outfilename --weights "pathtoweights" --dont_show
+
 def parser():
     parser = argparse.ArgumentParser(description="YOLO Object Detection")
-    parser.add_argument("--input", type=str, default=0,
+    parser.add_argument("--input", type=str, default=-1,
                         help="video source. If empty, uses webcam 0 stream")
 
     parser.add_argument("--out_filename", type=str, default="outfile",
@@ -144,6 +147,11 @@ def main():
         if not args.dont_show:
             cv2.imshow('Inference', image)
             cv2.waitKey(fps)
+        k = cv2.waitKey(10) & 0xFF
+        if k == 27:
+            break
+
+    cv2.destroyAllWindows()
     cap.release()
     video.release()
 
