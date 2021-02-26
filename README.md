@@ -17,9 +17,9 @@ mv [foldername] src
 # make the catkin dierctory again
 catkin_make
 
-### There should be a longer make time, accessing files inside each package
-## if all goes well no errors should occur
-## please refer to each packages readme to understand its function
+There should be a longer make time, accessing files inside each package
+if all goes well no errors should occur
+please refer to each packages readme to understand its function
 
 
 
