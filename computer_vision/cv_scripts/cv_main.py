@@ -127,7 +127,6 @@ def main():
             video.write(image)
         fps = int(1/(time.time() - prev_time))
         print("FPS: {}".format(fps))
-        # robosub_darknet.print_detections(detections, True) #prints name of object along with cordinates of the bonding boxes
 
         # ROS
         ros_output = robosub_darknet.ros_package(detections, True)
@@ -147,6 +146,7 @@ def main():
         if not args.dont_show:
             cv2.imshow('Inference', image)
             cv2.waitKey(fps)
+            
         k = cv2.waitKey(10) & 0xFF
         if k == 27:
             break

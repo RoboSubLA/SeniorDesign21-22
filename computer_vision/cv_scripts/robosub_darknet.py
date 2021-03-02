@@ -2,24 +2,9 @@
 """
 Python 3 wrapper for identifying objects in images
 
-Requires DLL compilation
+Modified by:  Heriberto Gonzalez (gonzo-32)
+This file has been modified for the RoboSub Competition.
 
-Both the GPU and no-GPU version should be compiled; the no-GPU version should be renamed "yolo_cpp_dll_nogpu.dll".
-
-On a GPU system, you can force CPU evaluation by any of:
-
-- Set global variable DARKNET_FORCE_CPU to True
-- Set environment variable CUDA_VISIBLE_DEVICES to -1
-- Set environment variable "FORCE_CPU" to "true"
-- Set environment variable "DARKNET_PATH" to path darknet lib .so (for Linux)
-
-Directly viewing or returning bounding-boxed images requires scikit-image to be installed (`pip install scikit-image`)
-
-Original *nix 2.7: https://github.com/pjreddie/darknet/blob/0f110834f4e18b30d5f101bf8f1724c34b7b83db/python/darknet.py
-Windows Python 2.7 version: https://github.com/AlexeyAB/darknet/blob/fc496d52bf22a0bb257300d3c79be9cd80e722cb/build/darknet/x64/darknet.py
-
-@author: Philip Kahn
-@date: 20180503
 """
 from ctypes import *
 import math
@@ -116,22 +101,7 @@ def load_network(config_file, data_file, weights, batch_size=1):
     class_names = [metadata.names[i].decode("ascii") for i in range(metadata.classes)]
     colors = class_colors(class_names)
     return network, class_names, colors
-
-
-def print_detections(detections, coordinates=False):
-    print("\nObjects:")
-    for label, confidence, bbox in detections:
-        x, y, w, h = bbox
-        xCenter = int((x + w) / 2) #modified by Heriberto Gonzalez
-        yCenter = int((y + h) / 2) #modified by Heriberto Gonzalez
-        if coordinates:
-            print("Object: {}".format(label))
-            print("Center Coord: ( {:.0f}, {:.0f} )".format(xCenter, yCenter))#modified by Heriberto Gonzalez
-            print("Confidence: {}".format(confidence))#modified by Heriberto Gonzalez
-            # print("{}: {}%    (left_x: {:.0f}   top_y:  {:.0f}   width:   {:.0f}   height:  {:.0f})".format(label, confidence, x, y, w, h))
-        else:
-            print("{}: {}%".format(label, confidence))
-
+z
 #Heriberto Gonzalez
 def ros_package(detections, coordinates=False):
     output = []
@@ -144,9 +114,9 @@ def ros_package(detections, coordinates=False):
             output.append((xCenter,yCenter))
             output.append(float(confidence))
             
-            print("Object: {}".format(label))
-            print("Center Coord: ( {:.0f}, {:.0f} )".format(xCenter, yCenter))#modified by Heriberto Gonzalez
-            print("Confidence: {}".format(confidence))#modified by Heriberto Gonzalez
+            # print("Object: {}".format(label))
+            # print("Center Coord: ( {:.0f}, {:.0f} )".format(xCenter, yCenter))#modified by Heriberto Gonzalez
+            # print("Confidence: {}".format(confidence))#modified by Heriberto Gonzalez
         
         return output
 
