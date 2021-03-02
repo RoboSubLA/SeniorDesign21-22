@@ -1,8 +1,8 @@
 import rospy
-# from pub_state_test.msg import cv_data
+from pub_state_test.msg import cv_data
 import threading
 
-# type_list = {'cv_data':cv_data}
+type_list = {'cv_data':cv_data}
 
 class Subscriber():
     def __init__(self, topic, data_type):

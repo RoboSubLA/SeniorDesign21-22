@@ -3,9 +3,8 @@
 import smach
 import smach_ros
 
-from execute_gate import ExecuteGate
 from utility_states.lost_target import LostTarget
-from utility_states.reset_for_reattempt import ResetForReattempt
+# from mission_planning.scripts.utility_states.reset_for_reattempt import ResetForReattempt
 from position_sub.position_sub_init import add_position_sub_states
 from execute_gate import add_gate_states
 
@@ -23,7 +22,7 @@ def add_gate_states():
 
     ##add sub state machine
     ex_gate = smach.StateMachine(outcomes=['success', 'failed'])
-    with ExecuteGate:
+    with ex_gate:
         add_gate_states()
     smach.StateMachine.add('execute_gate', ex_gate, transitions={'success':'success', 'failed':'reset_for_reattempt'})
     ##
