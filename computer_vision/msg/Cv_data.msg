@@ -1,4 +1,4 @@
 string object
 float32 confidence
-int32 x
-int32 y
+int32 vertical
+int32 horizontal

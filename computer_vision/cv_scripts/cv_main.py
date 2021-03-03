@@ -54,6 +54,32 @@ def parser():
                         help="remove detections with confidence below this value")
     return parser.parse_args()
 
+# def parser():
+#     parser = argparse.ArgumentParser(description="YOLO Object Detection")
+#     parser.add_argument("--input", type=str, default=-1,
+#                         help="video source. If empty, uses webcam 0 stream")
+
+#     parser.add_argument("--out_filename", type=str, default="outfile",
+#                         help="inference video name. Not saved if empty")
+
+#     parser.add_argument("--weights", default="../yolov4_files/pby4/yolov4-tiny.weights",
+#                         help="yolo weights path")
+
+#     parser.add_argument("--dont_show", action='store_true',
+#                         help="windown inference display. For headless systems")
+
+#     parser.add_argument("--ext_output", action='store_true',
+#                         help="display bbox coordinates of detected objects")
+
+#     parser.add_argument("--config_file", default="../yolov4_files/pby4/yolov4-tiny.cfg",
+#                         help="path to config file")
+
+#     parser.add_argument("--data_file", default="../yolov4_files/pby4/coco.data",
+#                         help="path to data file")
+
+#     parser.add_argument("--thresh", type=float, default=.60,
+#                         help="remove detections with confidence below this value")
+#     return parser.parse_args()
 
 def check_arguments_errors(args):
     assert 0 < args.thresh < 1, "Threshold should be a float between zero and one (non-inclusive)"
@@ -117,8 +143,14 @@ def main():
         if not ret:
             break
         frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+
         frame_resized = cv2.resize(frame_rgb, (width, height),
                                    interpolation=cv2.INTER_LINEAR)
+
+        #frame_resized = (416,416, 3)
+        # print('Height' + str(frame_resized.shape[0]/2)) -208
+        # print('Weidth' + str(frame_resized.shape[1]/2)) -208
+
         robosub_darknet.copy_image_from_bytes(robosub_darknet_image, frame_resized.tobytes())
         detections = robosub_darknet.detect_image(network, class_names, robosub_darknet_image, thresh=args.thresh)
         image = robosub_darknet.draw_boxes(detections, frame_resized, class_colors)
@@ -132,15 +164,15 @@ def main():
         ros_output = robosub_darknet.ros_package(detections, True)
         try:
             data.object = ros_output[0]
-            data.confidence = ros_output[2]
-            data.x = ros_output[1][0]
-            data.y = ros_output[1][1]
+            data.confidence = ros_output[1]
+            data.vertical = ros_output[2]
+            data.horizontal = ros_output[3]
             cv_pub.publish(data)    
         except:
             data.object = 'Null'
             data.confidence = -999
-            data.x = -999
-            data.y = -999
+            data.vertical = -999
+            data.horizontal = -999
             cv_pub.publish(data)
 
         if not args.dont_show:

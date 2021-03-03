@@ -101,7 +101,35 @@ def load_network(config_file, data_file, weights, batch_size=1):
     class_names = [metadata.names[i].decode("ascii") for i in range(metadata.classes)]
     colors = class_colors(class_names)
     return network, class_names, colors
-z
+
+
+def cv_tracking(xCenter, yCenter):
+    # negative pixels means to turn left
+    # postive pixels means to turn right
+    output = [0,0]
+    if(xCenter < 158):
+        print('Left:')
+        error  = (xCenter - 158)
+        output[0] = error
+
+    if(xCenter > 258):
+        print('Right')
+        error  = (xCenter - 258)
+        output[0] = error
+
+    if(yCenter < 158):
+        print('Up')
+        error  = (158 - yCenter)
+        output[1] = error
+
+    if(yCenter > 258):
+        print('Down')
+        error  = (xCenter - 258)
+        output[1] = error
+    
+    return output
+    
+
 #Heriberto Gonzalez
 def ros_package(detections, coordinates=False):
     output = []
@@ -110,10 +138,16 @@ def ros_package(detections, coordinates=False):
         xCenter = int((x + w) / 2) #modified by Heriberto Gonzalez
         yCenter = int((y + h) / 2) #modified by Heriberto Gonzalez
         if coordinates:
+            errors = cv_tracking(xCenter, yCenter)
+            vert = errors[0]
+            horz = errors[1]
+
             output.append(label)
-            output.append((xCenter,yCenter))
             output.append(float(confidence))
-            
+            output.append(vert)
+            output.append(horz)
+
+            print(output)
             # print("Object: {}".format(label))
             # print("Center Coord: ( {:.0f}, {:.0f} )".format(xCenter, yCenter))#modified by Heriberto Gonzalez
             # print("Confidence: {}".format(confidence))#modified by Heriberto Gonzalez
