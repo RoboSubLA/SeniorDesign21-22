@@ -16,11 +16,11 @@ import threading
 from std_msgs.msg import String
 
 stopFlag = False
-
+data_rate = 10
 
 def imu_publisher_thread():
     pub = rospy.Publisher('imu_data', Rotation, queue_size=10)
-    rate = rospy.Rate(50)  # 10hz
+    rate = rospy.Rate(data_rate)  # 10hz
 
     max_pitch = 15
     max_roll = 15
@@ -56,7 +56,7 @@ def imu_publisher_thread():
 
 def barometer_publisher_thread():
     pub = rospy.Publisher('bar_data', Barometer, queue_size=10)
-    rate = rospy.Rate(50)  # 10hz
+    rate = rospy.Rate(data_rate)  # 10hz
 
     data = Barometer()
     data.atm = 0
@@ -74,7 +74,7 @@ def barometer_publisher_thread():
 
 def dvl_publisher_thread():
     pub = rospy.Publisher('dvl_data', String, queue_size=10)
-    rate = rospy.Rate(50)
+    rate = rospy.Rate(data_rate)
 
     while not rospy.is_shutdown():
         if stopFlag:
@@ -86,21 +86,27 @@ def dvl_publisher_thread():
 
 def cv_publisher_thread():
     pub = rospy.Publisher('cv_data', CV, queue_size=10)
-    rate = rospy.Rate(50)
+    rate = rospy.Rate(data_rate)
 
     data = CV()
     data.targetSeen = False
     data.targetDis = -99
-    data.targetdiscenter = -99
+    data.xOffset = -99
+    data.yOffset = -99
 
     while not rospy.is_shutdown():
         if stopFlag:
             break
 
-        data.targetDis = random.randint(0, 100)
-        data.targetdiscenter = random.randint(0, 100)
-        if data.targetDis < 50 and data.targetdiscenter < 50:
-            data.targetSeen = True
+        # data.targetDis = random.randint(0, 100)
+        # data.targetdiscenter = random.randint(0, 100)
+        # if data.targetDis < 50 and data.targetdiscenter < 50:
+        #     data.targetSeen = True
+
+        data.targetSeen = True
+        data.targetDis = random.randint(30,50)
+        data.xOffset = random.randint(10,20)
+        data.yOffset = random.randint(30,40)
         pub.publish(data)
         rate.sleep()
 
