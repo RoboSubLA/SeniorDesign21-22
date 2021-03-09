@@ -4,11 +4,7 @@ import roslib
 import rospy
 import smach
 import smach_ros
-# from gate_init import add_gate_states
-
-import os.path
-import sys
-
+from gate_init import add_gate_states
 #state imports
 
 #import the states
@@ -30,9 +26,4 @@ def main():
 
     # Execute SMACH plan
     outcome = sm.execute()
-
-if __name__ == '__main__':
-    path = os.path.dirname(os.path.abspath(sys.argv[0]))
-    print(path)
-    # main()
 

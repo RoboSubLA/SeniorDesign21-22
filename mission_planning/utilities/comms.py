@@ -1,15 +1,16 @@
 import rospy
-from pub_state_test.msg import cv_data
+# from pub_state_test.msg import cv_data
 import threading
 
-type_list = {'cv_data':cv_data}
+# from std_msgs.msg import String
+# type_list = {'string':String}
 
 class Subscriber():
     def __init__(self, topic, data_type):
         self.mutex = threading.Lock()
-        self.object_data = rospy.Subscriber(topic, type_list[data_type], self.callback)
+        self.object_data = rospy.Subscriber(topic, data_type, self.callback)
 
-        self.data = type_list[data_type]()
+        self.data = data_type()
 
     def callback(self, data):
         self.mutex.acquire()
