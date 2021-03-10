@@ -27,7 +27,7 @@ from computer_vision.msg import Cv_data
 
 # rosrun computer_vision cv_main.py --input --outfilename --weights "pathtoweights" --dont_show
 
-def parser():
+def parser(weight, cfg, data):
     parser = argparse.ArgumentParser(description="YOLO Object Detection")
     parser.add_argument("--input", type=str, default=-1,
                         help="video source. If empty, uses webcam 0 stream")
@@ -35,7 +35,7 @@ def parser():
     parser.add_argument("--out_filename", type=str, default="outfile",
                         help="inference video name. Not saved if empty")
 
-    parser.add_argument("--weights", default="../yolov4_files/yolov-tiny-letterA_final.weights",
+    parser.add_argument("--weights", default=weight,
                         help="yolo weights path")
 
     parser.add_argument("--dont_show", action='store_true',
@@ -44,10 +44,10 @@ def parser():
     parser.add_argument("--ext_output", action='store_true',
                         help="display bbox coordinates of detected objects")
 
-    parser.add_argument("--config_file", default="../yolov4_files/yolov-tiny-letterA.cfg",
+    parser.add_argument("--config_file", default=cfg,
                         help="path to config file")
 
-    parser.add_argument("--data_file", default="../yolov4_files/letterA.data",
+    parser.add_argument("--data_file", default=data,
                         help="path to data file")
 
     parser.add_argument("--thresh", type=float, default=.60,
@@ -111,14 +111,15 @@ def set_saved_video(input_video, output_video, size):
     return video
 
 
-def main():
+def main(weights, cfg, yoloData):
     # ROS
     rospy.init_node('cv_node')
     cv_pub = rospy.Publisher('cv_pub', Cv_data,queue_size=10)
     data = Cv_data()
 
 
-    args = parser()
+    args = parser(weights, cfg, yoloData)
+
     check_arguments_errors(args)
     random.seed(3)  # deterministic bbox colors
 
