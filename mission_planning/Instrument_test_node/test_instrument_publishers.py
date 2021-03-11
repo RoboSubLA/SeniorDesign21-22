@@ -105,7 +105,7 @@ def cv_publisher_thread():
 
         data.targetSeen = True
         data.targetDis = random.randint(30,50)
-        data.xOffset = random.randint(10,20)
+        data.xOffset = random.randint(-5,5)
         data.yOffset = random.randint(30,40)
         pub.publish(data)
         rate.sleep()

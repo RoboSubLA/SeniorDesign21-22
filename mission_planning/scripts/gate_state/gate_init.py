@@ -7,7 +7,7 @@ from utilities.lost_target import LostTarget
 from utilities.reattempt import Reattempt
 from position_sub import PositionSub
 # from mission_planning.scripts.utility_states.reset_for_reattempt import ResetForReattempt
-from execute_gate import add_gate_states
+from execute_gate import add_ex_gate_states
 
 def add_gate_states():
     # ##declaration of new sub state machine###
@@ -22,15 +22,15 @@ def add_gate_states():
     # ###end declaration of new sub state machine####
 
 
-    smach.StateMachine.add('position_sub', PositionSub(), transitions={'success':'execute_gate', 'failed':'failed'})
+    smach.StateMachine.add('position_sub', PositionSub(), transitions={'success':'execute_gate', 'failed':'failed', 'timeout':'reset_for_reattempt'})
 
 
     ##add sub state machine
-    ex_gate = smach.StateMachine(outcomes=['success', 'failed'])
+    ex_gate = smach.StateMachine(outcomes=['success', 'reset_for_reattempt'])
     with ex_gate:
-        add_gate_states()
-    smach.StateMachine.add('execute_gate', ex_gate, transitions={'success':'success', 'failed':'reset_for_reattempt'})
+        add_ex_gate_states()
+    smach.StateMachine.add('execute_gate', ex_gate, transitions={'success':'success', 'reset_for_reattempt':'reset_for_reattempt'})
     ##
 
     smach.StateMachine.add('lost_target', LostTarget(), transitions={'target_found':'position_sub', 'timeout':'failed'})
-    smach.StateMachine.add('reset_for_reattempt', ResetForReattempt(), transitions={'complete':'position_sub', 'lost_target':'lost_target'})
+    smach.StateMachine.add('reset_for_reattempt', Reattempt(), transitions={'complete':'position_sub', 'lost_target':'lost_target'})

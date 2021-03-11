@@ -14,7 +14,7 @@ def main():
     rospy.init_node('Gate_State_Test_Node')
 
     # Create a SMACH state machine
-    sm = smach.StateMachine(outcomes=['failed','complete'])
+    sm = smach.StateMachine(outcomes=['complete','failed'])
 
     # Open the container
     with sm:
