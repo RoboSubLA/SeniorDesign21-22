@@ -2,7 +2,9 @@
 import os
 """
     Modifier: RICARDO MEDINA ()
-    Path Bullshit solved by Ricardo godly 
+    
+    Pathing to necessary file to run the cv_main.py script
+
 """
 path = os.path.dirname(os.path.abspath(__file__))
 
@@ -15,7 +17,13 @@ data = path + "/yolov4_files/letterA.data"
 so = path + "/yolov4_files/"
 os.environ["DARKNET_PATH"] = so
 
+
+
+
 from cv_scripts.cv_main import main
+
+
+
 
 if __name__ == '__main__':
     main(weights, cfg, data)

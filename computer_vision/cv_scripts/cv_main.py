@@ -8,6 +8,7 @@ import argparse
 import random
 import rospy
 from computer_vision.msg import Cv_data
+
 """
     Modifier: HERIBERTO GONZALEZ (gonzo-32), RICARDO MEDINA ()
     Main script (Non-Multithreading Version) for running the darknet+yolov4 Convolutional Neural Network:
@@ -22,12 +23,11 @@ from computer_vision.msg import Cv_data
         def check_arguments_errors(args):
         def str2int(video_path):
         def set_saved_video(input_video, output_video, size):
+
+    To close the script press: ' q and Esc '
         
 """
-
-# rosrun computer_vision cv_main.py --input --outfilename --weights "pathtoweights" --dont_show
-
-def parser(weight, cfg, data):
+def parser(weight, cfg, yoloData):
     parser = argparse.ArgumentParser(description="YOLO Object Detection")
     parser.add_argument("--input", type=str, default=-1,
                         help="video source. If empty, uses webcam 0 stream")
@@ -47,39 +47,12 @@ def parser(weight, cfg, data):
     parser.add_argument("--config_file", default=cfg,
                         help="path to config file")
 
-    parser.add_argument("--data_file", default=data,
+    parser.add_argument("--data_file", default=yoloData,
                         help="path to data file")
 
-    parser.add_argument("--thresh", type=float, default=.60,
+    parser.add_argument("--thresh", type=float, default=.40,
                         help="remove detections with confidence below this value")
     return parser.parse_args()
-
-# def parser():
-#     parser = argparse.ArgumentParser(description="YOLO Object Detection")
-#     parser.add_argument("--input", type=str, default=-1,
-#                         help="video source. If empty, uses webcam 0 stream")
-
-#     parser.add_argument("--out_filename", type=str, default="outfile",
-#                         help="inference video name. Not saved if empty")
-
-#     parser.add_argument("--weights", default="../yolov4_files/pby4/yolov4-tiny.weights",
-#                         help="yolo weights path")
-
-#     parser.add_argument("--dont_show", action='store_true',
-#                         help="windown inference display. For headless systems")
-
-#     parser.add_argument("--ext_output", action='store_true',
-#                         help="display bbox coordinates of detected objects")
-
-#     parser.add_argument("--config_file", default="../yolov4_files/pby4/yolov4-tiny.cfg",
-#                         help="path to config file")
-
-#     parser.add_argument("--data_file", default="../yolov4_files/pby4/coco.data",
-#                         help="path to data file")
-
-#     parser.add_argument("--thresh", type=float, default=.60,
-#                         help="remove detections with confidence below this value")
-#     return parser.parse_args()
 
 def check_arguments_errors(args):
     assert 0 < args.thresh < 1, "Threshold should be a float between zero and one (non-inclusive)"
@@ -148,9 +121,9 @@ def main(weights, cfg, yoloData):
         frame_resized = cv2.resize(frame_rgb, (width, height),
                                    interpolation=cv2.INTER_LINEAR)
 
-        #frame_resized = (416,416, 3)
-        # print('Height' + str(frame_resized.shape[0]/2)) -208
-        # print('Weidth' + str(frame_resized.shape[1]/2)) -208
+        # print('Width: ' + str(width))
+        # print('Height: ' + str(height))
+
 
         robosub_darknet.copy_image_from_bytes(robosub_darknet_image, frame_resized.tobytes())
         detections = robosub_darknet.detect_image(network, class_names, robosub_darknet_image, thresh=args.thresh)
@@ -161,7 +134,7 @@ def main(weights, cfg, yoloData):
         fps = int(1/(time.time() - prev_time))
         print("FPS: {}".format(fps))
 
-        # ROS
+        # ROS OUTPUT
         ros_output = robosub_darknet.ros_package(detections, True)
         try:
             data.object = ros_output[0]

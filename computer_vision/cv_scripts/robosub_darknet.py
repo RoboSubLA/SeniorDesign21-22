@@ -102,56 +102,54 @@ def load_network(config_file, data_file, weights, batch_size=1):
     colors = class_colors(class_names)
     return network, class_names, colors
 
-
+'''
+    CV TRACKING: Heriberto Gonzalez (gonzo-32)
+'''
 def cv_tracking(xCenter, yCenter):
-    # negative pixels means to turn left
-    # postive pixels means to turn right
     output = [0,0]
-    if(xCenter < 158):
-        print('Left:')
-        error  = (xCenter - 158)
+
+    if(xCenter < 130):
+        print('|-------- Turn Left:')
+        error  = (xCenter - 130)
         output[0] = error
 
-    if(xCenter > 258):
-        print('Right')
-        error  = (xCenter - 258)
+    if(xCenter > 150):
+        print('|-------- Turn Right')
+        error  = (xCenter - 150)
         output[0] = error
 
-    if(yCenter < 158):
-        print('Up')
-        error  = (158 - yCenter)
+    if(yCenter < 130):
+        print('|-------- Turn Up')
+        error  = (130 - yCenter)
         output[1] = error
 
-    if(yCenter > 258):
-        print('Down')
-        error  = (xCenter - 258)
+    if(yCenter > 150):
+        print('|-------- Turn Down')
+        error  = (xCenter - 150)
         output[1] = error
     
     return output
     
 
-#Heriberto Gonzalez
+'''
+    ROS PACKAGE: Heriberto Gonzalez (gonzo-32)
+'''
 def ros_package(detections, coordinates=False):
     output = []
     for label, confidence, bbox in detections:
         x, y, w, h = bbox
-        xCenter = int((x + w) / 2) #modified by Heriberto Gonzalez
-        yCenter = int((y + h) / 2) #modified by Heriberto Gonzalez
+        xCenter = int((x + w) / 2) 
+        yCenter = int((y + h) / 2) 
         if coordinates:
             errors = cv_tracking(xCenter, yCenter)
-            vert = errors[0]
-            horz = errors[1]
+            vert = errors[1]
+            horz = errors[0]
 
             output.append(label)
             output.append(float(confidence))
             output.append(vert)
             output.append(horz)
-
-            print(output)
-            # print("Object: {}".format(label))
-            # print("Center Coord: ( {:.0f}, {:.0f} )".format(xCenter, yCenter))#modified by Heriberto Gonzalez
-            # print("Confidence: {}".format(confidence))#modified by Heriberto Gonzalez
-        
+            
         return output
 
 
@@ -160,6 +158,7 @@ def draw_boxes(detections, image, colors):
     import cv2
     for label, confidence, bbox in detections:
         left, top, right, bottom = bbox2points(bbox)
+        print(image.shape)
         xCenter = int((left + right) / 2) #modified by Heriberto Gonzalez
         yCenter = int((top + bottom) / 2) #modified by Heriberto Gonzalez
         cv2.line(image, (xCenter,yCenter), (xCenter,yCenter), (255,0,0), 5) #modified by Heriberto Gonzalez

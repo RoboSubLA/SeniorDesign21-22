@@ -5,7 +5,9 @@ from computer_vision.msg import Cv_data
     BY: AREN PETROSSIAN 
 """
 def the_logger(the_data):
+   print('|---------------------------------|')
    print(the_data)
+   print('|---------------------------------|')
 
 def the_listener():
    rospy.init_node('the_subscriber', anonymous=True)
