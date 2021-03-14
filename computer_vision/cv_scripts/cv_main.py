@@ -27,7 +27,7 @@ from computer_vision.msg import Cv_data
     To close the script press: ' q and Esc '
         
 """
-def parser(weight, cfg, yoloData):
+def parser(weights, cfg, yoloData):
     parser = argparse.ArgumentParser(description="YOLO Object Detection")
     parser.add_argument("--input", type=str, default=-1,
                         help="video source. If empty, uses webcam 0 stream")
@@ -35,7 +35,7 @@ def parser(weight, cfg, yoloData):
     parser.add_argument("--out_filename", type=str, default="outfile",
                         help="inference video name. Not saved if empty")
 
-    parser.add_argument("--weights", default=weight,
+    parser.add_argument("--weights", default=weights,
                         help="yolo weights path")
 
     parser.add_argument("--dont_show", action='store_true',
@@ -50,7 +50,7 @@ def parser(weight, cfg, yoloData):
     parser.add_argument("--data_file", default=yoloData,
                         help="path to data file")
 
-    parser.add_argument("--thresh", type=float, default=.40,
+    parser.add_argument("--thresh", type=float, default=.55,
                         help="remove detections with confidence below this value")
     return parser.parse_args()
 
@@ -85,16 +85,21 @@ def set_saved_video(input_video, output_video, size):
 
 
 def main(weights, cfg, yoloData):
-    # ROS
+    '''
+        ROS INIT
+    '''
     rospy.init_node('cv_node')
     cv_pub = rospy.Publisher('cv_pub', Cv_data,queue_size=10)
     data = Cv_data()
 
-
+    '''
+        ARGS passing in neccessary files 
+    '''
     args = parser(weights, cfg, yoloData)
 
     check_arguments_errors(args)
-    random.seed(3)  # deterministic bbox colors
+
+    random.seed(5)  # deterministic bbox colors
 
     network, class_names, class_colors = robosub_darknet.load_network(
         args.config_file,
@@ -121,10 +126,6 @@ def main(weights, cfg, yoloData):
         frame_resized = cv2.resize(frame_rgb, (width, height),
                                    interpolation=cv2.INTER_LINEAR)
 
-        # print('Width: ' + str(width))
-        # print('Height: ' + str(height))
-
-
         robosub_darknet.copy_image_from_bytes(robosub_darknet_image, frame_resized.tobytes())
         detections = robosub_darknet.detect_image(network, class_names, robosub_darknet_image, thresh=args.thresh)
         image = robosub_darknet.draw_boxes(detections, frame_resized, class_colors)
@@ -134,7 +135,9 @@ def main(weights, cfg, yoloData):
         fps = int(1/(time.time() - prev_time))
         print("FPS: {}".format(fps))
 
-        # ROS OUTPUT
+        '''
+            ROS OUTPUT
+        '''
         ros_output = robosub_darknet.ros_package(detections, True)
         try:
             data.object = ros_output[0]

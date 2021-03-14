@@ -153,7 +153,9 @@ def ros_package(detections, coordinates=False):
         return output
 
 
-
+'''
+    DRAWING BBOXS: Heriberto Gonzalez (gonzo-32)
+'''
 def draw_boxes(detections, image, colors):
     import cv2
     for label, confidence, bbox in detections:
