@@ -2,7 +2,11 @@
 import sys
 
 def start_state_machine():
-    from state_machine_init import main
+    from scripts.state_machine_init import main
+    main()
+
+def start_zero_state_machine():
+    from scripts.state_zero.state_zero import main
     main()
 
 def start_gate_state_machine():
@@ -16,7 +20,9 @@ if __name__=='__main__':
         # return 0
         sys.exit("Incorrect Number of Arguments\nenter desired entry point as argument")
     
-    startPoints = {'gate': start_gate_state_machine}
+    startPoints = {'start': start_state_machine,
+                   'gate': start_gate_state_machine,
+		   'zero': start_zero_state_machine}
     start = sys.argv[1]
     if start not in startPoints:
         print('Start point does not exists, please enter correct start point:')
