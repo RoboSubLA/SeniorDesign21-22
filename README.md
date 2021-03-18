@@ -3,7 +3,7 @@
 ## This software is intended to be installed as the src folder in a catking workspace
 
 # make the catking workspace
-mkdir -p ~/catkin_ws/src
+mkdir ~/catkin
 cd ~/catkin
 catkin_make
 

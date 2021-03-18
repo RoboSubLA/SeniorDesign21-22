@@ -5,6 +5,12 @@
 !.gitignore
 !README.md
 
+!ez_async_data
+!ez_async_data/**
+
+!mission_planning
+!mission_planning/**
+
 #mac_hidden_files
 .DS_Store
 .directory
