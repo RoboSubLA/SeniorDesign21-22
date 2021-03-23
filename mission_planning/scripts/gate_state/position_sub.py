@@ -35,7 +35,7 @@ class PositionSub(smach.State):
             #get current data
             data = self.gate_sub.get_data()
             
-            if data.xOffset < xError and data.yOffset < yError:
+            if data.xOffset < self.xError and data.yOffset < self.yError:
                 #send controls current heading, current depth, as setpoints
                 return 'success'
         
