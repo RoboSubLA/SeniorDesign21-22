@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 import sys
 
+# Avoid naming files and folders the same name
+# It may cause an import error
+# to run: rosrun mission_planning start.py 'state you want to run' in catkin_ws
+
 def start_state_machine():
     from scripts.state_machine_init import main
     main()
