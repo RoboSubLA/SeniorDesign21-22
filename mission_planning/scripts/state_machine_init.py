@@ -26,12 +26,12 @@ def main():
         
         ##declaration of new sub state machine###
         #create new sub state machine
-        gate_task = smach.StateMachine(outcomes['success','failed'])
+        gate_task = smach.StateMachine(outcomes=['success','failed'])
         #add all substates to the new sub state machine using declared add_gate_states function
-        with gate_state:
+        with gate_task:
             add_gate_states()
         #add the new substate machine to the previous one (sm), add in the approproate transitions to new states
-        smach.StateMachine.add('gate_task', gate_task, transitions={'success':'complete', 'failed':'failed'})
+        smach.StateMachine.add('gate_task', gate_task, transitions={'success':'complete', 			'failed':'failed'})
         #note that when adding a substatemachine there is no brackets, unlike the state zero in which we call the state constructor
         ###end declaration of new sub state machine####
 
@@ -40,4 +40,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
