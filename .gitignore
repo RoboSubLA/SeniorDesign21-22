@@ -10,6 +10,8 @@
 
 !mission_planning
 !mission_planning/**
+!teledyne_dvl
+!teledyne_dvl/**
 
 #mac_hidden_files
 .DS_Store
