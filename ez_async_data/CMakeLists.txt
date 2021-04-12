@@ -11,6 +11,10 @@ find_package(catkin REQUIRED COMPONENTS
 add_message_files(
   FILES
   Rotation.msg
+  Barometer.msg
+  CV.msg
+  test.msg
+  gate.msg
 )
 
 generate_messages(
