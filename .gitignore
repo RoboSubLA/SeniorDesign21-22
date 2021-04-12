@@ -12,6 +12,10 @@
 !mission_planning/**
 !teledyne_dvl
 !teledyne_dvl/**
+!controls
+!controls/**
+!sonar
+!sonar/**
 !hydrophones
 !hydrophones/**
 
