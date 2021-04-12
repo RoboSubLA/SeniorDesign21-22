@@ -12,6 +12,8 @@
 !mission_planning/**
 !teledyne_dvl
 !teledyne_dvl/**
+!hydrophones
+!hydrophones/**
 
 #mac_hidden_files
 .DS_Store
