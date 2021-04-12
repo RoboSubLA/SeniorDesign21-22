@@ -7,4 +7,8 @@ class Reattempt(smach.State):
         smach.State.__init__(self, outcomes=['complete','lost_target'])
     
     def execute(self, userdata):
-        pass
+        transition = 1
+        if transition == 1:
+            return 'complete'
+        else:
+            return 'lost_target'

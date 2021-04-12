@@ -1,4 +1,5 @@
 import smach
+import smach_ros
 import rospy
 
 from std_msgs.msg import String
@@ -70,3 +71,5 @@ class PositionSub(smach.State):
             #need to decrease height
             #send to controls decrease height command
             setpoint.append('go down')
+
+

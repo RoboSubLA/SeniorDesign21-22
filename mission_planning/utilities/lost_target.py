@@ -10,4 +10,8 @@ class LostTarget(smach.State):
         smach.State.__init__(self, outcomes=['target_found','timeout'])
     
     def execute(self, userdata):
-        pass
+        transition = 1
+        if transition == 1:
+            return 'target_found'
+        else:
+            return 'timeout'
