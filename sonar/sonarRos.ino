@@ -13,15 +13,15 @@ static const uint8_t ledpin = 13;
 
 ros::NodeHandle  nh;
 
-#mm distance
+//mm distance
 std_msgs::Float32 data;
 ros::Publisher chatter("chatter", &data);
 
-#inches distance
+//inches distance
 std_msgs::Float32 inches;
 ros::Publisher chatte("chatte", &inches);
 
-#confidence 
+//confidence 
 std_msgs::Float32 confidence;
 ros::Publisher chatt("chatt", &confidence);
 
