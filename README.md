@@ -1,40 +1,81 @@
-# ROBOSUB SOFTWARE README
+# Robosub
+This document will hold all the information regarding our robosub.
 
-## This software is intended to be installed as the src folder in a catking workspace
+## Getting Started
+Requirements:
+- Python 2.7
+- ROS Melodic
+- Git
+- Ubuntu 18.04 ( Not neccessary for working with the code )
 
-# make the catking workspace
-mkdir -p ~/catkin_ws/src
-cd ~/catkin
-catkin_make
+To Start Working With The Code:
+1. Clone this repo to your local machine
+2. Fork the `dev` branch and name the new branch the feature you are working on.
+3. When you're done working with your code submit PR and have someone review it.
+4. If it is approved we will merge it with the `dev` branch.
 
-# Download the repository
-While in the catkin directory
-git clone [ssh-repo_link located in gitub]
+To Run The Code:
+5. Create a catkin workspace. Run the following commands in your terminal:
+ - `mkdir -p ~/catkin_ws/src`
+ - `cd ~/catkin_ws`
+ - `catkin_make`
 
-# rename the downloaded folder to src
-mv [foldername] src
+6. Next you want to clone this github repository to the `catkin_ws` folder.
 
-# make the catkin dierctory again
-catkin_make
-
-There should be a longer make time, accessing files inside each package
-if all goes well no errors should occur
-please refer to each packages readme to understand its function
-
-
-
-# TODO
-## Data Logging
-when making the launch script make sure to add the following line
-find out how to make it point to a directory to make the file
-default is the directory the command is run
-command will record all output on every topic
-$rosbag record -a
-
-top play back a data file for testing purposes
-$rosbag play [filename]
+Useful Links:
+[How to work with git and github](https://product.hubspot.com/blog/git-and-github-tutorial-for-beginners)
+[Installing ROS Melodic](http://wiki.ros.org/melodic/Installation/Ubuntu)
 
 
-## backups
-rsync - used for data backup
+## Nodes
+We will use ROS to set up different nodes in our system. A node works as a component which can subscribe to data from other nodes as well as publish their own data. This way we can break down our system, and work on the separate parts.
 
+#### User Interface
+The user interface is where we display
+ - Video
+ - Sensor Data
+ - Logs
+ - Parameter Calibration & Selection
+
+
+#### Mission Planning
+This node will be in charge of planning
+
+`Publishes: Task & desired action	`
+
+#### Target Recognition
+This node will do image processing and image recognition to find targets. We will also implement machine learning for the image recognition.
+`Publishes: Target`
+
+#### Sensing and Actuation
+This node is where all our sensor and controls will be connected.
+
+Sensors:
+ -  Camera
+-   DVL - xyz
+-   Sonar - dist to obj (m)
+-   Barometer - depth (m)
+-   Hydrophones
+
+Controls:
+ - Thrusters
+ - Cooling pump
+ - Torpedo
+ - Claw
+ - Dropper
+
+`Publishes: Sensor Information`
+#### Guidance Navigation Control
+This node will do path planning and mapping.
+
+`Publishes: Control Command`
+
+#### Cooling
+This node will be in charge of cooling the Robosub. It will monitor the heat of the Robosub and act on that information.
+
+`Publishes: Pump Command`
+
+#### Camera
+This node will interface with the camera and do image filtering.
+
+`Publishes: Image/Video`
