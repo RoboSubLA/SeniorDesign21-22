@@ -40,9 +40,8 @@ We will use ROS to set up different nodes in our system. A node works as a compo
 In the user interface we want to display sensor data, and logs.
 
 ### [State Machine](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/UpdatingStructure/state_machine)
-This node will be in charge of planning
+This node will be in charge of the state of the robosub and decide what tasks it should do.
 
-`Publishes: Task & desired action	`
 
 ### [Computer Vision](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/UpdatingStructure/computer_vision)
 This node will do image processing and image recognition to find targets. We will also implement machine learning for the image recognition.
@@ -53,6 +52,6 @@ This node is where all our sensor and controls will be connected.
 ### [Guidance Navigation Control](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/UpdatingStructure/guidance_navigation_control)
 This node will do path planning and mapping.
 
-`Publishes: Control Command`
 
 ### [Cooling](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/UpdatingStructure/cooling)
+This node will control the cooling of the system.
