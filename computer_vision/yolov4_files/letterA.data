@@ -1,5 +1,0 @@
-classes= 1
-train = build/darknet/x64/data/trainA.txt
-valid = build/darknet/x64/data/testA.txt
-names = /home/gonzo/catkin_robosub/src/computer_vision/yolov4_files/letterA.names
-backup = build/darknet/x64/backup/
