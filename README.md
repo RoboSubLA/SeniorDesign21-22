@@ -26,7 +26,7 @@ This document will hold all the information regarding our robosub.
 
 3. ... (this is uncompleted)
 
-Useful Links:
+### Useful Links:
 
 [How to work with git and github](https://product.hubspot.com/blog/git-and-github-tutorial-for-beginners)
 
@@ -55,3 +55,9 @@ This node will do path planning and mapping.
 
 ### [Cooling](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/UpdatingStructure/cooling)
 This node will control the cooling of the system.
+
+## Hardware
+
+### Arduino Mega
+
+### Nvidia Jetson TX2
