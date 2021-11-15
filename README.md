@@ -44,7 +44,7 @@ This node will be in charge of planning
 
 `Publishes: Task & desired action	`
 
-[#### Computer Vision](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/UpdatingStructure/computer_vision)
+### [Computer Vision](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/UpdatingStructure/computer_vision)
 
 
 #### Sensing and Actuation
