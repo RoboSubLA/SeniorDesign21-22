@@ -37,11 +37,6 @@ Useful Links:
 We will use ROS to set up different nodes in our system. A node works as a component which can subscribe to data from other nodes as well as publish their own data. This way we can break down our system, and work on the separate parts.
 
 #### User Interface
-The user interface is where we display
- - Video
- - Sensor Data
- - Logs
- - Parameter Calibration & Selection
 
 
 #### Mission Planning
@@ -49,38 +44,18 @@ This node will be in charge of planning
 
 `Publishes: Task & desired action	`
 
-#### Target Recognition
-This node will do image processing and image recognition to find targets. We will also implement machine learning for the image recognition.
-`Publishes: Target`
+[#### Computer Vision](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/UpdatingStructure/computer_vision)
+
 
 #### Sensing and Actuation
-This node is where all our sensor and controls will be connected.
 
-Sensors:
--   DVL - xyz
--   Sonar - dist to obj (m)
--   Barometer - depth (m)
--   Hydrophones
-
-Controls:
- - Thrusters
- - Cooling pump
- - Torpedo
- - Claw
- - Dropper
-
-`Publishes: Sensor Information`
 #### Guidance Navigation Control
 This node will do path planning and mapping.
 
 `Publishes: Control Command`
 
 #### Cooling
-This node will be in charge of cooling the Robosub. It will monitor the heat of the Robosub and act on that information.
-
-`Publishes: Pump Command`
 
 #### Camera
-This node will interface with the camera and do image filtering.
 
 `Publishes: Image/Video`
