@@ -36,6 +36,8 @@ This needs to be done in Ubuntu 18.04 with ROS Melodic installed.
 
 [Installing ROS Melodic](http://wiki.ros.org/melodic/Installation/Ubuntu)
 
+[Creating publisher & subscriber nodes with Python](http://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber%28python%29)
+
 
 ## Nodes
 We will use ROS to set up different nodes in our system. A node works as a component which can subscribe to data from other nodes as well as publish their own data. This way we can break down our system, and work on the separate parts.
