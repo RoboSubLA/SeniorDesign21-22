@@ -8,7 +8,7 @@ We will use ROS to set up different nodes in our system. Some of the nodes will 
 ![Software Design Picture](https://github.com/RoboSubCSULA/SeniorDesign21-22/blob/UpdatingStructure/software_design.jpg )
 
 ## Nodes
-We will use ROS to set up different nodes in our system. A node works as a component which can subscribe to data from other nodes as well as publish their own data. This way we can break down our system, and work on the separate parts.
+A node functions as it's own program and will publish and subscribe to information from other nodes. 
 
 ### [User Interface](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/UpdatingStructure/user_interface)
 In the user interface we want to display sensor data, and logs.
