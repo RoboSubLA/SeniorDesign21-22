@@ -45,7 +45,7 @@ We will use ROS to set up different nodes in our system. A node works as a compo
 ### [User Interface](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/UpdatingStructure/user_interface)
 In the user interface we want to display sensor data, and logs.
 
-### [State Machine](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/UpdatingStructure/state_machine)
+### [Mission Planning](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/UpdatingStructure/mission_planning)
 This node will be in charge of the state of the robosub and decide what tasks it should do.
 
 
