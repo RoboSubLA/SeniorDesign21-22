@@ -39,6 +39,15 @@ This needs to be done in Ubuntu 18.04 with ROS Melodic installed.
 [Creating publisher & subscriber nodes with Python](http://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber%28python%29)
 
 
+## Design
+We will use ROS to set up different nodes in our system. Some of the nodes will act as publishers and publish information known as topics. Each node has the opportunity to subscribe to different topics listening to the information that will be published. In this way the nodes can communicate among each other.
+
+### Here is how our nodes will communicate
+![Software Design Picture](https://github.com/RoboSubCSULA/SeniorDesign21-22/blob/UpdatingStructure/software_design.jpg)
+
+
+
+
 ## Nodes
 We will use ROS to set up different nodes in our system. A node works as a component which can subscribe to data from other nodes as well as publish their own data. This way we can break down our system, and work on the separate parts.
 
