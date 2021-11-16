@@ -59,9 +59,6 @@ This node is where all our sensor and controls will be connected.
 This node will do path planning and mapping.
 
 
-### [Cooling](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/UpdatingStructure/cooling)
-This node will control the cooling of the system.
-
 ## Hardware
 
 ### Arduino Mega
