@@ -1,4 +1,11 @@
+devel/
+logs/
+build/
+bin/
+lib/
+msg/
 
-#mac_hidden_files
 .DS_Store
 .directory
+
+CATKIN_IGNORE
