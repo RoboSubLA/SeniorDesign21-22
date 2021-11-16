@@ -16,6 +16,7 @@ This document will hold all the information regarding our robosub.
 4. If it is approved we will merge it with the `dev` branch.
 
 ### To Run The Code:
+This needs to be done in Ubuntu 18.04 with ROS Melodic installed.
 
 1. Create a catkin workspace. Run the following commands in your terminal:
  - `mkdir -p ~/catkin_ws/src`
@@ -24,7 +25,10 @@ This document will hold all the information regarding our robosub.
 
 2. Next you want to clone this github repository to the `catkin_ws` folder.
 
-3. ... (this is uncompleted)
+3. Rename the repository folder `src`. You can use this command `mv <Repository Name> src`
+
+4. Run `catkin_make` again.
+
 
 ### Useful Links:
 
