@@ -1,6 +1,34 @@
 # Robosub
 This document will hold all the information regarding our robosub.
 
+## Design
+We will use ROS to set up different nodes in our system. Some of the nodes will act as publishers and publish information known as topics. Each node has the opportunity to subscribe to different topics listening to the information that will be published. In this way the nodes can communicate among each other.
+
+### Here is how our nodes will communicate
+![Software Design Picture](https://github.com/RoboSubCSULA/SeniorDesign21-22/blob/UpdatingStructure/software_design.jpg )
+
+## Nodes
+We will use ROS to set up different nodes in our system. A node works as a component which can subscribe to data from other nodes as well as publish their own data. This way we can break down our system, and work on the separate parts.
+
+### [User Interface](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/UpdatingStructure/user_interface)
+In the user interface we want to display sensor data, and logs.
+
+### [Mission Planning](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/UpdatingStructure/mission_planning)
+This node will be in charge of the state of the robosub and decide what tasks it should do.
+
+
+### [Computer Vision](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/UpdatingStructure/computer_vision)
+This node will do image processing and image recognition to find targets. We will also implement machine learning for the image recognition.
+
+### [Sensing and Actuation](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/UpdatingStructure/sensing_and_actuation)
+This node is where all our sensor and controls will be connected.
+
+### [Guidance Navigation Control](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/UpdatingStructure/guidance_navigation_control)
+This node will do path planning and mapping.
+
+
+
+
 ## Getting Started
 ### Requirements:
 - Python 2.7
@@ -38,34 +66,6 @@ This needs to be done in Ubuntu 18.04 with ROS Melodic installed.
 
 [Creating publisher & subscriber nodes with Python](http://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber%28python%29)
 
-
-## Design
-We will use ROS to set up different nodes in our system. Some of the nodes will act as publishers and publish information known as topics. Each node has the opportunity to subscribe to different topics listening to the information that will be published. In this way the nodes can communicate among each other.
-
-### Here is how our nodes will communicate
-![Software Design Picture](https://github.com/RoboSubCSULA/SeniorDesign21-22/blob/UpdatingStructure/software_design.jpg)
-
-
-
-
-## Nodes
-We will use ROS to set up different nodes in our system. A node works as a component which can subscribe to data from other nodes as well as publish their own data. This way we can break down our system, and work on the separate parts.
-
-### [User Interface](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/UpdatingStructure/user_interface)
-In the user interface we want to display sensor data, and logs.
-
-### [Mission Planning](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/UpdatingStructure/mission_planning)
-This node will be in charge of the state of the robosub and decide what tasks it should do.
-
-
-### [Computer Vision](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/UpdatingStructure/computer_vision)
-This node will do image processing and image recognition to find targets. We will also implement machine learning for the image recognition.
-
-### [Sensing and Actuation](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/UpdatingStructure/sensing_and_actuation)
-This node is where all our sensor and controls will be connected.
-
-### [Guidance Navigation Control](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/UpdatingStructure/guidance_navigation_control)
-This node will do path planning and mapping.
 
 
 ## Hardware
