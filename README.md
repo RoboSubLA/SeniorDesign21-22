@@ -25,7 +25,7 @@ This needs to be done in Ubuntu 18.04 with ROS Melodic installed.
 
 2. Next you want to clone this github repository to the `catkin_ws` folder.
 
-3. Rename the repository folder `src`. You can use this command `mv <Repository Name> src`
+3. Rename the repository folder `src`. You can run this command in the `catkin_ws` folder:  `mv <Repository Name> src`
 
 4. Run `catkin_make` again.
 
