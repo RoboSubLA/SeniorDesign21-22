@@ -39,7 +39,7 @@ This node will do path planning and mapping.
 ### To Start Working With The Code:
 
 1. Clone this repo to your local machine
-2. Branch out from the 'main' branch and start working on your code.
+2. Branch out from the `main` branch and start working on your code.
 4. When you're done working with your code submit PR and have someone review it.
 5. If it is approved we will merge it with the `main` branch.
 
