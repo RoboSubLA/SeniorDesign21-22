@@ -22,7 +22,7 @@ This node is where all our sensor and controls will be connected.
 
 ### VectorNav IMU
 
-Will give us following data:
+#### Will give us following data:
 
 `Pitch(degree, float)`
 
@@ -54,10 +54,9 @@ This is a sonar that will detect and give current distance from objects in front
 
 [Read more](https://www.aquarianaudio.com/as-1-hydrophone.html)
 
-## controls
+## Controls
 
  - Thrusters
- - Cooling pump
  - Torpedo
  - Claw
  - Dropper
