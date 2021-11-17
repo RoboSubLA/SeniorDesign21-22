@@ -6,7 +6,7 @@ This node is where all our sensor and controls will be connected.
 
 ### Teledyne Pathfinder DVL
 
-Will give us following data:
+#### Will give us following data:
 
 `Pitch(degrees, float)`
 
@@ -33,7 +33,7 @@ Will give us following data:
 ### Blue Robotics Bar30 Pressure Sensor
 This is a barometer which will give us the depth of the Robosub.
 
-Will give us following data:
+#### Will give us following data:
 
 `Depth(meters, float)`
 
@@ -43,7 +43,7 @@ Will give us following data:
 
 This is a sonar that will detect and give current distance from objects in front of the sonar.
 
-Will give us data:
+#### Will give us data:
 
 `Distance to Object(millimeters)`
 
