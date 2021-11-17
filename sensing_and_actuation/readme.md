@@ -2,6 +2,8 @@
 
 This node is where all our sensor and controls will be connected.
 
+It consists of an Arduino program with a ROS node on it where all the sensors and controls are connected. In the arduino program we will have functions for translating the data we get into useful information that we will publish for the rest of the Robosub system. The program will also interface with the controls and listen for commands given by the other nodes in the system. 
+
 ## Sensors
 
 ### Teledyne Pathfinder DVL
