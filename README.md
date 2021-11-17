@@ -4,7 +4,7 @@ This document will hold all the information regarding our robosub.
 ## Design
 We will use ROS to set up different nodes in our system. Some of the nodes will act as publishers and publish information known as topics. Each node has the opportunity to subscribe to different topics listening to the information that will be published. In this way the nodes can communicate among each other.
 
-### Here is how our nodes will communicate
+### System
 ![Software Design Picture](https://github.com/RoboSubCSULA/SeniorDesign21-22/blob/main/software_design.jpg )
 
 ## Nodes
