@@ -8,7 +8,7 @@ We will use ROS to set up different nodes in our system. Some of the nodes will 
 ![Software Design Picture](https://github.com/RoboSubCSULA/SeniorDesign21-22/blob/UpdatingStructure/software_design.jpg )
 
 ## Nodes
-A node functions as it's own program and will publish and subscribe to information from other nodes. 
+A node functions as it's own program and will publish and subscribe to information from other nodes.
 
 ### [User Interface](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/UpdatingStructure/user_interface)
 In the user interface we want to display sensor data, and logs.
@@ -26,8 +26,8 @@ This node is where all our sensor and controls will be connected.
 ### [Guidance Navigation Control](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/UpdatingStructure/guidance_navigation_control)
 This node will do path planning and mapping.
 
-
-
+### [Camera](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/UpdatingStructure/camera)
+...
 
 ## Getting Started
 ### Requirements:
