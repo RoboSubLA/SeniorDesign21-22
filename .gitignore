@@ -1,10 +1,11 @@
-#ignore everything
-*
+devel/
+logs/
+build/
+bin/
+lib/
+msg/
 
-#do not ignore
-!.gitignore
-!README.md
-
-#mac_hidden_files
 .DS_Store
 .directory
+
+CATKIN_IGNORE

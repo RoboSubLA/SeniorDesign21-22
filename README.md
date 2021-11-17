@@ -1,40 +1,75 @@
-# ROBOSUB SOFTWARE README
+# Robosub
+This document will hold all the information regarding our robosub.
 
-## This software is intended to be installed as the src folder in a catking workspace
+## Design
+We will use ROS to set up different nodes in our system. Some of the nodes will act as publishers and publish information known as topics. Each node has the opportunity to subscribe to different topics listening to the information that will be published. In this way the nodes can communicate among each other.
 
-# make the catking workspace
-mkdir -p ~/catkin_ws/src
-cd ~/catkin
-catkin_make
+### Here is how our nodes will communicate
+![Software Design Picture](https://github.com/RoboSubCSULA/SeniorDesign21-22/blob/UpdatingStructure/software_design.jpg )
 
-# Download the repository
-While in the catkin directory
-git clone [ssh-repo_link located in gitub]
+## Nodes
+A node functions as it's own program and will publish and subscribe to information from other nodes.
 
-# rename the downloaded folder to src
-mv [foldername] src
+### [User Interface](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/UpdatingStructure/user_interface)
+In the user interface we want to display sensor data, and logs.
 
-# make the catkin dierctory again
-catkin_make
-
-There should be a longer make time, accessing files inside each package
-if all goes well no errors should occur
-please refer to each packages readme to understand its function
+### [Mission Planning](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/UpdatingStructure/mission_planning)
+This node will be in charge of the state of the robosub and decide what tasks it should do.
 
 
+### [Computer Vision](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/UpdatingStructure/computer_vision)
+This node will do image processing and image recognition to find targets. We will also implement machine learning for the image recognition.
 
-# TODO
-## Data Logging
-when making the launch script make sure to add the following line
-find out how to make it point to a directory to make the file
-default is the directory the command is run
-command will record all output on every topic
-$rosbag record -a
+### [Sensing and Actuation](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/UpdatingStructure/sensing_and_actuation)
+This node is where all our sensor and controls will be connected.
 
-top play back a data file for testing purposes
-$rosbag play [filename]
+### [Guidance Navigation Control](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/UpdatingStructure/guidance_navigation_control)
+This node will do path planning and mapping.
+
+### [Camera](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/UpdatingStructure/camera)
+...
+
+## Getting Started
+### Requirements:
+- Python 2.7
+- ROS Melodic
+- Git
+- Ubuntu 18.04 ( Not necessary for working with the code )
+
+### To Start Working With The Code:
+
+1. Clone this repo to your local machine
+2. Fork the `dev` branch and name the new branch the feature you are working on.
+3. When you're done working with your code submit PR and have someone review it.
+4. If it is approved we will merge it with the `dev` branch.
+
+### To Run The Code:
+This needs to be done in Ubuntu 18.04 with ROS Melodic installed.
+
+1. Create a catkin workspace. Run the following commands in your terminal:
+ - `mkdir -p ~/catkin_ws/src`
+ - `cd ~/catkin_ws`
+ - `catkin_make`
+
+2. Next you want to clone this github repository to the `catkin_ws` folder.
+
+3. Rename the repository folder `src`. You can run this command in the `catkin_ws` folder:  `mv <Repository Name> src`
+
+4. Run `catkin_make` again.
 
 
-## backups
-rsync - used for data backup
+### Useful Links:
 
+[How to work with git and github](https://product.hubspot.com/blog/git-and-github-tutorial-for-beginners)
+
+[Installing ROS Melodic](http://wiki.ros.org/melodic/Installation/Ubuntu)
+
+[Creating publisher & subscriber nodes with Python](http://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber%28python%29)
+
+
+
+## Hardware
+
+### Arduino Mega
+
+### Nvidia Jetson TX2
