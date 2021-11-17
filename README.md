@@ -60,6 +60,8 @@ This needs to be done in Ubuntu 18.04 with ROS Melodic installed.
 
 ### Useful Links:
 
+[Competition Rules](https://robonation.org/app/uploads/sites/4/2021/04/RoboSub-2021-Mission-and-Rules__V1.pdf)
+
 [How to work with git and github](https://product.hubspot.com/blog/git-and-github-tutorial-for-beginners)
 
 [Installing ROS Melodic](http://wiki.ros.org/melodic/Installation/Ubuntu)
