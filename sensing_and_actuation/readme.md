@@ -10,7 +10,12 @@ Both of these files contain a ROS Node with the name `sensors_and_controls`.
 
 They publish to the topic `sensors_and_controls_data`.
 
-The data that is published is an object with the following data:
+## Publishes
+
+The ROS node will publish to the topic `sensors_and_controls_data`.
+
+### It will publish an msg with the following data:
+
 
 | Sensor/Control                    | Metric      | Range       | Type      |
 | ----------------------------------| ----------- |-----------  | ----------|
