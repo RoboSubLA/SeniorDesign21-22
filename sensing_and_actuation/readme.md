@@ -2,6 +2,41 @@
 
 This node is where all our sensor and controls will be connected.
 
+The arduino file is where we will get the data from the Robosub.
+
+We also have a `dummydata.py` file for testing purposes.
+
+Both of these files contain a ROS Node with the name `sensors_and_controls`.
+
+They publish to the topic `sensors_and_controls_data`.
+
+The data that is published is an object with the following data:
+
+| Sensor/Control                    | Metric      | Range       | Type      |
+| ----------------------------------| ----------- |-----------  | ----------|
+| DVL_pitch                         | degrees     | -           | float     |
+| DVL_yaw                           | degrees     | -           | float     |
+| DVL_roll                          | degrees     | -           | float     |
+| DVL_x_translation                 | millimeters | -           | float     |
+| DVL_y_translation                 | millimeters | -           | float     |
+| IMU_pitch                         | degrees     | -           | float     |
+| IMU_yaw                           | degrees     | -           | float     |
+| IMU_roll                          | degrees     | -           | float     |
+| barometer_depth                   | meters      | -           | float     |
+| barometer_temperature             | celsius     | -           | float     |
+| sonar_distance                    | meters      | -           | float     |
+| sonar_confidence                  | percentage  | [0-1]       | float     |
+| hydrophones_direction             | degrees     | -           | float     |
+| thruster_horisontal_front_left    | power       | -           | float     |
+| thruster_horisontal_front_right   | power       | -           | float     |
+| thruster_horisontal_back_left     | power       | -           | float     |
+| thruster_horisontal_back_right    | power       | -           | float     |
+| thruster_vertical_front_left      | power       | -           | float     |
+| thruster_vertical_front_right     | power       | -           | float     |
+| thruster_vertical_back_left       | power       | -           | float     |
+| thruster_vertical_back_right      | power       | -           | float     |
+
+
 ## Sensors
 
 ### Teledyne Pathfinder DVL
@@ -31,11 +66,13 @@ This node is where all our sensor and controls will be connected.
 `Roll(degrees, float)`
 
 ### Blue Robotics Bar30 Pressure Sensor
-This is a barometer which will give us the depth of the Robosub.
+This is a barometer which will give us the depth and temperature the Robosub is operating at.
 
 #### Will give us following data:
 
 `Depth(meters, float)`
+
+`Temperature(celsius, float)`
 
 [Read more](https://github.com/bluerobotics/Bar30-Pressure-Sensor)
 

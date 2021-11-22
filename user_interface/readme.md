@@ -20,4 +20,4 @@ The sensor section will display all the information we get from the different se
 The controls section will display the status of the different controls.
 
 ### State
-The state section will show the current state of the Robosub. 
+The state section will show the current state of the Robosub.   
