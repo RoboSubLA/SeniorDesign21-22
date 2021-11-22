@@ -1,21 +1,15 @@
 # Sensing and Actuation
+This folder contains code for our Sensing and Controls Node.
 
-This node is where all our sensor and controls will be connected.
+You can use `dummydata.py` file for testing purposes.
 
-The arduino file is where we will get the data from the Robosub.
+## ROS Node
+The name for this ROS node is `sensors_and_controls`
 
-We also have a `dummydata.py` file for testing purposes.
 
-Both of these files contain a ROS Node with the name `sensors_and_controls`.
+#### Publishing
 
-They publish to the topic `sensors_and_controls_data`.
-
-## Publishes
-
-The ROS node will publish to the topic `sensors_and_controls_data`.
-
-### It will publish an msg with the following data:
-
+It will publish an msg with the following data to the topic `sensors_and_controls_data`
 
 | Sensor/Control                    | Metric      | Range       | Type      |
 | ----------------------------------| ----------- |-----------  | ----------|
