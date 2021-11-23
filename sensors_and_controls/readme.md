@@ -1,4 +1,4 @@
-# Sensing and Actuation
+# Sensors And Controls
 This folder contains code for the Sensing and Controls Node.
 
 You can use `dummydata.py` file for testing purposes.
