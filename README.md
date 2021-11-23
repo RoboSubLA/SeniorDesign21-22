@@ -39,9 +39,9 @@ This node will do path planning and mapping.
 ### To Start Working With The Code:
 
 1. Clone this repo to your local machine
-2. Fork the `dev` branch and name the new branch the feature you are working on.
-3. When you're done working with your code submit PR and have someone review it.
-4. If it is approved we will merge it with the `dev` branch.
+2. Branch out from the `main` branch and start working on your code.
+4. When you're done working with your code submit PR and have someone review it.
+5. If it is approved we will merge it with the `main` branch.
 
 ### To Run The Code:
 This needs to be done in Ubuntu 18.04 with ROS Melodic installed.
@@ -59,6 +59,8 @@ This needs to be done in Ubuntu 18.04 with ROS Melodic installed.
 
 
 ### Useful Links:
+
+[Competition Rules](https://robonation.org/app/uploads/sites/4/2021/04/RoboSub-2021-Mission-and-Rules__V1.pdf)
 
 [How to work with git and github](https://product.hubspot.com/blog/git-and-github-tutorial-for-beginners)
 
