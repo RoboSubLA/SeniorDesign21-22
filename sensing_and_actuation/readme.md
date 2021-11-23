@@ -87,6 +87,13 @@ This is a sonar that will detect and give current distance from objects in front
 
 
 ### AS-1 Hydrophones
+This is an array of hydrophones that will listen to to pingers in the pool.
+
+#### Will give us data:
+
+`Pinger Label (string)`
+`8-direction (string)`
+
 
 [Read more](https://www.aquarianaudio.com/as-1-hydrophone.html)
 
