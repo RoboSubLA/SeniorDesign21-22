@@ -3,6 +3,10 @@ import rospy
 
 from sensors_and_controls.msg import sensors_controls_data
 
+print('Sensors & Controls node started')
+
+print('Publishing data to the topic: sensors_and_controls_data')
+
 while True:
 	rospy.init_node('sensors_and_controls')
 	publisher = rospy.Publisher('sensors_and_controls_data', sensors_controls_data, queue_size=10)
