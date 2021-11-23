@@ -8,7 +8,6 @@ project(sensors_and_controls)
 
 find_package(catkin REQUIRED COMPONENTS
   message_generation
-  message_runtime
   roscpp
   rospy
   std_msgs
@@ -26,7 +25,6 @@ generate_messages(
 )
 
 catkin_package(
-  CATKIN_DEPENDS message_runtime
 )
 ###########
 ## Build ##
