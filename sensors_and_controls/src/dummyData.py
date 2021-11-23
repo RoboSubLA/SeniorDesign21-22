@@ -1,5 +1,4 @@
 #! /usr/bin/env python
-
 import rospy
 
 from sensing_and_controls.msg import sensors_controls_data

@@ -8,6 +8,7 @@ project(sensors_and_controls)
 
 find_package(catkin REQUIRED COMPONENTS
   message_generation
+  message_runtime
   roscpp
   rospy
   std_msgs
@@ -19,7 +20,14 @@ add_message_files(
   sensors_controls_data.msg
 )
 
+generate_messages(
+  DEPENDENCIES
+  std_msgs
+)
 
+catkin_package(
+  CATKIN_DEPENDS message_runtime
+)
 ###########
 ## Build ##
 ###########
@@ -30,3 +38,4 @@ include_directories(
   # include
   ${catkin_INCLUDE_DIRS}
 )
+
