@@ -1,11 +1,17 @@
+# General
 devel/
 logs/
 build/
 bin/
 lib/
-msg/
 
+# Python
+__pycache__/
+
+
+# ROS
+CATKIN_IGNORE
+
+# Mac
 .DS_Store
 .directory
-
-CATKIN_IGNORE
