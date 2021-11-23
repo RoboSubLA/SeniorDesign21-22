@@ -1,6 +1,10 @@
+#! /usr/bin/env python
 import tkinter as tk
-from controller import UserInterface
+import rospy
 
+from user_interface import UserInterface
+
+rospy.init_node('user_interface')
 
 root = tk.Tk()
 root.title('Robosub')

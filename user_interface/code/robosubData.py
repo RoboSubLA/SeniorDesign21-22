@@ -1,6 +1,4 @@
 import tkinter as tk
-from header import Header
-from analyticsView import AnalyticsView
 
 class UserInterface(tk.Frame):
     def __init__(self, parent, *args, **kwargs):
