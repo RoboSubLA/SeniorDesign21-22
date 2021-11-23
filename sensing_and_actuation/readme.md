@@ -1,4 +1,4 @@
-# Sensors And Controls
+# Sensing And Actuation
 This folder contains code for the Sensing and Controls Node.
 
 You can use `dummydata.py` file for testing purposes.
@@ -11,7 +11,7 @@ The name for this ROS node is `sensors_and_controls`
 
 It will publish an msg with the following data to the topic `sensors_and_controls_data`
 
-| Sensor/Control                    | Metric      | Range       | Type      |
+| Sensors/ Actuators                | Metric      | Range       | Type      |
 | ----------------------------------| ----------- |-----------  | ----------|
 | DVL_pitch                         | degrees     | -           | float     |
 | DVL_yaw                           | degrees     | -           | float     |
@@ -90,7 +90,7 @@ This is a sonar that will detect and give current distance from objects in front
 
 [Read more](https://www.aquarianaudio.com/as-1-hydrophone.html)
 
-## Controls
+## Actuators
 
  - Thrusters
  - Torpedo

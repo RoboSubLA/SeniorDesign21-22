@@ -17,7 +17,7 @@ In the user interface we want to display sensor data, and logs.
 This node will be in charge of the state of the robosub and decide what tasks it should do.
 
 
-### [Computer Vision](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/UpdatingStructure/computer_vision)
+### [Computer Vision](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/main/computer_vision)
 This node will do image processing and image recognition to find targets. We will also implement machine learning for the image recognition.
 
 ### [Sensing and Actuation](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/main/sensing_and_actuation)
