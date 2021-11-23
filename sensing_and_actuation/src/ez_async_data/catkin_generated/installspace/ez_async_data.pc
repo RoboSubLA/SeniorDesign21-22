@@ -1,8 +1,0 @@
-prefix=/usr/local
-
-Name: ez_async_data
-Description: Description of ez_async_data
-Version: 0.0.0
-Cflags: -I/usr/local/include
-Libs: -L/usr/local/lib 
-Requires: message_runtime

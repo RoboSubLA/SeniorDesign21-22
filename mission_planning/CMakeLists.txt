@@ -8,7 +8,6 @@ project(mission_planning)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  ez_async_data
   message_generation
   message_runtime
   roscpp
