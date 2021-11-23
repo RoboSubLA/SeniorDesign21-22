@@ -4,12 +4,12 @@ This folder contains code for the Sensing and Actuation Node.
 You can use `dummydata.py` file for testing purposes.
 
 ## ROS Node
-The name for this ROS node is `sensors_and_controls`
+The name for this ROS node is `sensing_and_actuation`
 
 
 #### Publishing
 
-It will publish an msg with the following data to the topic `sensors_and_controls_data`
+It will publish an msg with the following data to the topic `sensors_and_actuation_data`
 
 | Sensors/ Actuators                | Metric      | Range       | Type      |
 | ----------------------------------| ----------- |-----------  | ----------|
