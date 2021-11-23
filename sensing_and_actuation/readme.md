@@ -9,7 +9,7 @@ The name for this ROS node is `sensing_and_actuation`
 
 #### Publishing
 
-It will publish an msg with the following data to the topic `sensors_and_actuation_data`
+It will publish an msg with the following data to the topic `sensing_and_actuation_data`
 
 | Sensors/ Actuators                | Metric      | Range       | Type      |
 | ----------------------------------| ----------- |-----------  | ----------|
