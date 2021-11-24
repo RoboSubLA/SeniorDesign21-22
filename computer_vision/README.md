@@ -3,6 +3,7 @@
 This node will do image processing and image recognition to find targets. We will also implement machine learning for the image recognition.
 
 Data:
+
 `Object, label for the object found, string if no object is detected, will return'Null'`
 
 `Confidence, float, 0 - 1, 1 being absolutely certainty. If no object is detected, returns -999`
