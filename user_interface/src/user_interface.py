@@ -1,4 +1,6 @@
-import tkinter as tk
+#! /usr/bin/env python
+
+import Tkinter as tk
 from header import Header
 from analyticsView import AnalyticsView
 
