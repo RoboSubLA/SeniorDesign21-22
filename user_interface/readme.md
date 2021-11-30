@@ -3,7 +3,7 @@
 The user interface for the Robosub. We are coding the user interface with Python and Tkinter.
 
 ## Design
-![User Interface Design](https://github.com/RoboSubCSULA/SeniorDesign21-22/blob/user_interface/user_interface/user_interface_design.jpg)
+![User Interface Design](https://github.com/RoboSubCSULA/SeniorDesign21-22/blob/main/user_interface/user_interface_design.jpg)
 
 The interface will have different sections for the different components
 
