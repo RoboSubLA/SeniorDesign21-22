@@ -3,6 +3,17 @@ This folder contains code for the Sensing and Actuation Node.
 
 You can use `dummydata.py` file for testing purposes.
 
+The sensing and actuation consists of the following sensors and controls:
+- DVL
+- IMU
+- Hydrophones
+- Barometer
+- Sonar
+- 8 Thrusters
+- Claw
+- Torpedo
+- Ball drop
+
 ## ROS Node
 The name for this ROS node is `sensing_and_actuation`
 

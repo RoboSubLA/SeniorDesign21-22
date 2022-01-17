@@ -1,3 +1,4 @@
+
 # Notes on adding and removing states using the state_machine_init.py
 
 #### all states in the init file will either be in the form of a state class
@@ -18,4 +19,3 @@ with foo_machine:
 #### add the new state machine as a substate
 
 smach.StateMachine.add('foo', foo, transitions{'outcome':'next_state'})
-

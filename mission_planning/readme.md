@@ -1,3 +1,38 @@
+# Mission Planning
+This folder contains everything related to the Mission Planning of the Robosub and will also be it's own ROS package.
+
+## How it works
+... Explain short smach and link to documentation.
+
+## How to work with the code
+... How can a new developer start working with the code
+
+## Testing
+... How can you test the different states
+
+## The different states
+... Explain the function of each state here.
+
+### State Zero
+...
+
+### Failed State
+...
+
+### Buoy State
+...
+
+### Gate State
+
+...
+
+
+## What data it publishes
+... What data will the ROS package publish.
+
+
+# This is the info from the previous year might be useful for when updating the documentation
+
 # dependencies when creating the package
 	required for each new package with custom
 	published message
