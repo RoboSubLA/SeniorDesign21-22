@@ -1,5 +1,5 @@
-import tkinter as tk
-import tkinter.font as tkFont
+import Tkinter as tk
+
 
 class AnalyticsWidget(tk.Frame):
     def __init__(self, parent, title, data, width, *args, **kwargs):

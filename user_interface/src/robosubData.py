@@ -1,4 +1,4 @@
-import tkinter as tk
+import Tkinter as tk
 
 class UserInterface(tk.Frame):
     def __init__(self, parent, *args, **kwargs):
