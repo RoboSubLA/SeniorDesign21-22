@@ -1,7 +1,10 @@
 # Mission Planning
-This folder contains all the code for mission planning.
+This folder contains everything related to the Mission Planning of the Robosub and will also be it's own ROS package.
 
-## Design 
+## How it works
+... Explain short smach and link to documentation.
+
+### Design
 We will use ROS and mainly SMACH to design and create different state machines for the required tasks of the competition.
 - State Zero
 - Gate State
@@ -12,8 +15,7 @@ We will use ROS and mainly SMACH to design and create different state machines f
 - Pathfinders
 - Pingers
 
-## Requirements 
-
+### Requirements
 - [SMACH](https://wiki.ros.org/smach?distro=melodic)
 SMACH is a task-level architecture for rapidly creating complex state machines for robot behavior.
 - [Actionlib](http://wiki.ros.org/actionlib)
@@ -21,37 +23,37 @@ The actionlib stack provides a standardized interface for interfacing with preem
 - [SMACH Viewer](http://wiki.ros.org/smach_viewer)
 The smach viewer is a GUI that shows the state of hierarchical SMACH state machines.
 
+## How to work with the code
+### Installation
 
-## Installation
-
-SMACH and actionlib packages are included in ROS, but you need to install smach viwer
+SMACH and actionlib packages are included in ROS, but you need to install smach viewer
 
 1. `cd ~/catkin_ws/src`
 2. `git clone https://github.com/ros-visualization/executive_smach_visualization/tree/melodic-devel`
 3. `cd ~/catkin_ws`
 4. `catkin_make`
 
-## Example Code
-### Creating a state machine
+### Example Code
+#### Creating a state machine
 	 class Foo(smach.State):
 		 def __init__(self, outcomes=['outcome1', 'outcome2']):
 		 # Your state initialization goes here
-	 
+
 		 def execute(self, userdata):
 		 # Your state execution goes here
 			 if xxxx:
 				 return 'outcome1'
 			 else:
-				 return 'outcome2'	
+				 return 'outcome2'
 
-### Adding states to a state machine
+#### Adding states to a state machine
 	 sm = smach.StateMachine(outcomes=['outcome4','outcome5'])
 	 with sm:
 		 smach.StateMachine.add('FOO', Foo(),transitions={'outcome1':'BAR',
 														  'outcome2':'outcome4'})
 		 smach.StateMachine.add('BAR', Bar(),transitions={'outcome2':'FOO'})
 
-### Creating an introspection Server & using smach viewr
+#### Creating an introspection Server & using smach viewer
 	# First you create a state machine sm
 	# .....
 	# Creating of state machine sm finished
@@ -68,8 +70,8 @@ Run the following code after creating a introspection server in a new terminal t
  `rosrun smach_viewer smach_viewer.py`
 
 
-## List of Installed Dependencies
-### Packages must be declared if using custom message from the package
+### List of Installed Dependencies
+#### Packages must be declared if using custom message from the package
 - roscpp
 - rospy
 - std_msgs
@@ -77,7 +79,7 @@ Run the following code after creating a introspection server in a new terminal t
 - message_runtime
 - ez_async_data (imu package)
 
-## Instrument Test Node Directory
+### Instrument Test Node Directory
 test_instrument_publishers
 	starts a rosnode with dummy publishers for all instruments
 instrument_monitor
@@ -87,3 +89,42 @@ instrument_monitor
 			bool imu
 			bool barometer
 	outputs true if there are no issues with instrument outputs and meets expected minimum data rates
+
+## Testing
+... How can you test the different states
+
+## The different states
+... Explain the function of each state here.
+
+### State Zero
+...
+
+### Failed State
+...
+
+### Gate State
+...
+
+### Buoy State
+...
+
+### Bins State
+...
+
+### Torpedoes State
+...
+
+### Octagon State
+...
+
+### Pathfinders
+...
+
+### Pingers
+...
+
+
+
+
+## What data it publishes
+... What data will the ROS package publish.

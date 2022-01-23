@@ -1,5 +1,4 @@
-import tkinter as tk
-import tkinter.font as tkFont
+import Tkinter as tk
 
 class Header(tk.Frame):
     def __init__(self, parent, text, color, *args, **kwargs):
