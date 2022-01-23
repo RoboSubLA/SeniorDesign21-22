@@ -41,13 +41,13 @@ while True:
 
     		#Thrusters dummy data
 		data.thruster_horisontal_front_left = 1600
-	    	data.thruster_horisontal_front_right = 1300
-	    	data.thruster_horisontal_back_left = 1700
-	    	data.thruster_horisontal_back_right = 1600
-	    	data.thruster_vertical_front_left = 1600
-	    	data.thruster_vertical_front_right = 1300
-	    	data.thruster_vertical_back_left = 1700
-	    	data.thruster_vertical_back_right = 1600
+		data.thruster_horisontal_front_right = 1300
+		data.thruster_horisontal_back_left = 1700
+		data.thruster_horisontal_back_right = 1600
+		data.thruster_vertical_front_left = 1600
+		data.thruster_vertical_front_right = 1300
+		data.thruster_vertical_back_left = 1700
+		data.thruster_vertical_back_right = 1600
 
 		publisher.publish(data)
 		rate.sleep()
