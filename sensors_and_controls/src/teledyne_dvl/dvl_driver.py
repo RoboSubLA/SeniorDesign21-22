@@ -18,24 +18,38 @@ class Msg:
         self.timestamp = 0
 
     def __str__(self):
-        return f'xvel={self.xvel}\tyvel={self.yvel}\tzvel={self.zvel}\n' \
-               f'xpos={self.xpos}\typos={self.ypos}\tzpos={self.zpos}\n' \
-               f'pitch={self.pitch}\tyaw{self.yaw}\troll={self.roll}\n'
+	# Temporary return statement
+	# Syntax error with other return statement
+	return 'xvel={0}\nyvel={1}\nzvel={2}\n' \
+		'xpos={3}\nypos={4}\nzpos={5}\n' \
+		'yaw={6}\npitch={7}\nroll={8}'.format(self.xvel, self.yvel, self.zvel, self.xpos, self.ypos, self.zpos, self.yaw, self.pitch, self.roll)
+	
+	# Below return statement has f-string which was introduced in python 3.6
+        # return f'xvel={self.xvel}\tyvel={self.yvel}\tzvel={self.zvel}\n' \
+        #       f'xpos={self.xpos}\typos={self.ypos}\tzpos={self.zpos}\n' \
+        #       f'pitch={self.pitch}\tyaw{self.yaw}\troll={self.roll}\n'
 
 class DVL(Thread):
 
 
     def __init__(self, port):
         Thread.__init__(self)
-        self.serial = serial.Serial(port=port, baudrate=115200,
-                                    bytesize=8, timeout=2, stopbits=serial.STOPBITS_ONE)
+        self.serial = serial.Serial(port=port, baudrate=115200)
+	print('Port: {0}'.format(port))
         #for threading data purposes
         self.mutex = Lock()
 
         self.msg = Msg()
         self.data_flag = False
 
-    def write(self, output: str) -> None:
+    # Original write function
+    # Might be causing problems because the syntax was introduced in a later version of python
+    # def write(self, output: str) -> None:
+    #     self.serial.write(output.encode())
+
+    # New write function because syntax errors from the original function was causing problems
+    # Might not produce the same functionality as the previous version
+    def write(self, output):
         self.serial.write(output.encode())
 
     def has_data(self):
@@ -100,14 +114,30 @@ class DVL(Thread):
 
         while True:
             loop_time = time.time()
-
             if self.serial.in_waiting > 0:  # If there is a message from the DVL
                 try:
                     line = self.serial.readline()
                     # print(line)
+
                     line = str(line)
+		    lineSplit = line.split(",")
+
                     # print(line)
-                    # print(line)
+		    # Code underneath sends to Msg class and prints
+		    self.msg.xvel = lineSplit[0]
+		    self.msg.yvel = lineSplit[1]
+		    self.msg.zvel = lineSplit[2]
+
+		    self.msg.xpos = lineSplit[3]
+		    self.msg.ypos = lineSplit[4]
+		    self.msg.zpos = lineSplit[5]
+
+		    self.msg.yaw = lineSplit[6]
+		    self.msg.pitch = lineSplit[7]
+		    self.msg.roll = lineSplit[8]
+
+		    print(self.msg.__str__())
+
                 except:
                     print("read fail")
                 #
