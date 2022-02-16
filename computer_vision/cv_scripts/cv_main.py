@@ -140,12 +140,15 @@ def main(weights, cfg, yoloData):
         '''
         ros_output = robosub_darknet.ros_package(detections, True)
         try:
+            '''Sets the output data'''
             data.object = ros_output[0]
             data.confidence = ros_output[1]
             data.vertical = ros_output[2]
             data.horizontal = ros_output[3]
             cv_pub.publish(data)    
+            
         except:
+            '''nothing was detected'''
             data.object = 'Null'
             data.confidence = -999
             data.vertical = -999

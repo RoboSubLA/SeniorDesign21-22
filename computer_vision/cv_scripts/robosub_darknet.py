@@ -135,20 +135,28 @@ def cv_tracking(xCenter, yCenter):
     ROS PACKAGE: Heriberto Gonzalez (gonzo-32)
 '''
 def ros_package(detections, coordinates=False):
+    '''output data to be published'''
     output = []
     for label, confidence, bbox in detections:
         x, y, w, h = bbox
-        xCenter = int((x + w) / 2) 
+        '''gets horizontal center of the object detected'''
+        xCenter = int((x + w) / 2)
+
+        '''gets the vertical center of the object detected'''
         yCenter = int((y + h) / 2) 
         if coordinates:
             errors = cv_tracking(xCenter, yCenter)
             vert = errors[1]
             horz = errors[0]
-
             output.append(label)
             output.append(float(confidence))
             output.append(vert)
             output.append(horz)
+            '''output[0] - label - string of what the object is'''
+            '''output[1] - confidence - float from 0 to 1 of how sure the object is'''
+            '''output[2] - vert which direction to go. neg means go up, pos go down'''
+            '''output[3] - horz neg means go left, pos go right'''
+
             
         return output
 
