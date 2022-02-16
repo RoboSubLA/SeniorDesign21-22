@@ -43,7 +43,7 @@ This node will do path planning and mapping.
 4. When you're done working with your code submit PR and have someone review it.
 5. If it is approved we will merge it with the `main` branch.
 
-### To Run The Code:
+### Setting Up The Workspace:
 This needs to be done in Ubuntu 18.04 with ROS Melodic installed.
 
 1. Create a catkin workspace. Run the following commands in your terminal:
@@ -57,6 +57,8 @@ This needs to be done in Ubuntu 18.04 with ROS Melodic installed.
 
 4. Run `catkin_make` again.
 
+### Starting The Robosub
+In the workspace use the command `roslaunch robosub_launcher robosub.launch` to launch all the nodes
 
 ### Useful Links:
 
