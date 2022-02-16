@@ -14,7 +14,7 @@ A node functions as it's own program and will publish and subscribe to informati
 In the user interface we want to display sensor data, and logs.
 
 ### [Mission Planning](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/main/mission_planning)
-This node will be in charge of the state of the robosub and decide what tasks it should do.
+This node will be in charge of the state of the Robosub and decide what tasks it should do.
 
 
 ### [Computer Vision](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/main/computer_vision)
@@ -23,7 +23,7 @@ This node will do image processing and image recognition to find targets. We wil
 ### [Sensing and Actuation](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/main/sensing_and_actuation)
 This node is where all our sensor and controls will be connected.
 
-### [Guidance Navigation Control](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/main/guidance_navigation_control)
+### [Navigation](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/main/navigation)
 This node will do path planning and mapping.
 
 ### [Camera](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/main/camera)
