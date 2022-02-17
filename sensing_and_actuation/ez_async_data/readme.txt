@@ -1,17 +1,15 @@
-###########
 # IMU information
-This is a ROS Package for our IMU.
-# running as c++ program using Libraries from Vectornav
-# libraries are included in this package
-# data aquasition program source code located in /src/main.cpp
-# Program outputs a custom message 
-	#message name for import "Rotation"
-	#composed of
-		float32 roll
-		float32 pitch
-		float32 yaw
-    #Topic name
-        current_rotation
+This is a ROS Package for our IMU. It's running as a c++ program using Libraries from Vectornav.
+The libraries are included in this package in the `cpp` folder.
+
+The Program outputs a custom message 
+	message name for import "Rotation"
+	composed of
+		`float32 roll`
+		`float32 pitch`
+		`float32 yaw`
+    
+Topic name is `current_rotation`
 
         
 ## IMU LOGS
