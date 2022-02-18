@@ -97,7 +97,7 @@ instrument_monitor
 ... Explain the function of each state here.
 
 ### State Zero
-...
+... State Zero takes in data from the 'instrument_test' folder and checks whether or not all tests returns as successful or failed. It returns state1 as soon as all tests return positive where we get the imu, bar, cv, and dvl information. 
 
 ### Failed State
 ...
