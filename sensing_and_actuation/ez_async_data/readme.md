@@ -2,9 +2,9 @@
 This is a ROS Package for our IMU. It's running as a c++ program using Libraries from Vectornav.
 The libraries are included in this package in the `cpp` folder.
 
-The Program outputs a custom message 
-	message name for import "Rotation"
+The Program outputs a custom message message name for import "Rotation"
 	composed of
+
 		`float32 roll`
 		`float32 pitch`
 		`float32 yaw`

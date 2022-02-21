@@ -1,0 +1,2 @@
+set(ez_async_data_MESSAGE_FILES "/home/carl/robosub_repo/src/sensing_and_actuation/ez_async_data/msg/Rotation.msg;/home/carl/robosub_repo/src/sensing_and_actuation/ez_async_data/msg/Barometer.msg;/home/carl/robosub_repo/src/sensing_and_actuation/ez_async_data/msg/CV.msg;/home/carl/robosub_repo/src/sensing_and_actuation/ez_async_data/msg/test.msg;/home/carl/robosub_repo/src/sensing_and_actuation/ez_async_data/msg/gate.msg")
+set(ez_async_data_SERVICE_FILES "")
