@@ -1,8 +1,13 @@
 # Computer Vision:
-This node will do image processing and image recognition to find targets. We will also implement machine learning for the image recognition.
+This node is primarily based on image processing and image recognition to help dectect colored targets, objects, and borders. We will also implement machine learning for the image recognition.
 
 ## How it works
-Yolo uses machine learning to identify objects in an image. Yolo can return an image with a label, confidence, and a box surrounding the object. We can use this information to determine how to align the sub to the object.
+Yolo uses machine learning to identify objects in an image. Yolo can return an image with a label, confidence, and a box surrounding the object. We can use this information to detect the bin's background (White), cover (Orange), and handle (Purple) as well as the torpedo border (Red) and the octagon's background (Orange). We can also use this information to determine the position of the images to align the sub with the desired object.
+
+![image](https://user-images.githubusercontent.com/61888693/155066634-d7d0121b-7155-466a-bfaf-e7f3ece98926.png)
+![image](https://user-images.githubusercontent.com/61888693/155066686-ad0c03c1-b69b-4164-b4d5-d97817d3f3dc.png)
+![image](https://user-images.githubusercontent.com/61888693/155066721-7269f4b7-7eeb-4eda-8292-5ea9f797253e.png)
+![image](https://user-images.githubusercontent.com/61888693/155066821-48f6605e-77d4-4a62-b037-1ea26184dc38.png)
 
 ## How to work with the code
 Use a computer with Ubuntu installed to use ROS.
