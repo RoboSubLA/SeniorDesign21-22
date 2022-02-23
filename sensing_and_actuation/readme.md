@@ -18,23 +18,27 @@ The sensing and actuation consists of the following sensors and controls:
 The name for this ROS node is `sensing_and_actuation`
 
 
-#### Topics
+### Topics
 
 We will have different topics for all the sensors. 
 
-| Barometer                         | Metric      | Range       | Type      |
+#### Barometer
+
+| barometer_topic                   | Metric      | Range       | Type      |
 | ----------------------------------| ----------- |-----------  | ----------|
 | depth                             | m           | -           | float32   |
 | confidence                        | range       |[0-1]        | float32   |
 
+#### Sonar
 
-| Sonar                             | Metric      | Range       | Type      |
+| sonar_topic                       | Metric      | Range       | Type      |
 | ----------------------------------| ----------- |-----------  | ----------|
 | distance                          | m           | -           | float32   |
 | confidence                        | range       |[0-1]        | float32   |
 
+#### DVL
 
-| DVL                               | Metric      | Range       | Type      |
+| dvl_topic                         | Metric      | Range       | Type      |
 | ----------------------------------| ----------- |-----------  | ----------|
 | roll                              | degrees     |[0-360       | int32     |
 | pitch                             | degrees     |[0-360       | int32     |
@@ -42,15 +46,17 @@ We will have different topics for all the sensors.
 | x_translation                     | m           |-            | float32   |
 | y_translation                     | m           |-            | float32   |
 
+#### IMU
 
-| IMU                               | Metric      | Range       | Type      |
+| imu_topic                         | Metric      | Range       | Type      |
 | ----------------------------------| ----------- |-----------  | ----------|
 | roll                              | degrees     |[0-360       | int32     |
 | pitch                             | degrees     |[0-360       | int32     |
 | yaw                               | degrees     |[0-360       | int32     |
 
+#### Hydrophones
 
-| Hydrophones                       | Metric      | Range       | Type      |
+| hydrophones_topic                  | Metric      | Range       | Type      |
 | ----------------------------------| ----------- |-----------  | ----------|
 | direction                         | degrees     |[0-360]      | int32     |
 | confidence                        | range       |[0-1]        | float32   |
