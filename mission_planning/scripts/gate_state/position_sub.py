@@ -28,7 +28,7 @@ class PositionSub(smach.State):
 		beginningTime = time.time()
         while(True):
             self.elapsedTime = time.time()
-            if (beginningTime - self.elapsedTime) > self.maxTime:
+            if (beginningTime - self.elapsedTime) < self.maxTime:
                 return('timeout')
 
             # Get data from CV.
