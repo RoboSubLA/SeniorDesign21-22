@@ -18,11 +18,11 @@ This is the launch file to launch the system with dummy data from all the sensor
 
 Currently it will start up the following nodes:
 
-Use the command `roslaunch robosub_launcher robosub_dummy.launch` to run this launch file. 
-
 - user_interface
 - barometer_dummy
 - sonar_dummy
 - dvl_dummy
 - imu_dummy
 - hydrophones_dummy
+
+Use the command `roslaunch robosub_launcher robosub_dummy.launch` to run this launch file. 
