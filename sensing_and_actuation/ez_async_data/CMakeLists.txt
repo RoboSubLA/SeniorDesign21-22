@@ -15,6 +15,7 @@ add_message_files(
   CV.msg
   test.msg
   gate.msg
+  IMU.msg
 )
 
 generate_messages(
