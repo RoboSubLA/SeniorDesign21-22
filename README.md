@@ -7,11 +7,11 @@ We will use ROS to set up different nodes in our system. Some of the nodes will 
 ### System Overview
 ![Software Design Picture](https://github.com/RoboSubCSULA/SeniorDesign21-22/blob/main/software_design.jpg )
 
-## Nodes
-A node functions as it's own program and will publish and subscribe to information from other nodes.
+## Packages
+These are a list of the different packages we have in this repository. 
 
 ### [User Interface](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/main/user_interface)
-In the user interface we want to display sensor data, and logs.
+The user interface subscribe to all the different topics and display the data. 
 
 ### [Mission Planning](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/main/mission_planning)
 This node will be in charge of the state of the Robosub and decide what tasks it should do.
@@ -28,6 +28,9 @@ This node will do path planning and mapping.
 
 ### [Camera](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/main/camera)
 ...
+
+### [Robosub Launcher](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/main/robosub_launcher)
+This package will be in charge of launching our system
 
 ## Getting Started
 ### Requirements:
@@ -58,7 +61,13 @@ This needs to be done in Ubuntu 18.04 with ROS Melodic installed.
 4. Run `catkin_make` again.
 
 ### Starting The Robosub
-In the workspace use the command `roslaunch robosub_launcher robosub.launch` to launch all the nodes
+We have the `robosub_launcher` package to help us launch the system. 
+
+You can run these script to launch the system: 
+
+`roslaunch robosub_launcher robosub.launch` to launch all the nodes.
+
+`roslaunch robosub_launcher robosub_dummy.launch` this will launch the system in dummy mode where the sensors will publish dummy data to the system. 
 
 ### Useful Links:
 
