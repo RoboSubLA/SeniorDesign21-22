@@ -14,6 +14,7 @@ Topic name is `current_rotation`
         
 ## IMU LOGS
 Uses `rosbag` data structure to store data that is being published
+
     
 ### Storing all topics
 Running `rosbag record -a` indicating that all published topics should be accumulated in a bag file.
@@ -27,7 +28,6 @@ The previous commands will make a bagfile in the current directory.
 # Getting the IMU working
 1. Find the tty connection the vectornav is connected to. You can use the command `dmesg | grep tty`
 2. Make appropriate changed to the device name in the src/main.cpp file
-
 
 ## If permission errors occur
 
