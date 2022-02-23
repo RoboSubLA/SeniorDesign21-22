@@ -24,22 +24,20 @@ class PositionSub(smach.State):
 
 
     def execute(self, userdata):
-        #get data from CV concerning gate
-        
         output = ''
+		beginningTime = time.time()
         while(True):
-            # self.elapsedTime = time.time()
-            # if self.elapsedTime > self.maxTime:
-            #     return('timeout')
+            self.elapsedTime = time.time()
+            if (beginningTime - self.elapsedTime) > self.maxTime:
+                return('timeout')
 
-            #get current data
+            # Get data from CV.
             data = self.gate_sub.get_data()
             
             if data.xOffset < self.xError and data.yOffset < self.yError:
-                #send controls current heading, current depth, as setpoints
                 return 'success'
         
-            command = self.getCenterCommand()
+            command = self.getCenterCommand(data)
             self.controls_pub.publish(command[0] + '\n'+ command[1] + '/n/n')
 
             output += 'Target Seen: ' + str(data.targetSeen) + '\n'
@@ -49,24 +47,19 @@ class PositionSub(smach.State):
             rospy.loginfo(output)
             self.rate.sleep()
 
-    def getCenterCommand():
+    def getCenterCommand(self, data):
         setpoints = []
-        if x > xError:
-            #need to increase height
-            #send to controls height increase command
-            setpoint.append('go up')
-
-        elif x < -xError:
-            #need to decrease height
-            #send to controls decrease height command
-            setpoint.append('go down')
-
-        if y > yError:
-            #need to increase height
-            #send to controls height increase command
+        if data.xOffset > self.xError:
+            # The AUV is too far right to pass through the gate. The x value has to be decreased, so a command is sent to Controls to move left, or decrease x.
             setpoint.append('go left')
+        elif data.xOffset < -self.xError:
+            # The AUV is too far left to pass through the gate. The x value has to be increased, so a command is sent to Controls to move right, or increase x.
+            setpoint.append('go right')
 
-        elif y < -yError:
-            #need to decrease height
-            #send to controls decrease height command
+        if data.yOffset > self.yError:
+            # The AUV is too high to pass through the gate. Height has to be decreased, so a command is sent to Controls to decrease height.
             setpoint.append('go down')
+        elif data.yOffset < -self.yError:
+            # The AUV is too low to pass through the gate. Height has to be increased, so a command is sent to Controls to increase height.
+            setpoint.append('go up')
+		return setpoints
