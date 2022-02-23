@@ -18,33 +18,42 @@ The sensing and actuation consists of the following sensors and controls:
 The name for this ROS node is `sensing_and_actuation`
 
 
-#### Publishing
+#### Topics
 
-It will publish an msg with the following data to the topic `sensing_and_actuation_data`
+We will have different topics for all the sensors. 
 
-| Sensors/ Actuators                | Metric      | Range       | Type      |
+| Barometer                         | Metric      | Range       | Type      |
 | ----------------------------------| ----------- |-----------  | ----------|
-| DVL_pitch                         | degrees     | -           | float     |
-| DVL_yaw                           | degrees     | -           | float     |
-| DVL_roll                          | degrees     | -           | float     |
-| DVL_x_translation                 | millimeters | -           | float     |
-| DVL_y_translation                 | millimeters | -           | float     |
-| IMU_pitch                         | degrees     | -           | float     |
-| IMU_yaw                           | degrees     | -           | float     |
-| IMU_roll                          | degrees     | -           | float     |
-| barometer_depth                   | meters      | -           | float     |
-| barometer_temperature             | celsius     | -           | float     |
-| sonar_distance                    | meters      | -           | float     |
-| sonar_confidence                  | percentage  | [0-1]       | float     |
-| hydrophones_direction             | degrees     | -           | float     |
-| thruster_horisontal_front_left    | power       | -           | float     |
-| thruster_horisontal_front_right   | power       | -           | float     |
-| thruster_horisontal_back_left     | power       | -           | float     |
-| thruster_horisontal_back_right    | power       | -           | float     |
-| thruster_vertical_front_left      | power       | -           | float     |
-| thruster_vertical_front_right     | power       | -           | float     |
-| thruster_vertical_back_left       | power       | -           | float     |
-| thruster_vertical_back_right      | power       | -           | float     |
+| depth                             | m           | -           | float32   |
+| confidence                        | range       |[0-1]        | float32   |
+
+
+| Sonar                             | Metric      | Range       | Type      |
+| ----------------------------------| ----------- |-----------  | ----------|
+| distance                          | m           | -           | float32   |
+| confidence                        | range       |[0-1]        | float32   |
+
+
+| DVL                               | Metric      | Range       | Type      |
+| ----------------------------------| ----------- |-----------  | ----------|
+| roll                              | degrees     |[0-360       | int32     |
+| pitch                             | degrees     |[0-360       | int32     |
+| yaw                               | degrees     |[0-360       | int32     |
+| x_translation                     | m           |-            | float32   |
+| y_translation                     | m           |-            | float32   |
+
+
+| IMU                               | Metric      | Range       | Type      |
+| ----------------------------------| ----------- |-----------  | ----------|
+| roll                              | degrees     |[0-360       | int32     |
+| pitch                             | degrees     |[0-360       | int32     |
+| yaw                               | degrees     |[0-360       | int32     |
+
+
+| Hydrophones                       | Metric      | Range       | Type      |
+| ----------------------------------| ----------- |-----------  | ----------|
+| direction                         | degrees     |[0-360]      | int32     |
+| confidence                        | range       |[0-1]        | float32   |
 
 
 ## Sensors
