@@ -4,4 +4,5 @@
     <node name='sonar' pkg='sonar' type='sonar_dummy.py' output='screen' />
     <node name='dvl' pkg='dvl' type='dvl_dummy.py' output='screen' />
     <node name='ez_async_data' pkg='ez_async_data' type= 'imu_dummy.py' output='screen' />
+    <node name='hydrophones' pkg='hydrophones' type='hydrophones_dummy.py' output='screen' />
 </launch>
