@@ -71,9 +71,9 @@ This is the package for the dvl. The dvl we are using is [Teledyne Pathfinder DV
 
 | dvl_topic                         | Metric      | Range       | Type      |
 | ----------------------------------| ----------- |-----------  | ----------|
-| roll                              | degrees     |[0-360       | int32     |
-| pitch                             | degrees     |[0-360       | int32     |
-| yaw                               | degrees     |[0-360       | int32     |
+| roll                              | degrees     |[0-360]      | int32     |
+| pitch                             | degrees     |[0-360]      | int32     |
+| yaw                               | degrees     |[0-360]      | int32     |
 | x_translation                     | m           |-            | float32   |
 | y_translation                     | m           |-            | float32   |
 
@@ -83,7 +83,7 @@ This is the package for our IMU. The IMU we are using is VectorNav IMU.
 
 ### Will give us following data:
 
-`Pitch(degree, float)`
+`Pitch(degrees, float)`
 
 `Yaw(degrees from North, float)`
 
@@ -94,9 +94,9 @@ This is the package for our IMU. The IMU we are using is VectorNav IMU.
 
 | imu_topic                         | Metric      | Range       | Type      |
 | ----------------------------------| ----------- |-----------  | ----------|
-| roll                              | degrees     |[0-360       | int32     |
-| pitch                             | degrees     |[0-360       | int32     |
-| yaw                               | degrees     |[0-360       | int32     |
+| roll                              | degrees     |[0-360]      | int32     |
+| pitch                             | degrees     |[0-360]      | int32     |
+| yaw                               | degrees     |[0-360]      | int32     |
 
 
 ## To be continued
