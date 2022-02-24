@@ -6,7 +6,7 @@ from std_msgs.msg import String
 from barometer.msg import Barometer
 
 while True:
-    publisher = rospy.Publisher('barometer_dummy_topic', Barometer, queue_size=10)
+    publisher = rospy.Publisher('barometer_topic', Barometer, queue_size=10)
     rospy.init_node('barometer_dummy')
     rate = rospy.Rate(10)
 

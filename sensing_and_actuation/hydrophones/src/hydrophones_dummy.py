@@ -6,7 +6,7 @@ from std_msgs.msg import String
 from hydrophones.msg import Hydrophones
 
 while True:
-    publisher = rospy.Publisher('hydrophones_dummy_topic', Hydrophones, queue_size=10)
+    publisher = rospy.Publisher('hydrophones_topic', Hydrophones, queue_size=10)
     rospy.init_node('hydrophones_dummy')
     rate = rospy.Rate(10)
 

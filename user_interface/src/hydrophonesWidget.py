@@ -1,16 +1,18 @@
 import Tkinter as tk
 
+
 class HydrophonesWidget(tk.Frame):
     def __init__(self, parent, *args, **kwargs):
         tk.Frame.__init__(self, parent, *args, **kwargs)
         self.parent = parent
         self.direction = None
         self.switch = True
-        self.title = tk.Label(master=self, text='IMU', width=10, pady=5,  bg='#d8e7e8')
+        self.title = tk.Label(master=self, text='Hydrophones', width=20, pady=5,  bg='#88b1b8')
         self.title.pack(fill='both')
-        self.info = tk.Label(master=self, text=self.direction, width=10, pady=25)
+        self.info_label = tk.Label(master=self, text='Direction', width=20, pady=10, font=('arial', 8))
+        self.info = tk.Label(master=self, text=self.direction, width=20, pady=5)
 
-
+        self.info_label.pack()
         self.info.pack()
 
 

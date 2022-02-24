@@ -18,11 +18,11 @@ class UserInterface(tk.Frame):
         self.parent = parent
 
         #Subscribers
-        self.barometer_subscriber =  rospy.Subscriber('barometer_dummy_topic', Barometer, self.callback_barometer)
-        self.sonar_subscriber = rospy.Subscriber('sonar_dummy_topic', Sonar, self.callback_sonar)
-        self.dvl_subscriber = rospy.Subscriber('dvl_dummy_topic', DVL, self.callback_dvl)
-        self.imu_subscriber = rospy.Subscriber('imu_dummy_topic', IMU, self.callback_imu)
-        self.hydrophones_subscriber = rospy.Subscriber('hydrophones_dummy_topic', Hydrophones, self.callback_hydrophones)
+        self.barometer_subscriber =  rospy.Subscriber('barometer_topic', Barometer, self.callback_barometer)
+        self.sonar_subscriber = rospy.Subscriber('sonar_topic', Sonar, self.callback_sonar)
+        self.dvl_subscriber = rospy.Subscriber('dvl_topic', DVL, self.callback_dvl)
+        self.imu_subscriber = rospy.Subscriber('imu_topic', IMU, self.callback_imu)
+        self.hydrophones_subscriber = rospy.Subscriber('hydrophones_topic', Hydrophones, self.callback_hydrophones)
 
         #Widgets
         self.barometer_widget = BarometerWidget(self)

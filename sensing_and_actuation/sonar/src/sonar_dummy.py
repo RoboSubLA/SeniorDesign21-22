@@ -6,7 +6,7 @@ from std_msgs.msg import String
 from sonar.msg import Sonar
 
 while True:
-    publisher = rospy.Publisher('sonar_dummy_topic', Sonar, queue_size=10)
+    publisher = rospy.Publisher('sonar_topic', Sonar, queue_size=10)
     rospy.init_node('sonar_dummy')
     rate = rospy.Rate(10)
 

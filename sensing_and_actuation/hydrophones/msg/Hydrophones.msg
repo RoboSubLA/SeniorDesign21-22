@@ -1,1 +1,1 @@
-float32 direction
+int32 direction

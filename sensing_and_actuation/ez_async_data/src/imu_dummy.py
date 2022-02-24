@@ -6,7 +6,7 @@ from std_msgs.msg import String
 from ez_async_data.msg import IMU
 
 while True:
-    publisher = rospy.Publisher('imu_dummy_topic', IMU, queue_size=10)
+    publisher = rospy.Publisher('imu_topic', IMU, queue_size=10)
     rospy.init_node('imu_dummy')
     rate = rospy.Rate(10)
 

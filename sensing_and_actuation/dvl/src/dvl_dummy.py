@@ -6,7 +6,7 @@ from std_msgs.msg import String
 from dvl.msg import DVL
 
 while True:
-    publisher = rospy.Publisher('dvl_dummy_topic', DVL, queue_size=10)
+    publisher = rospy.Publisher('dvl_topic', DVL, queue_size=10)
     rospy.init_node('dvl_dummy')
     rate = rospy.Rate(10)
 
