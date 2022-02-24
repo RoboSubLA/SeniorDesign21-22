@@ -1,72 +1,61 @@
 # Sensing And Actuation
-This folder contains code for the Sensing and Actuation Node.
-
-You can use `dummydata.py` file for testing purposes.
-
-The sensing and actuation consists of the following sensors and controls:
-- DVL
-- IMU
-- Hydrophones
-- Barometer
-- Sonar
-- 8 Thrusters
-- Claw
-- Torpedo
-- Ball drop
-
-## ROS Node
-The name for this ROS node is `sensing_and_actuation`
+This folder contains code for all the sensors and actuators. We have the following packages
 
 
-### Topics
+## hydrophones
+This is our package for the hydrophones. It's using [AS-1 Hydrophones](https://www.aquarianaudio.com/as-1-hydrophone.html).
 
-We will have different topics for all the sensors. 
+### Will give us data:
 
-#### Barometer
+`Pinger Label (string)`
 
-| barometer_topic                   | Metric      | Range       | Type      |
-| ----------------------------------| ----------- |-----------  | ----------|
-| depth                             | m           | -           | float32   |
-| confidence                        | range       |[0-1]        | float32   |
+`8-direction (string)`
 
-#### Sonar
-
-| sonar_topic                       | Metric      | Range       | Type      |
-| ----------------------------------| ----------- |-----------  | ----------|
-| distance                          | m           | -           | float32   |
-| confidence                        | range       |[0-1]        | float32   |
-
-#### DVL
-
-| dvl_topic                         | Metric      | Range       | Type      |
-| ----------------------------------| ----------- |-----------  | ----------|
-| roll                              | degrees     |[0-360       | int32     |
-| pitch                             | degrees     |[0-360       | int32     |
-| yaw                               | degrees     |[0-360       | int32     |
-| x_translation                     | m           |-            | float32   |
-| y_translation                     | m           |-            | float32   |
-
-#### IMU
-
-| imu_topic                         | Metric      | Range       | Type      |
-| ----------------------------------| ----------- |-----------  | ----------|
-| roll                              | degrees     |[0-360       | int32     |
-| pitch                             | degrees     |[0-360       | int32     |
-| yaw                               | degrees     |[0-360       | int32     |
-
-#### Hydrophones
-
-| hydrophones_topic                  | Metric      | Range       | Type      |
+### Topic
+| hydrophones_topic                 | Metric      | Range       | Type      |
 | ----------------------------------| ----------- |-----------  | ----------|
 | direction                         | degrees     |[0-360]      | int32     |
 | confidence                        | range       |[0-1]        | float32   |
 
 
-## Sensors
 
-### Teledyne Pathfinder DVL
+## barometer
 
-#### Will give us following data:
+### Blue Robotics Bar30 Pressure Sensor
+This is a barometer which will give us the depth and temperature the Robosub is operating at. The barometer we are using is [Blue Robotics Bar30 Pressure Sensor](https://github.com/bluerobotics/Bar30-Pressure-Sensor)
+
+### Will give us following data:
+
+`Depth(meters, float)`
+
+`Temperature(celsius, float)`
+
+### Topic
+| barometer_topic                   | Metric      | Range       | Type      |
+| ----------------------------------| ----------- |-----------  | ----------|
+| depth                             | m           | -           | float32   |
+| confidence                        | range       |[0-1]        | float32   |
+
+
+## sonar
+
+This is a sonar that will detect and give current distance from objects in front of the sonar. The sonar we are using is [Blue Robotics Ping Sonar](https://bluerobotics.com/store/sensors-sonars-cameras/sonar/ping-sonar-r2-rp/)
+
+### Will give us data:
+
+`Distance to Object(millimeters)`
+
+### Topic
+| sonar_topic                       | Metric      | Range       | Type      |
+| ----------------------------------| ----------- |-----------  | ----------|
+| distance                          | m           | -           | float32   |
+| confidence                        | range       |[0-1]        | float32   |
+
+
+## dvl
+This is the package for the dvl. The dvl we are using is [Teledyne Pathfinder DVL](https://www.eol.ucar.edu/system/files/VN100manual.pdf)
+
+### Will give us following data:
 
 `Pitch(degrees, float)`
 
@@ -78,11 +67,21 @@ We will have different topics for all the sensors.
 
 `Y- Translation(centimeter, float)`
 
-[Read more](https://www.eol.ucar.edu/system/files/VN100manual.pdf)
+### Topic
 
-### VectorNav IMU
+| dvl_topic                         | Metric      | Range       | Type      |
+| ----------------------------------| ----------- |-----------  | ----------|
+| roll                              | degrees     |[0-360       | int32     |
+| pitch                             | degrees     |[0-360       | int32     |
+| yaw                               | degrees     |[0-360       | int32     |
+| x_translation                     | m           |-            | float32   |
+| y_translation                     | m           |-            | float32   |
 
-#### Will give us following data:
+
+## imu
+This is the package for our IMU. The IMU we are using is VectorNav IMU.
+
+### Will give us following data:
 
 `Pitch(degree, float)`
 
@@ -90,45 +89,20 @@ We will have different topics for all the sensors.
 
 `Roll(degrees, float)`
 
-### Blue Robotics Bar30 Pressure Sensor
-This is a barometer which will give us the depth and temperature the Robosub is operating at.
 
-#### Will give us following data:
+### Topic
 
-`Depth(meters, float)`
-
-`Temperature(celsius, float)`
-
-[Read more](https://github.com/bluerobotics/Bar30-Pressure-Sensor)
-
-### Blue Robotics Ping Sonar
-
-This is a sonar that will detect and give current distance from objects in front of the sonar.
-
-#### Will give us data:
-
-`Distance to Object(millimeters)`
-
-[Read more](https://bluerobotics.com/store/sensors-sonars-cameras/sonar/ping-sonar-r2-rp/)
+| imu_topic                         | Metric      | Range       | Type      |
+| ----------------------------------| ----------- |-----------  | ----------|
+| roll                              | degrees     |[0-360       | int32     |
+| pitch                             | degrees     |[0-360       | int32     |
+| yaw                               | degrees     |[0-360       | int32     |
 
 
-### AS-1 Hydrophones
-This is an array of hydrophones that will listen to to pingers in the pool.
-
-#### Will give us data:
-
-`Pinger Label (string)`
-
-`8-direction (string)`
-
-
-[Read more](https://www.aquarianaudio.com/as-1-hydrophone.html)
-
-## Actuators
+## To be continued
 
  - Thrusters
  - Torpedo
  - Claw
  - Dropper
 
- More coming...
