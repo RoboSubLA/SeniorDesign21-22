@@ -12,13 +12,14 @@ from dvlWidget import DVLWidget
 from imuWidget import IMUWidget
 from hydrophonesWidget import HydrophonesWidget
 
+
 class UserInterface(tk.Frame):
     def __init__(self, parent, *args, **kwargs):
         tk.Frame.__init__(self, parent, *args, **kwargs)
         self.parent = parent
 
         #Subscribers
-        self.barometer_subscriber =  rospy.Subscriber('barometer_topic', Barometer, self.callback_barometer)
+        self.barometer_subscriber =  rospy.Subscriber('barometer_topic2', Barometer, self.callback_barometer)
         self.sonar_subscriber = rospy.Subscriber('sonar_topic', Sonar, self.callback_sonar)
         self.dvl_subscriber = rospy.Subscriber('dvl_topic', DVL, self.callback_dvl)
         self.imu_subscriber = rospy.Subscriber('imu_topic', IMU, self.callback_imu)

@@ -10,9 +10,9 @@ while True:
     rospy.init_node('barometer_dummy')
     rate = rospy.Rate(10)
 
-    barometer_msg = Barometer()
+    barometer_msg = barometer()
     barometer_msg.depth = 3.2
-    barometer_msg.confidence = 0.8
+    barometer_msg.temperature = 18
 
     while not rospy.is_shutdown():
       
