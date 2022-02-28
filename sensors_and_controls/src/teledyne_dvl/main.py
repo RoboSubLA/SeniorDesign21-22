@@ -13,8 +13,8 @@ def main():
     fig = plt.figure()
     ax1 = fig.add_subplot(1,1,1)
 
-    # Change argument inside DVL according to what port the arduino is
-    dvl = DVL("/dev/ttyACM0")
+    # COM4 being the port which connects from the computer to DVL.
+    dvl = DVL("COM4")
     dvl.start()
 
 

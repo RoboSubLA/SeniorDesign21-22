@@ -1,7 +1,9 @@
 # Teledyne DVL
 This folder contains files and code related to the Teledyne Pathfinder DVL.
 
-`dvl_dummy.ino` is currently used to create fake dummy data to be send. `dvl_dummy.ino` is used to create and send dummy data using `serial`
+The DVL will be connected to the computer and will directly communicate with the computer equivalent.
+
+`dvl_dummy.ino` is currently used to create fake dummy data to be send using an arduino. `dvl_dummy.ino` is used to create and send dummy data using `serial`. If using `dvl_dummy.ino` to create fake dummy data then change the argument in `main.py` to `/dev/ttyACM0` otherwise keep as `COM4` to communicate with the DVL.
 
 `dvl_driver.py` has yet to be tested with the Pathfinder DVL. Currently used to receive dummy data and print it out.
 

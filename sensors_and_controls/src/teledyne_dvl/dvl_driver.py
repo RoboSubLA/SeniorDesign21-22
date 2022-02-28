@@ -43,7 +43,7 @@ class DVL(Thread):
         self.data_flag = False
 
     # Original write function
-    # Might be causing problems because the syntax was introduced in a later version of python
+    # Might be causing problems because the syntax (variable annotation) was introduced in a later version of python. Currently using 2.7
     # def write(self, output: str) -> None:
     #     self.serial.write(output.encode())
 
@@ -73,14 +73,15 @@ class DVL(Thread):
         # rospy.sleep(5)  # sleep for 2 seconds
 
         # ROS publisher setup
-        # pub = rospy.Publisher('dvl_status', DVL, queue_size=1)
-        # # pubHeading = rospy.Publisher('dvl_heading', Float32, queue_size = 1)
-        # pubSS = rospy.Publisher('dvl_ss', Float32, queue_size=1)
+        pub = rospy.Publisher('dvl_status', DVL, queue_size=1)
+        pubHeading = rospy.Publisher('dvl_heading', Float32, queue_size = 1)
+        pubSS = rospy.Publisher('dvl_ss', Float32, queue_size=1)
         # rospy.Subscriber('current_rotation', Rotation, self.rCallBack, queue_size=1)
         # msg = DVL()
         # # msgHeading = Float32()
-        # msgSS = Float32()
-
+        msgSS = Float32()
+	
+	# Below required to setup settings and start communicating with DVL
         # PD6 settings --------------------------------------------------------------
         self.write("CR1\r")  # set factory defaults.(Pathfinder guide p.67)
         self.write("CP1\r")  # required command
@@ -163,7 +164,7 @@ class DVL(Thread):
                     self.depth = rangeToBottom
                     self.mutex.release()
 
-                    # pub.publish(msg)
+                    pub.publish(msg)
                     # print(self.__str__())
 
                 elif ":BS" in line:  # If the message is a velocity update
@@ -180,7 +181,7 @@ class DVL(Thread):
                     self.mutex.release()
 
                     # print(str(self))
-                    # pub.publish(msg)
+                    pub.publish(msg)
 
                 elif ":SA" in line:
                     line = line.split(",")
@@ -200,4 +201,4 @@ class DVL(Thread):
                     self.data_flag = True
                     self.mutex.release()
                     # print(f'timestamp: {float(line[5])}')
-                    # pubSS.publish(msgSS)
+                    pubSS.publish(msgSS)
