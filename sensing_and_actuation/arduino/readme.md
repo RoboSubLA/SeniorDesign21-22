@@ -10,9 +10,9 @@ You can run the command `ls /dev/ttyACM0` to check if the Arduino is connected.
 #### 1. Installing Libraries
 In your terminal run the commands:
 
-> sudo apt-get install ros-melodic-rosserial-arduino`
+> sudo apt-get install ros-melodic-rosserial-arduino
 >
-> sudo apt-get install ros-melodic-rosserial`
+> sudo apt-get install ros-melodic-rosserial
 
 #### 2. Building All Packages
 When those libraries are installed you want to cd into your workspace and run:
@@ -37,7 +37,7 @@ In your code include the line
 
     #include <ros.h>
 
-At the start of your program to import the library. 
+At the start of your program to import the library.
 
 
 
