@@ -10,6 +10,8 @@ This is the launch file to launch the system as normal.
 Currently it will start up the following nodes:
 
 - user_interface
+- arduino
+- ez_async_data (IMU)
 
 Use the command `roslaunch robosub_launcher robosub.launch` to run this launch file. 
 
