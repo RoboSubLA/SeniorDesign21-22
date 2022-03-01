@@ -4,4 +4,5 @@
         <param name='port' type='string' value='/dev/ttyACM0'/>
         <param name='baud' type='int' value='57600'/>
     </node>
+    <node name='imu' pkg='ez_async_data' type='ez_async_data' />
 </launch>
