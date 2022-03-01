@@ -5,14 +5,23 @@ The libraries are included in this package in the `cpp` folder.
 The Program outputs a custom message message name for import "Rotation"
 	composed of
 
-		`float32 roll`
-		`float32 pitch`
-		`float32 yaw`
+	float32 roll
+	float32 pitch
+	float32 yaw
     
 Topic name is `current_rotation`
 
-        
-## IMU LOGS
+## Connecting The IMU
+The IMU should be connected with an USB to the computer.
+When you have connected the IMU you can find the tty connection that the IMU is connected to with the command `dmesg | grep tty`.
+
+In the `main.cpp` file make the appropriate changes to the SensorPort variable. 
+
+If you want to run the imu node separately you can use the command:
+
+`rosrun ez_async_data ez_async_data`.
+
+## Logging Data From The IMU
 Uses `rosbag` data structure to store data that is being published
 
     
@@ -25,9 +34,6 @@ Running `rosbag record -a` indicating that all published topics should be accumu
 The previous commands will make a bagfile in the current directory.
 
 
-# Getting the IMU working
-1. Find the tty connection the vectornav is connected to. You can use the command `dmesg | grep tty`
-2. Make appropriate changed to the device name in the src/main.cpp file
 
 ## If permission errors occur
 

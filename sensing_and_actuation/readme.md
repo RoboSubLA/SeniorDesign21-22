@@ -34,7 +34,7 @@ This is a barometer which will give us the depth and temperature the Robosub is 
 | barometer_topic                   | Metric      | Range       | Type      |
 | ----------------------------------| ----------- |-----------  | ----------|
 | depth                             | m           | -           | float32   |
-| confidence                        | range       |[0-1]        | float32   |
+| temperature                       | Celcius     | -           | float32   |
 
 
 ## sonar
@@ -105,4 +105,3 @@ This is the package for our IMU. The IMU we are using is VectorNav IMU.
  - Torpedo
  - Claw
  - Dropper
-
