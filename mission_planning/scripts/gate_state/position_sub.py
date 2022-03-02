@@ -2,7 +2,7 @@ import smach
 import rospy
 
 from std_msgs.msg import String
-from ez_async_data.msg import CV
+from sensing_and_actuation.ez_async_data.msg import CV
 from utilities.comms import Subscriber
 
 import time
@@ -22,19 +22,22 @@ class PositionSub(smach.State):
         self.xError = 10
         self.yError = 10
 
-
     def execute(self, userdata):
         output = ''
 		beginningTime = time.time()
         while(True):
             self.elapsedTime = time.time()
-            if (beginningTime - self.elapsedTime) > self.maxTime:
-                return('timeout')
 
             # Get data from CV.
             data = self.gate_sub.get_data()
             
-            if data.xOffset < self.xError and data.yOffset < self.yError:
+			if (beginningTime - self.elapsedTime) > self.maxTime:
+				if (data.targetSeen)
+					return('timeout')
+				else
+					return('no_target')
+				
+            if data.xOffset < self.xError and data.yOffset < self.yError and data.targetSeen:
                 return 'success'
         
             command = self.getCenterCommand(data)
