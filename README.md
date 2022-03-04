@@ -60,7 +60,7 @@ This needs to be done in Ubuntu 18.04 with ROS Melodic installed.
 
 4. Run `catkin_make` again.
 
-4. Then in your catkin_ws run `source devel/setup.bash`. You will have to repeat this last step every time you open a new terminal.
+4. Then in your `catkin_ws` folder run `source devel/setup.bash`. You will have to repeat this last step every time you open a new terminal.
 
 ### Starting The Robosub
 We have the `robosub_launcher` package to help us launch the system. 
