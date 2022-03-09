@@ -7,6 +7,23 @@ This node will do image processing and image recognition to find targets. We wil
 ## How to work with the code
 ... How can a new developer start working with the code
 
+Have all required packages installed from the RoboSubCSULA README.md\
+
+Before running any of the commands when testing the LetterA 
+I. Locate the LetterA.data file within the yolov4_files folder within the catkin_ws
+II. For the "names" value within the LetterA.data file change the path to your local path for LetterA.names file within the yolov4_files folder.
+
+1. run following commands in your system's terminal:
+- `cd catkin_ws`
+- `catkin_make`
+- `source devel/setup.bash`
+- `roscore`
+
+2. Create a new terminal and run the following commands;
+- `cd catkin_ws`
+- `source devel/setup.bash`
+- `rosrun computer_vision cv_start.py`
+
 ## Testing
 ... How can you test the different states
 
