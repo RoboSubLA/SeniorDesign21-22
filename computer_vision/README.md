@@ -24,6 +24,12 @@ II. For the "names" value within the LetterA.data file change the path to your l
 - `source devel/setup.bash`
 - `rosrun computer_vision cv_start.py`
 
+alternative to step 2:
+- `cd src/computer_vision/`
+- `python cv_start.py`
+
+
+
 ## Testing
 ... How can you test the different states
 
