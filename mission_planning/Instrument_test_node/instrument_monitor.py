@@ -1,10 +1,13 @@
+#!/usr/bin/env python2
+
 import rospy
 import time
 from barometer.msg import Barometer 
 from sonar.msg import Sonar
 from dvl.msg import DVL
-from ez_async_data.msg import IMU, test
-from hydrophones.msg import Hydrophonesfrom std_msgs.msg import String
+from ez_async_data.msg import IMU, test, Rotation, CV
+from hydrophones.msg import Hydrophones
+from std_msgs.msg import String
 
 instrument_test = test()
 instrument_test.imu = False
