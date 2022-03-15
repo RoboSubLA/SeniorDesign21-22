@@ -1,4 +1,7 @@
 bool imu
-bool bar
-bool cv
+bool barometer
+bool sonar
+bool hydrophones
 bool dvl
+bool cv
+
