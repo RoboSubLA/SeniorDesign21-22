@@ -1,8 +1,11 @@
 <launch>
-    <node name='user_interface' pkg='user_interface' type='main.py' output='screen'/>
+    <arg name='start_state' default='zero' />
+    <node name='user_interface' pkg='user_interface' type='main.py'/>
     <node name='serial_node' pkg='rosserial_python' type='serial_node.py'>
         <param name='port' type='string' value='/dev/ttyACM0'/>
         <param name='baud' type='int' value='57600'/>
     </node>
     <node name='imu' pkg='ez_async_data' type='ez_async_data' />
+    <node name='instrument_monitor' pkg='mission_planning' type='instrument_monitor.py' />
+    <node name='state_machine' pkg='mission_planning' type='start.py' args='$(arg start_state)' output='screen' />
 </launch>

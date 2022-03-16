@@ -44,7 +44,10 @@ class State_Zero(smach.State):
             rate.sleep()
 
 
-        return 'passed'
+        if all_tests_passed:
+            return 'passed'
+
+        return 'failed' 
 
 def main():
     rospy.init_node('state_zero', anonymous=True)
