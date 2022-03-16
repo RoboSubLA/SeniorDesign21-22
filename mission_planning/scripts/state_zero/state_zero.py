@@ -6,8 +6,6 @@ import threading
 from ez_async_data.msg import test
 from utilities.comms import Subscriber
 
-# ignore the import error, so far it works
-from instrument_tests.test_transitions import testFailedTransition, testPassedTransition
 # this state takes the data test from the instrument_tests node and checks whether or not all of
 # the tests return true
 
@@ -17,20 +15,39 @@ class State_Zero(smach.State):
         self.zero_sub = Subscriber("instrument_tests", test)
 
     def execute(self, userdata):
-        # for 5 minuts check
+        # for 5 seconds check
         # when we get all posiitive tests (for at least 5 seconds)
         # return state1
         rate = rospy.Rate(1)
         counter = 0
+        all_tests_passed = False
+
 	while counter < 5:
             data = self.zero_sub.get_data()
-            rospy.loginfo("imu: " + str(data.imu))
-            rospy.loginfo("bar: " + str(data.bar))
-            rospy.loginfo("cv: " + str(data.cv))
-            rospy.loginfo("dvl: " + str(data.dvl))
+            imu_passed = data.imu
+            barometer_passed = data.barometer
+            sonar_passed = data.sonar
+            hydrophones_passed = data.hydrophones
+            cv_passed = data.cv
+
+            rospy.loginfo("imu: " + str(imu_passed))
+            rospy.loginfo("barometer: " + str(barometer_passed))
+            rospy.loginfo("sonar: " + str(sonar_passed))
+            rospy.loginfo("hydrophones: " + str(hydrophones_passed))
+            rospy.loginfo("cv: " + str(cv_passed))
+
+            if imu_passed and barometer_passed and sonar_passed and hydrophones_passed and cv_passed:
+                all_tests_passed = True
+            else:
+                all_tests_passed = False
             counter = counter + 1
             rate.sleep()
-        return testPassedTransition(3)
+
+
+        if all_tests_passed:
+            return 'passed'
+
+        return 'failed' 
 
 def main():
     rospy.init_node('state_zero', anonymous=True)
