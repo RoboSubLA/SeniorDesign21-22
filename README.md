@@ -10,26 +10,29 @@ We will use ROS to set up different nodes in our system. Some of the nodes will 
 ## Packages
 These are a list of the different packages we have in this repository. 
 
-### [User Interface](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/main/user_interface)
+### [user_interface](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/main/user_interface)
 The user interface subscribe to all the different topics and display the data. 
 
-### [Mission Planning](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/main/mission_planning)
+### [mission_planning](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/main/mission_planning)
 This node will be in charge of the state of the Robosub and decide what tasks it should do.
 
 
-### [Computer Vision](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/main/computer_vision)
+### [computer_vision](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/main/computer_vision)
 This node will do image processing and image recognition to find targets. We will also implement machine learning for the image recognition.
 
-### [Sensing and Actuation](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/main/sensing_and_actuation)
+### [sensing_and_actuation](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/main/sensing_and_actuation)
 This node is where all our sensor and controls will be connected.
 
-### [Navigation](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/main/navigation)
+### [navigation](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/main/navigation)
 This node will do path planning and mapping.
 
-### [Camera](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/main/camera)
+### [robosub_messages](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/main/robosub_messages)
+We use this package to create all our messages that the robosub relies on. We have them all in the same package to make it easy to import into the other files. 
+
+### [camera](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/main/camera)
 ...
 
-### [Robosub Launcher](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/main/robosub_launcher)
+### [robosub_launcher](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/main/robosub_launcher)
 This package will be in charge of launching our system
 
 ## Getting Started
