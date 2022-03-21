@@ -3,11 +3,7 @@
 import time
 import rospy
 from std_msgs.msg import String
-from sonar.msg import Sonar
-from barometer.msg import Barometer
-from dvl.msg import DVL
-from ez_async_data.msg import IMU
-from hydrophones.msg import Hydrophones
+from robosub_messages.msg import Sonar, Barometer, DVL, IMU, Hydrophones
 
 while True:
     sonar_publisher = rospy.Publisher('sonar_topic', Sonar, queue_size=10)

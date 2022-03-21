@@ -1,17 +1,12 @@
 #!/usr/bin/env python
 import Tkinter as tk
 import rospy 
-from barometer.msg import Barometer 
-from sonar.msg import Sonar
-from dvl.msg import DVL
-from ez_async_data.msg import IMU
-from hydrophones.msg import Hydrophones
+from robosub_messages.msg import Barometer, Sonar, DVL, IMU, Hydrophones
 from barometerWidget import BarometerWidget
 from sonarWidget import SonarWidget
 from dvlWidget import DVLWidget
 from imuWidget import IMUWidget
 from hydrophonesWidget import HydrophonesWidget
-from ez_async_data.msg import Rotation
 
 
 class UserInterface(tk.Frame):
@@ -23,7 +18,7 @@ class UserInterface(tk.Frame):
         self.barometer_subscriber =  rospy.Subscriber('barometer_topic', Barometer, self.callback_barometer)
         self.sonar_subscriber = rospy.Subscriber('sonar_topic', Sonar, self.callback_sonar)
         self.dvl_subscriber = rospy.Subscriber('dvl_topic', DVL, self.callback_dvl)
-        self.imu_subscriber = rospy.Subscriber('current_rotation', Rotation, self.callback_imu)
+        self.imu_subscriber = rospy.Subscriber('imu_topic', IMU, self.callback_imu)
         self.hydrophones_subscriber = rospy.Subscriber('hydrophones_topic', Hydrophones, self.callback_hydrophones)
 
         #Widgets

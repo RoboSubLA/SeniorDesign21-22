@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(sonar)
+project(robosub_messages)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -8,10 +8,7 @@ project(sonar)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  roscpp
-  rospy
   std_msgs
-  robosub_messages
   message_generation
 )
 
@@ -49,10 +46,16 @@ find_package(catkin REQUIRED COMPONENTS
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
-#add_message_files(
-#   FILES
-#   Sonar.msg
-#)
+add_message_files(
+  FILES
+  Barometer.msg
+  Sonar.msg
+  Hydrophones.msg
+  IMU.msg
+  DVL.msg
+  test.msg
+  CV.msg
+)
 
 ## Generate services in the 'srv' folder
 # add_service_files(
@@ -69,10 +72,10 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate added messages and services with any dependencies listed here
-#generate_messages(
-#  DEPENDENCIES
-#  std_msgs
-#)
+generate_messages(
+  DEPENDENCIES
+  std_msgs
+)
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -104,10 +107,10 @@ find_package(catkin REQUIRED COMPONENTS
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-#  INCLUDE_DIRS include
-#  LIBRARIES sonar
-#  CATKIN_DEPENDS roscpp rospy std_msgs message_runtime
-#  DEPENDS system_lib
+# INCLUDE_DIRS include
+# LIBRARIES robosub_messages
+  CATKIN_DEPENDS std_msgs
+# DEPENDS system_lib
 )
 
 ###########
@@ -123,7 +126,7 @@ include_directories(
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/sonar.cpp
+#   src/${PROJECT_NAME}/robosub_messages.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -134,7 +137,7 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-# add_executable(${PROJECT_NAME}_node src/sonar_node.cpp)
+# add_executable(${PROJECT_NAME}_node src/robosub_messages_node.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -198,7 +201,7 @@ include_directories(
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_sonar.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_robosub_messages.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()

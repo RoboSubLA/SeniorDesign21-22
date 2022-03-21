@@ -5,14 +5,14 @@
 
 //Including msgs
 #include <std_msgs/String.h>
-#include <barometer/Barometer.h>
+#include <robosub_messages/Barometer.h>
 
 // Creating variable for the barometer
 MS5837 barometer_sensor;
 
 // Creating variables related to ROS
 ros::NodeHandle node_handler;
-barometer::Barometer barometer_message;
+robosub_messages::Barometer barometer_message;
 ros::Publisher barometer_topic("barometer_topic", &barometer_message);
 
 void setup(){

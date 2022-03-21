@@ -2,11 +2,7 @@
 
 import rospy
 import time
-from barometer.msg import Barometer 
-from sonar.msg import Sonar
-from dvl.msg import DVL
-from ez_async_data.msg import IMU, test, Rotation, CV
-from hydrophones.msg import Hydrophones
+from robosub_messages.msg import Barometer, Sonar, DVL, IMU, Hydrophones, CV, test
 from std_msgs.msg import String
 
 instrument_test = test()

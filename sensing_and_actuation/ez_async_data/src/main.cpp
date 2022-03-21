@@ -9,7 +9,7 @@
 // ros 
 #include "ros/ros.h"
 #include "std_msgs/Float32.h"
-#include "ez_async_data/Rotation.h"
+#include "robosub_messages/IMU.h"
 //#include "vn/vector.h"
 
 using namespace std;
@@ -23,7 +23,7 @@ int main(int argc, char **argv)
 	ros::init(argc, argv, "vn100");
 
 	ros::NodeHandle nh;
-	ros::Publisher ypr_pub = nh.advertise<ez_async_data::Rotation>("current_rotation", 1);
+	ros::Publisher ypr_pub = nh.advertise<robosub_messages::IMU>("imu_topic", 1);
 	//ros::Publisher y_pub = nh.advertise<std_msgs::Float32>("yaw", 10);
 	//ros::Publisher p_pub = nh.advertise<std_msgs::Float32>("pitch", 10);
 	//ros::Publisher r_pub = nh.advertise<std_msgs::Float32>("roll", 10);
@@ -53,10 +53,10 @@ int main(int argc, char **argv)
 	// the for loop and just print out the same values. The for loop below illustrates
 	// this.
 
-	cout << "current_rotation topic start" << endl;
+	cout << "imu_topic start" << endl;
 
 	ros::Rate loop_rate(100); //for delay use
-	ez_async_data::Rotation ypr;
+	robosub_messages::IMU ypr;
 	while(ros::ok())
 	{
 		CompositeData cd = ez->currentData();

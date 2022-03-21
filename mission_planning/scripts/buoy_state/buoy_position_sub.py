@@ -3,7 +3,7 @@ import smach_ros
 import rospy
 
 from std_msgs.msg import String
-from ez_async_data.msg import CV
+from robosub_messages.msg import CV
 from utilities.comms import Subscriber
 
 import time
