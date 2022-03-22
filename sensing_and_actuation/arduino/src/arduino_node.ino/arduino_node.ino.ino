@@ -37,15 +37,14 @@ void setup(){
 void loop() {
 
   barometer_reading();
-
+  sonar_reading();
   node_handler.spinOnce();
 
-  sonar_reading();
 }
 
 // Function for initialzing the barometer
 void barometer_init(){
-  Wire.begin();
+  Wire.beginTransmission(0x76);
 
   while(!barometer_sensor.init()){
     delay(3000);
@@ -65,7 +64,8 @@ void barometer_reading(){
 }
 
 void sonar_init(){
-  static Ping1D ping { Serial1 };
+  Serial1.begin(115200);
+  node_handler.getHardware()->setBaud(115200);
   while(!sonar.initialize()){
     node_handler.advertise(sonar_topic);
   }
@@ -75,6 +75,6 @@ void sonar_reading(){
     sonar_message.distance = sonar.distance();
     sonar_message.confidence = sonar.confidence();
     sonar_topic.publish(&sonar_message);
-    
+
   }
 }
