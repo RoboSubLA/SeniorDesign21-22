@@ -2,18 +2,25 @@
 #include <ros.h> // ros_lib library
 #include "MS5837.h" //Barometer Library
 #include <Wire.h>
+#include "ping1d.h"
 
 //Including msgs
 #include <std_msgs/String.h>
 #include <robosub_messages/Barometer.h>
+#include <robosub_messages/Sonar.h>
+static const uint8_t arduinoRxPin = 18;
+static const uint8_t arduinoTxPin = 19;
 
 // Creating variable for the barometer
 MS5837 barometer_sensor;
+static Ping1D sonar { Serial1 };
 
 // Creating variables related to ROS
 ros::NodeHandle node_handler;
 robosub_messages::Barometer barometer_message;
 ros::Publisher barometer_topic("barometer_topic", &barometer_message);
+robosub_messages::Sonar sonar_message;
+ros::Publisher sonar_topic("sonar_topic", &sonar_message);
 
 void setup(){
 
@@ -24,6 +31,7 @@ void setup(){
   // Initializing Barometer
   barometer_init();
 
+  sonar_init();
 }
 
 void loop() {
@@ -31,6 +39,8 @@ void loop() {
   barometer_reading();
 
   node_handler.spinOnce();
+
+  sonar_reading();
 }
 
 // Function for initialzing the barometer
@@ -52,4 +62,19 @@ void barometer_reading(){
   barometer_message.depth = barometer_sensor.depth();
   barometer_message.temperature = barometer_sensor.temperature();
   barometer_topic.publish(&barometer_message);
+}
+
+void sonar_init(){
+  static Ping1D ping { Serial1 };
+  while(!sonar.initialize()){
+    node_handler.advertise(sonar_topic);
+  }
+}
+void sonar_reading(){
+  if(sonar.update()){
+    sonar_message.distance = sonar.distance();
+    sonar_message.confidence = sonar.confidence();
+    sonar_topic.publish(&sonar_message);
+    
+  }
 }

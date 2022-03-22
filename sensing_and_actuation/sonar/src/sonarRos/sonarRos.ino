@@ -32,7 +32,10 @@ void setup()
   Serial.begin(115200);
   nh.getHardware()->setBaud(115200);
   nh.initNode();
-  ping.initialize();
+  if(ping.initialize()){
+    Serial.print("Sonar initalized");
+  }
+  
   nh.advertise(chatter);
   nh.advertise(chatte);
   nh.advertise(chatt);
@@ -41,7 +44,8 @@ void setup()
 void loop()
 {
   if(ping.update()){
-    Serial.print(ping.distance());
+    Serial.print("Distance: ");
+    Serial.print(ping.distance()/100);
   data.data = ping.distance();
   chatter.publish( &data );
   
