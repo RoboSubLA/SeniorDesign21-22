@@ -23,15 +23,16 @@ robosub_messages::Sonar sonar_message;
 ros::Publisher sonar_topic("sonar_topic", &sonar_message);
 
 void setup(){
-
+  
   // Initalizing Node
   node_handler.initNode();
   node_handler.advertise(barometer_topic);
 
   // Initializing Barometer
   barometer_init();
-
+  
   sonar_init();
+  
 }
 
 void loop() {
@@ -40,11 +41,12 @@ void loop() {
   sonar_reading();
   node_handler.spinOnce();
 
+  
 }
 
 // Function for initialzing the barometer
 void barometer_init(){
-  Wire.beginTransmission(0x76);
+  Wire.begin();
 
   while(!barometer_sensor.init()){
     delay(3000);
@@ -75,6 +77,6 @@ void sonar_reading(){
     sonar_message.distance = sonar.distance();
     sonar_message.confidence = sonar.confidence();
     sonar_topic.publish(&sonar_message);
-
+    
   }
 }
