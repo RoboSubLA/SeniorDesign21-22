@@ -1,38 +1,42 @@
 import smach
 import rospy
-from sensing_and_actuation.ez_async_data.msg import gate
+import time
+
+from ez_async_data.msg import gate
+from utilities.comms import Subscriber
 
 class MoveForwardVision(smach.State):
     def __init__(self):
         smach.State.__init__(self, outcomes=['success','failed'])
-		self.gate_sub = Subscriber('gate', gate)
+        self.gate_sub = Subscriber('gate', gate)
         # p = rospy.SubscribeListener()
         self.rate = rospy.Rate(5)
         self.elapsedTime = 0
         self.maxTime = 30
 		
     def execute(self, userdata):
-		beginningTime = time.time()
-		while(True):
-			self.elapsedTime = time.time()
-			data = self.gate_sub.get_data()
-			if data.gateseen and data.gatedis < 0.5:
-				rospy.loginfo("success")
-				return 'success'
-			elif (beginningTime - self.elapsedTime) > self.maxTime::
-				rospy.loginfo("failed")
-				return 'failed'
+        beginningTime = time.time()
+
+        while(True):
+            self.elapsedTime = time.time()
+            data = self.gate_sub.get_data()
+            if data.gateseen and data.gatedis < 0.5:
+                rospy.loginfo("success")
+                return 'success'
+            elif (self.elapsedTime - beginningTime) > self.maxTime:
+                rospy.loginfo("failed")
+                return 'failed'
 
 # Incomplete.
 class MoveForwardNoVision(smach.State):
     def __init__(self):
         smach.State.__init__(self, outcomes=['success','failed'])
-		self.controls_pub = rospy.Publisher('controls', String, queue_size=10)
+	# self.controls_pub = rospy.Publisher('controls', String, queue_size=10)
 	
     def execute(self, userdata):
         # transition = 1
-		self.controls_pub.publish('go forward')
-		return 'success'
+	    # self.controls_pub.publish('go forward')
+        return 'success'
         # if transition == 1:
         #     rospy.loginfo("success")
         #     return 'success'
