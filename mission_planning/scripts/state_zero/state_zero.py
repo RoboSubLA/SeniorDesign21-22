@@ -3,7 +3,7 @@ import smach
 import smach_ros
 import time
 import threading
-from ez_async_data.msg import test
+from robosub_messages.msg import test
 from utilities.comms import Subscriber
 
 # this state takes the data test from the instrument_tests node and checks whether or not all of

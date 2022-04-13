@@ -5,23 +5,18 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
+  robosub_messages
   message_generation
 )
 
-add_message_files(
-  FILES
-  Rotation.msg
-  Barometer.msg
-  CV.msg
-  test.msg
-  gate.msg
-  IMU.msg
-)
+#add_message_files(
+#  FILES
+#)
 
-generate_messages(
-  DEPENDENCIES
-  std_msgs
-)
+#generate_messages(
+#  DEPENDENCIES
+#  std_msgs
+#)
 
 catkin_package(
 #  INCLUDE_DIRS include

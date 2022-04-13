@@ -8,4 +8,4 @@
     <node name='imu' pkg='ez_async_data' type='ez_async_data' />
     <node name='instrument_monitor' pkg='mission_planning' type='instrument_monitor.py' />
     <node name='state_machine' pkg='mission_planning' type='start.py' args='$(arg start_state)' output='screen' />
-</launch>
+</launch> 

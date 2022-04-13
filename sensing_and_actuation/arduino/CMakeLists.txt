@@ -8,10 +8,10 @@ project(arduino)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-	barometer
 	message_generation
 	roscpp
 	rospy
+	robosub_messages
 	std_msgs
 )
 
