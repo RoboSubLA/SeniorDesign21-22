@@ -38,14 +38,16 @@ alternative to step 2:
 
 Data:
 
-`Object, label for the object found, string if no object is detected, will return'Null'`
+This node publishes an array if mixed datatypes.
 
-`Confidence, float, 0 - 1, 1 being absolutely certainty. If no object is detected, returns -999`
+`data[0] - Object, label for the object found, string if no object is detected, will return'Null'`
 
-`Vertical, int vertical distance in pixels of center of object to center of frame.
+`data[1] - Confidence, float, 0 - 1, 1 being absolutely certainty. If no object is detected, returns -999`
+
+`data[2] - Vertical, int vertical distance in pixels of center of object to center of frame.
 Negative number means center of object is above center of image, positive means below.
 returns = 999 if no object found`
 
-`Horizontal, int horizontal distance in pixels of center of object to center of frame.
+`data[3] - Horizontal, int horizontal distance in pixels of center of object to center of frame.
 Negative number means center of object is left of center of image, positive means right.
 returns = 999 if no object found`
