@@ -8,7 +8,7 @@ from dvl.msg import DVL
 while True:
     publisher = rospy.Publisher('dvl_topic', DVL, queue_size=10)
     rospy.init_node('dvl_dummy')
-    rate = rospy.Rate(10)
+    rate = rospy.Rate(1)
 
     dvl_msg = DVL()
     dvl_msg.pitch = 3.2
@@ -18,7 +18,6 @@ while True:
     dvl_msg.y_translation = 12
 
     while not rospy.is_shutdown():
-        time.sleep(2)
         rospy.loginfo(dvl_msg)
         publisher.publish(dvl_msg)
     rate.sleep()
