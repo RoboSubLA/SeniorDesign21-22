@@ -15,6 +15,9 @@ We use this package to create all our message files.
  ```
  3. Your msg is now ready to be used by other packages, just make sure `robosub_messages` is added as a dependency.
 
+### Useful links
+[You can read more about creating messages here](http://wiki.ros.org/msg)
+
 ## Current Messages
 
 ### Barometer.msg
