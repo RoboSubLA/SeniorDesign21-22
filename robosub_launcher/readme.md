@@ -2,6 +2,9 @@
 
 This package is used for launching our Robosub system.
 
+## Working with the launch files
+[ROS Wiki's information on launch files](http://wiki.ros.org/roslaunch/XML)
+
 ## Launch Files
 Overview of the launch files we have, these are located in the `launch` folder. 
 ### robosub.launcher
