@@ -17,7 +17,7 @@ class PositionSub(smach.State):
         self.gate_sub = Subscriber('cv_data', CV)
         self.sonar_test_sub =  Subscriber("sonar_topic", Sonar)
         self.controls_pub = rospy.Publisher('controls', String, queue_size=10)
-	# p = rospy.SubscribeListener()
+		# p = rospy.SubscribeListener()
         self.rate = rospy.Rate(5)
         self.elapsedTime = 0
         self.maxTime = 30
@@ -75,4 +75,3 @@ class PositionSub(smach.State):
         else:
             setpoints.append('N/A')
         return setpoints
-
