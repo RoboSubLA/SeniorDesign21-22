@@ -16,6 +16,13 @@ Please take care to match the "bitness" of your python to the PicoSDK.
 Follow the instructions from our [Linux Software & Drivers for Oscilloscopes and Data Loggers page](https://www.picotech.com/downloads/linux) 
 to install the required driver packages for your product.
 
+Locate the setup.py file and make sure the picosdk folder is in the same locataion as setup.py. Then follow the instructions above to complete the setup.
+
+Install SciPy to be able to use the butterworth filter.
+
+In the terminal:
+`python -m pip install scipy`
+
 ### macOS
 
 macOS users should install PicoScope Beta for macOS, and then may find this [forum post](https://www.picotech.com/support/topic22221.html) helpful for installing the C 
