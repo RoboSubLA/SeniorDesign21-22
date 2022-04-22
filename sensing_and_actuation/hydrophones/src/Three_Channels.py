@@ -14,7 +14,7 @@ fs = 500000                                                 #frequency in Hertz
 duration = 1
 
 buffSize = 500                                              #size of capture
-Ts_s = 1/fs                                                 #duration of a sample
+Ts_s = 1.0/fs                                                 #duration of a sample
 Ts_us = int(Ts_s * 1000000)                                 #time between samples
 numBuffers = int(duration / (Ts_s * buffSize))              #number of buffers to capture
 sleepTime = 0.01                                            #time to wait if there is no data before trying again
