@@ -169,4 +169,3 @@ assert_pico_ok(status["close"])
 
 # Display status returns
 # print(status)
-
