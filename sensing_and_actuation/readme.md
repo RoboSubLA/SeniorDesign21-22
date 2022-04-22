@@ -1,5 +1,23 @@
 # Sensing And Actuation
-This folder contains code for all the sensors and actuators. We have the following packages
+This folder contains code for all the sensors and actuators. 
+
+## Nodes
+In the `src` folder you can find these different nodes:
+
+### arduino
+This nodes contain the arduino code. It will have the barometer and sonar attached to it.
+
+### imu
+This node contains the code for connecting to and getting data from the imu. This is written in c++.
+
+### dvl
+This node contains the code for connecting to and getting data from the dvl
+
+### hydrophones
+This node contains the code for connecting to and getting data from the hydrophones
+
+### dummy_data
+You can run this node and will publish dummy data for all the sensors. It also provides a user interface to alter the data it publishes. 
 
 
 ## hydrophones
