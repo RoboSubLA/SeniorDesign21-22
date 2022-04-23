@@ -1,35 +1,37 @@
+#importing libraries add functionality to our code
+
 import ctypes
-import numpy as np
-from picosdk.ps2000a import ps2000a as ps
-import matplotlib.pyplot as plt
-from picosdk.functions import adc2mV, assert_pico_ok
-import time
+import numpy as np                                          #popular data processing and math library
+from picosdk.ps2000a import ps2000a as ps                   #hydrophone drivers
+import matplotlib.pyplot as plt                             #plotting library, helps draw graphs
+from picosdk.functions import adc2mV, assert_pico_ok        #debugging tool, makes sure everything is set up correctly or else stops the program
+import time                                                 #allows us to use the computer's clock
 
 
 ### USER VARIABLES ###
 
-fs = 500000
+fs = 500000                                                 #frequency in Hertz
 duration = 1
 
-buffSize = 500 #size of capture
-Ts_s = 1/fs
-Ts_us = int(Ts_s * 1000000) #time between samples
-numBuffers = int(duration / (Ts_s * buffSize)) #number of buffers to capture
-sleepTime = 0.01 #time to wait if there is no data before trying again
+buffSize = 500                                              #size of capture
+Ts_s = 1.0/fs                                                 #duration of a cycle (in seconds)
+Ts_us = int(Ts_s * 1000000)                                 #time between samples (in nanoseconds)
+numBuffers = int(duration / (Ts_s * buffSize))              #number of buffers to capture
+sleepTime = 0.01                                            #time to wait if there is no data before trying again
 
 #note: the max value on the t axis (in s) is buffSize * Ts_us * numBuffers
 #note: adc2mVChAMax contains the data that gets printed. This is what we want to use
 
 # Create chandle and status ready for use
 chandle = ctypes.c_int16()
-status = {}
+status = {}                                                 #empty dictionary, will hold the hydrophone information
 
 # Open PicoScope 2000 Series device
 # Returns handle to chandle for use in future API functions
 status["openunit"] = ps.ps2000aOpenUnit(ctypes.byref(chandle), None)
 assert_pico_ok(status["openunit"])
 
-
+#sets up values to make code easier to understand as plain English
 enabled = 1
 disabled = 0
 analogue_offset = 0.0
@@ -60,7 +62,7 @@ numBuffersToCapture = numBuffers
 totalSamples = sizeOfOneBuffer * numBuffersToCapture
 
 # Create buffers ready for assigning pointers for data collection
-bufferAMax = np.zeros(shape=sizeOfOneBuffer, dtype=np.int16)
+bufferAMax = np.zeros(shape=sizeOfOneBuffer, dtype=np.int16)    #np.zeros creates an array of 0
 bufferBMax = np.zeros(shape=sizeOfOneBuffer, dtype=np.int16)
 
 memory_segment = 0
@@ -169,4 +171,3 @@ assert_pico_ok(status["close"])
 
 # Display status returns
 # print(status)
-
