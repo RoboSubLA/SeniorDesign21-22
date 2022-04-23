@@ -17,10 +17,13 @@ class Msg:
 
         self.timestamp = 0
 
-    def __str__(self):
-        return f'xvel={self.xvel}\tyvel={self.yvel}\tzvel={self.zvel}\n' \
-               f'xpos={self.xpos}\typos={self.ypos}\tzpos={self.zpos}\n' \
-               f'pitch={self.pitch}\tyaw{self.yaw}\troll={self.roll}\n'
+    def __str__(self): 
+        return "xvel={0}, yvel={1}, zvel={2}".format(self.xvel, self.yvel, self.zvel)
+        
+        
+        #f'xvel={self.xvel}\tyvel={self.yvel}\tzvel={self.zvel}\n' 
+               #f'xpos={self.xpos}\typos={self.ypos}\tzpos={self.zpos}\n'
+               #f'pitch={self.pitch}\tyaw{self.yaw}\troll={self.roll}\n'
 
 class DVL(Thread):
 
@@ -35,7 +38,7 @@ class DVL(Thread):
         self.msg = Msg()
         self.data_flag = False
 
-    def write(self, output: str) -> None:
+    def write(self, output):
         self.serial.write(output.encode())
 
     def has_data(self):

@@ -23,10 +23,10 @@ robosub_messages::Sonar sonar_message;
 ros::Publisher sonar_topic("sonar_topic", &sonar_message);
 
 void setup(){
-  
   // Initalizing Node
   node_handler.initNode();
   node_handler.advertise(barometer_topic);
+  node_handler.advertise(sonar_topic);
 
   // Initializing Barometer
   barometer_init();
@@ -49,8 +49,9 @@ void barometer_init(){
   Wire.begin();
 
   while(!barometer_sensor.init()){
-    delay(3000);
+    delay(1000);
   }
+  Serial.print("Barometer Initialized");
 
   // Setting the fluid density for the barometer
   // Air ~ 1.23, Freshwater ~ 997, Seawater ~ 1029
@@ -61,20 +62,33 @@ void barometer_init(){
 void barometer_reading(){
   barometer_sensor.read();
   barometer_message.depth = barometer_sensor.depth();
+  Serial.print(barometer_sensor.depth());
+  
   barometer_message.temperature = barometer_sensor.temperature();
   barometer_topic.publish(&barometer_message);
 }
 
 void sonar_init(){
   Serial1.begin(115200);
-  node_handler.getHardware()->setBaud(115200);
+  Serial.begin(5700);
+  
   while(!sonar.initialize()){
-    node_handler.advertise(sonar_topic);
+    Serial.println("\nPing device failed to initialize!");
+    Serial.println("Are the Ping rx/tx wired correctly?");
+    Serial.print("Ping rx is the green wire, and should be connected to Arduino pin ");
+    Serial.print(arduinoTxPin);
+    Serial.println(" (Arduino tx)");
+    Serial.print("Ping tx is the white wire, and should be connected to Arduino pin ");
+    Serial.print(arduinoRxPin);
+    Serial.println(" (Arduino rx)");
+    delay(2000);
   }
+  Serial.print("Sonar Initialized");
 }
 void sonar_reading(){
   if(sonar.update()){
     sonar_message.distance = sonar.distance();
+    Serial.print(sonar.distance());
     sonar_message.confidence = sonar.confidence();
     sonar_topic.publish(&sonar_message);
     
