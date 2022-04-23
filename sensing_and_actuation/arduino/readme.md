@@ -45,6 +45,9 @@ At the start of your program to import the library.
 [Read more about setting up your Arduino IDE](http://wiki.ros.org/rosserial_arduino/Tutorials/Arduino%20IDE%20Setup)
 
 ## Connecting The Barometer
+### Blue Robotics Bar30 Pressure Sensor
+This is a barometer which will give us the depth and temperature the Robosub is operating at. The barometer we are using is [Blue Robotics Bar30 Pressure Sensor](https://github.com/bluerobotics/Bar30-Pressure-Sensor)
+
 #### Hardware
 The barometer is connected to the Arduino through 4 wires.
 
