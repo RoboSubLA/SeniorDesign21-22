@@ -50,7 +50,6 @@ This is the package for the dvl. The dvl we are using is [Teledyne Pathfinder DV
 | y_translation                     | m           |-            | float32   |
 
 
-
 ## To be continued
 
  - Thrusters
