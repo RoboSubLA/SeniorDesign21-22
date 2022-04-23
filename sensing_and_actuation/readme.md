@@ -2,7 +2,7 @@
 This folder contains code for all the sensors and actuators.
 
 ## Folders
-In the `src` folder you can find these different nodes:
+In the `src` folder you can find these folders for our different sensors:
 
 ### [arduino](https://github.com/RoboSubCSULA/SeniorDesign21-22/tree/main/sensing_and_actuation/src/arduino)
 This folder contains the Arduino code. It will have the barometer and sonar attached to it.
