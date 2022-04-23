@@ -7,7 +7,7 @@ This ROS package is for connecting with the Arduino board we are using. We're us
 
     This should start running the program publishing data from the different sensors.
 3. To listen to the published data you have to run `rosrun rosserial_python serial_node.py /dev/ttyACM0 _baud:=5700`.
-4. Now you should be able to see the published data. 
+4. Now you should be able to see the published data.
 
 
 ## Setting up the Arduino
@@ -16,7 +16,7 @@ The Arduino should be connected to the computer through an usb cable.
 
 You can run the command `ls /dev/ttyACM0` to check if the Arduino is connected.
 
-Sometimes the Arduino connects to `/dev/ttyACM1`. 
+Sometimes the Arduino connects to `/dev/ttyACM1`.
 
 #### 1. Installing Libraries
 In your terminal run the commands:
@@ -59,6 +59,17 @@ At the start of your program to import the library.
 ### Blue Robotics Bar30 Pressure Sensor
 This is a barometer which will give us the depth and temperature the Robosub is operating at. The barometer we are using is [Blue Robotics Bar30 Pressure Sensor](https://github.com/bluerobotics/Bar30-Pressure-Sensor)
 
+#### Will give us following data:
+
+`Depth(meters, float)`
+
+`Temperature(celsius, float)`
+
+| barometer_topic                   | Metric      | Range       | Type      |
+| ----------------------------------| ----------- |-----------  | ----------|
+| depth                             | m           | -           | float32   |
+| temperature                       | Celcius     | -           | float32   |
+
 #### Hardware
 The barometer is connected to the Arduino through 4 wires.
 
@@ -74,6 +85,19 @@ Install the library `BlueRobotics MS5837 Library`.
 [Documentation for the library](https://github.com/bluerobotics/BlueRobotics_MS5837_Library)
 
 ## Connecting The Sonar
+This is a sonar that will detect and give current distance from objects in front of the sonar. The sonar we are using is [Blue Robotics Ping Sonar](https://bluerobotics.com/store/sensors-sonars-cameras/sonar/ping-sonar-r2-rp/)
+
+#### Will give us data:
+
+`Distance to Object (millimeters)`
+
+`Confidence (range)`
+
+| sonar_topic                       | Metric      | Range       | Type      |
+| ----------------------------------| ----------- |-----------  | ----------|
+| distance                          | m           | -           | float32   |
+| confidence                        | range       |[0-1]        | float32   |
+
 #### Hardware
 The sonar is connected to the Arduino through 4 wires.
 
