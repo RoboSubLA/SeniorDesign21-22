@@ -31,7 +31,7 @@ while(1):
 	low_cutoff_freq = 18000
 	high_cutoff_freq = 52000
 	Ts_s = Ts_us / 1000000
-	fs = 1/Ts_s
+	fs = 1.0/Ts_s
 	order = 10
 	x = 20 * Ts_s
 

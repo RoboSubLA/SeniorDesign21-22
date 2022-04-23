@@ -1,28 +1,30 @@
+#import statements bring in libraries to give us additional functionality
+
 import ctypes
-import numpy as np
-from picosdk.ps2000a import ps2000a as ps
-import matplotlib.pyplot as plt
-from picosdk.functions import adc2mV, assert_pico_ok
-import time
+import numpy as np                                          #helps with processing data
+from picosdk.ps2000a import ps2000a as ps                   #drivers for hydrophones
+import matplotlib.pyplot as plt                             #gives graphing abilities
+from picosdk.functions import adc2mV, assert_pico_ok        #imports functions for the hydrophones
+import time                                                 #allows us to use the computer's clock, allowing us to track time
 
 
 ### USER VARIABLES ###
 
-fs = 500000
+fs = 500000                                                 #frequency in Hertz
 duration = 1
 
-buffSize = 500 #size of capture
-Ts_s = 1/fs
-Ts_us = int(Ts_s * 1000000) #time between samples
-numBuffers = int(duration / (Ts_s * buffSize)) #number of buffers to capture
-sleepTime = 0.01 #time to wait if there is no data before trying again
+buffSize = 500                                              #size of capture
+Ts_s = 1.0/fs                                                 #duration of a sample
+Ts_us = int(Ts_s * 1000000)                                 #time between samples
+numBuffers = int(duration / (Ts_s * buffSize))              #number of buffers to capture
+sleepTime = 0.01                                            #time to wait if there is no data before trying again
 
 #note: the max value on the t axis (in s) is buffSize * Ts_us * numBuffers
 #note: adc2mVChAMax contains the data that gets printed. This is what we want to use
 
 # Create chandle and status ready for use
 chandle = ctypes.c_int16()
-status = {}
+status = {}                                                 #empty dictionary
 
 # Open PicoScope 2000 Series device
 # Returns handle to chandle for use in future API functions
