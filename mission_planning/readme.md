@@ -77,7 +77,7 @@ Run the following code after creating a introspection server in a new terminal t
 - std_msgs
 - message_generation
 - message_runtime
-- ez_async_data (imu package)
+- robosub_messages
 
 ### Instrument Test Node Directory
 test_instrument_publishers
