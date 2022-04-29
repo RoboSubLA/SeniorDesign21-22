@@ -43,13 +43,6 @@ This package will be in charge of launching our system
 - Git
 - Ubuntu 18.04 ( Not necessary for working with the code )
 
-### To Start Working With The Code:
-
-1. Clone this repo to your local machine
-2. Branch out from the `main` branch and start working on your code.
-4. When you're done working with your code submit PR and have someone review it.
-5. If it is approved we will merge it with the `main` branch.
-
 ### Setting Up The Workspace:
 This needs to be done in Ubuntu 18.04 with ROS Melodic installed.
 
@@ -65,6 +58,13 @@ This needs to be done in Ubuntu 18.04 with ROS Melodic installed.
 4. Run `catkin_make` again.
 
 4. Then in your `catkin_ws` folder run `source devel/setup.bash`. You will have to repeat this last step every time you open a new terminal.
+
+### To Start Working With The Code:
+
+1. Clone this repo to your local machine
+2. Branch out from the `main` branch and start working on your code.
+4. When you're done working with your code submit PR and have someone review it.
+5. If it is approved we will merge it with the `main` branch.
 
 ### Starting The Robosub
 We have the `robosub_launcher` package to help us launch the system.
