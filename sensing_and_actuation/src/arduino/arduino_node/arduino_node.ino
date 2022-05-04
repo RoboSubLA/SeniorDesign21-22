@@ -8,8 +8,9 @@
 #include <std_msgs/String.h>
 #include <robosub_messages/Barometer.h>
 #include <robosub_messages/Sonar.h>
-static const uint8_t arduinoRxPin = 18;
-static const uint8_t arduinoTxPin = 19;
+
+static const uint8_t arduinoTxPin = 18;
+static const uint8_t arduinoRxPin = 19;
 
 // Creating variable for the barometer
 MS5837 barometer_sensor;
@@ -28,10 +29,11 @@ void setup(){
   node_handler.advertise(barometer_topic);
   node_handler.advertise(sonar_topic);
 
-  // Initializing Barometer
-  barometer_init();
+  Serial.println("Starting to initialize sensors");
   
   sonar_init();
+  barometer_init();
+  
   
 }
 
@@ -46,9 +48,14 @@ void loop() {
 
 // Function for initialzing the barometer
 void barometer_init(){
+  Serial.println("Initializing Barometer");
   Wire.begin();
 
   while(!barometer_sensor.init()){
+    Serial.println("Barometer init failed!");
+    Serial.println("Are SDA/SCL connected correctly?");
+    Serial.println("Blue Robotics Bar30: White=SDA, Green=SCL");
+    Serial.println("\n\n\n");
     delay(1000);
   }
   Serial.print("Barometer Initialized");
@@ -70,7 +77,7 @@ void barometer_reading(){
 
 void sonar_init(){
   Serial1.begin(115200);
-  Serial.begin(5700);
+  Serial.begin(57600);
   
   while(!sonar.initialize()){
     Serial.println("\nPing device failed to initialize!");
