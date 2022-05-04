@@ -11,6 +11,7 @@
 #include <std_msgs/String.h>
 #include <robosub_messages/Barometer.h>
 #include <robosub_messages/Sonar.h>
+#include <robosub_messages/ControlCommand.h>
 
 //Start thrusters as servos and set Pins**
 Servo front_left_vertical_thruster;
@@ -79,9 +80,8 @@ PID Y_angle_PID    (&Y_angle_input, &Y_angle_output, &Y_angle_setpoint,
 PID Z_angle_PID    (&Z_angle_input, &Z_angle_output, &Z_angle_setpoint,
                     Z_angle_kP, Z_angle_kI, Z_angle_kD, DIRECT);
 
-// Sonar Pin Variables
-static const uint8_t arduinoRxPin = 18;
-static const uint8_t arduinoTxPin = 19;
+static const uint8_t arduinoTxPin = 18;
+static const uint8_t arduinoRxPin = 19;
 
 // Creating variable for the barometer
 MS5837 barometer_sensor;
@@ -93,7 +93,7 @@ robosub_messages::Barometer barometer_message;
 ros::Publisher barometer_topic("barometer_topic", &barometer_message);
 robosub_messages::Sonar sonar_message;
 ros::Publisher sonar_topic("sonar_topic", &sonar_message);
-ros::Subscriber<robosub_messages::ControlCommand> sub("controlCommand", Outputs);
+
 
 void setup(){
   // Initalizing Node
@@ -102,13 +102,14 @@ void setup(){
   node_handler.advertise(sonar_topic);
 
   // Initializing Sensors & Controls
+  Serial.println("Starting to initialize sensors");
   barometer_init();
   sonar_init();
   //thrusters_init()
+  
 }
 
 void loop() {
-
   barometer_reading();
   sonar_reading();
   node_handler.spinOnce();
@@ -118,9 +119,14 @@ void loop() {
 
 // Function for initialzing the barometer
 void barometer_init(){
+  Serial.println("Initializing Barometer");
   Wire.begin();
 
   while(!barometer_sensor.init()){
+    Serial.println("Barometer init failed!");
+    Serial.println("Are SDA/SCL connected correctly?");
+    Serial.println("Blue Robotics Bar30: White=SDA, Green=SCL");
+    Serial.println("\n\n\n");
     delay(1000);
   }
   Serial.print("Barometer Initialized");
@@ -142,7 +148,7 @@ void barometer_reading(){
 
 void sonar_init(){
   Serial1.begin(115200);
-  Serial.begin(5700);
+  Serial.begin(57600);
   
   while(!sonar.initialize()){
     Serial.println("\nPing device failed to initialize!");
@@ -223,7 +229,7 @@ void Outputs(const robosub_messages::ControlCommand& controls_data) {
   back_left_vertical_thruster.writeMicroseconds(back_left_vertical_thruster_value);
   back_left_horizontal_thruster.writeMicroseconds(back_left_horizontal_thruster_value);
   back_right_vertical_thruster.writeMicroseconds(back_right_vertical_thruster_value);
-  back_right_horizontal_thruster.writeMicroseconds(back_right_horizontal_thruster_value)
+  back_right_horizontal_thruster.writeMicroseconds(back_right_horizontal_thruster_value);
 }
 
 
@@ -271,23 +277,34 @@ void Mixer() {
 //Print All Thrusters Values
 void Serial_Print_Thruster_Values() {
   Serial.print("FrontLeft_Horisontal_Thruster: ");
-  //Serial.print(final_front_left_horizontal_thruster_value);
+  Serial.print(front_left_horizontal_thruster_value);
   Serial.print("-------");
-  Serial.print("Right: ");
-  //Serial.print(final_right_thruster_value);
+  Serial.print("FrontLeft_Vertical_Thruster: ");
+  Serial.print(front_left_vertical_thruster_value);
   Serial.print("-------");
-  Serial.print("FrontRight: ");
-  //Serial.print(final_front_right_thruster_value);
-  Serial.print("----");
-  Serial.print("FrontLeft: ");
-  //Serial.print(final_front_left_thruster_value);
-  Serial.print("----");
-  Serial.print("BackLeft: ");
-  //Serial.print(final_back_left_thruster_value);
-  Serial.print("----");
-  Serial.print("BackRight: ");
-  //Serial.print(final_back_right_thruster_value);
-  Serial.print("----");
+
+  Serial.print("FrontRight_Horisontal_Thruster: ");
+  Serial.print(front_right_horizontal_thruster_value);
+  Serial.print("-------");
+  Serial.print("FrontRight_Vertical_Thruster: ");
+  Serial.print(front_right_vertical_thruster_value);
+  Serial.print("-------");
+
+   Serial.print("BackLeft_Horisontal_Thruster: ");
+  Serial.print(back_left_horizontal_thruster_value);
+  Serial.print("-------");
+  Serial.print("BackLeft_Vertical_Thruster: ");
+  Serial.print(back_left_vertical_thruster_value);
+  Serial.print("-------");
+
+  Serial.print("BackRight_Horisontal_Thruster: ");
+  Serial.print(back_right_horizontal_thruster_value);
+  Serial.print("-------");
+  Serial.print("BackRight_Vertical_Thruster: ");
+  Serial.print(back_right_vertical_thruster_value);
+  Serial.print("-------");
+
+
 }
 
 bool isStabilized() {
@@ -303,3 +320,5 @@ bool isStabilized() {
   lastUnstable = millis();
   return false;
 }
+
+ros::Subscriber<robosub_messages::ControlCommand> sub("controlCommand", Outputs);
