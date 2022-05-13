@@ -1,6 +1,9 @@
 # Mission Planning
 This folder contains everything related to the Mission Planning of the Robosub and will also be it's own ROS package.
 
+## Design
+![State Machine Diagram](https://github.com/RoboSubCSULA/SeniorDesign21-22/blob/main/mission_planning/State_Machine.png)
+
 ## How it works
 ... Explain short smach and link to documentation.
 
@@ -122,8 +125,6 @@ instrument_monitor
 
 ### Pingers
 ...
-
-
 
 
 ## What data it publishes
