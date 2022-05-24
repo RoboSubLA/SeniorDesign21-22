@@ -29,9 +29,7 @@ class MoveForwardNoVision(smach.State):
 
 class Gate_State(smach.StateMachine):
     def __init__(self):
-        self.task = smach.StateMachine(outcomes=['success','failed'])
+        smach.StateMachine.__init__(self, outcomes=['success','failed'])
         with self.task:
             smach.StateMachine.add('move_forward_vision', MoveForwardVision(), transitions={'success':'move_forward_no_vision', 'failed':'reset_for_reattempt'})
             smach.StateMachine.add('move_forward_no_vision', MoveForwardNoVision(), transitions={'success':'success', 'failed':'reset_for_reattempt'})
-
-def add_ex_gate_states():

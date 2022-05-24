@@ -3,7 +3,7 @@
 #include "MS5837.h" //Barometer Library
 #include <Wire.h>
 #include "ping1d.h" //Sonar library
-#include <PID_v1.h> 
+#include <PID_v1.h>
 #include <Servo.h>
 
 
@@ -80,6 +80,7 @@ PID Y_angle_PID    (&Y_angle_input, &Y_angle_output, &Y_angle_setpoint,
 PID Z_angle_PID    (&Z_angle_input, &Z_angle_output, &Z_angle_setpoint,
                     Z_angle_kP, Z_angle_kI, Z_angle_kD, DIRECT);
 
+// Sonar pins
 static const uint8_t arduinoTxPin = 18;
 static const uint8_t arduinoRxPin = 19;
 
@@ -106,7 +107,7 @@ void setup(){
   barometer_init();
   sonar_init();
   //thrusters_init()
-  
+
 }
 
 void loop() {
@@ -114,7 +115,7 @@ void loop() {
   sonar_reading();
   node_handler.spinOnce();
 
-  
+
 }
 
 // Function for initialzing the barometer
@@ -141,7 +142,7 @@ void barometer_reading(){
   barometer_sensor.read();
   barometer_message.depth = barometer_sensor.depth();
   Serial.print(barometer_sensor.depth());
-  
+
   barometer_message.temperature = barometer_sensor.temperature();
   barometer_topic.publish(&barometer_message);
 }
@@ -149,7 +150,7 @@ void barometer_reading(){
 void sonar_init(){
   Serial1.begin(115200);
   Serial.begin(57600);
-  
+
   while(!sonar.initialize()){
     Serial.println("\nPing device failed to initialize!");
     Serial.println("Are the Ping rx/tx wired correctly?");
@@ -169,8 +170,8 @@ void sonar_reading(){
     Serial.print(sonar.distance());
     sonar_message.confidence = sonar.confidence();
     sonar_topic.publish(&sonar_message);
-    
-  } 
+
+  }
 }
 
 //Attaches thrusters and initializes PIDs
@@ -245,7 +246,7 @@ void Path_Optimization() {
   else if (X_angle_error < half_circle_neg) {
     X_angle_error = X_angle_error + 360;
   }
-  
+
   X_angle_setpoint = X_angle_error + X_angle_input;
 }
 
@@ -310,7 +311,7 @@ void Serial_Print_Thruster_Values() {
 bool isStabilized() {
   if ((abs(X_angle_setpoint - X_angle_input) < 5) && (abs(Y_angle_setpoint - Y_angle_input) < 5) &&
       (abs(Z_angle_setpoint - Z_angle_input) < 5) && (abs(barometer_setpoint - barometer_input) < 0.1524) &&
-      (H_distance_setpoint == 0)) 
+      (H_distance_setpoint == 0))
       {
         if ((millis() - lastUnstable) > 3000) {
           return true;
