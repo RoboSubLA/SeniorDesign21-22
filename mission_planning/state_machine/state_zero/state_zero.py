@@ -9,10 +9,10 @@ from utilities.comms import Subscriber
 # this state takes the data test from the instrument_tests node and checks whether or not all of
 # the tests return true
 
-class State_Zero(smach.State):
+class StateZero(smach.State):
     def __init__(self):
         smach.State.__init__(self, outcomes=['passed', 'failed'])
-        self.zero_sub = Subscriber("instrument_tests", test)
+        self.instrument_status = Subscriber("instrument_tests", test)
 
     def execute(self, userdata):
         # for 5 seconds check
@@ -23,7 +23,7 @@ class State_Zero(smach.State):
         all_tests_passed = False
 
 	while counter < 5:
-            data = self.zero_sub.get_data()
+            data = self.instrument_status.get_data()
             imu_passed = data.imu
             barometer_passed = data.barometer
             sonar_passed = data.sonar
