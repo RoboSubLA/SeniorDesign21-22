@@ -5,4 +5,4 @@ class ResetForReattempt(smach.State):
         smach.State.__init__(self, outcomes=['complete', 'lost_target'])
     
     def execute(self, userdata):
-        pass
+        return 'complete'
