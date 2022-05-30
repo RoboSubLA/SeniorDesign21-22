@@ -22,27 +22,26 @@ def main():
     # Open the container
     with sm:
         # Add states to the container
-        smach.StateMachine.add('SystemCheck', State_Zero(), 
+        smach.StateMachine.add('SystemCheck', State_Zero(),
                                transitions={'passed':'gate_task', 'failed':'failed'})
-        
-        ##declaration of new sub state machine###
+
+
         #create new sub state machine
         gate_task = smach.StateMachine(outcomes=['success','failed'])
+        buoy_task = smach.StateMachine(outcomes=['success','failed'])
+
         #add all substates to the new sub state machine using declared add_gate_states function
         with gate_task:
             add_gate_states()
-        #add the new substate machine to the previous one (sm), add in the approproate transitions to new states
 
-        smach.StateMachine.add('gate_task', gate_task, transitions={'success':'buoy_task', 			'failed':'failed'})
+        smach.StateMachine.add('gate_task', gate_task, transitions={'success':'buoy_task','failed':'failed'})
 
-        #note that when adding a substatemachine there is no brackets, unlike the state zero in which we call the state constructor
-        ###end declaration of new sub state machine####
-        buoy_task = smach.StateMachine(outcomes=['success','failed'])
+
         with buoy_task:
             add_buoy_states()
 
-        smach.StateMachine.add('buoy_task', buoy_task, transitions={'success':'complete', 			'failed':'failed'})
-        
+        smach.StateMachine.add('buoy_task', buoy_task, transitions={'success':'complete','failed':'failed'})
+
     # Execute SMACH plan
     outcome = sm.execute()
 

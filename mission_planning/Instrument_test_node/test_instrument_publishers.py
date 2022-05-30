@@ -10,7 +10,7 @@ import random
 
 # if possible use data type from package
 # ignore import error
-from ez_async_data.msg import Barometer, Rotation, CV
+from robosub_messages.msg import Barometer, IMU, CV
 import threading
 
 from std_msgs.msg import String
@@ -19,7 +19,7 @@ stopFlag = False
 data_rate = 10
 
 def imu_publisher_thread():
-    pub = rospy.Publisher('imu_data', Rotation, queue_size=10)
+    pub = rospy.Publisher('imu_data', IMU, queue_size=10)
     rate = rospy.Rate(data_rate)  # 10hz
 
     max_pitch = 15
