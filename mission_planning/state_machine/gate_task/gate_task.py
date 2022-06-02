@@ -18,7 +18,10 @@ class GateTask(smach.StateMachine):
 class AlignWithGate(smach.State):
     def __init__(self):
         smach.State.__init__(self, outcomes=['success','failed'])
-        
+        self.aligned = False
+        self.cv_subscriber = None
+        self.xoffset = None
+        self.yoffset = None
 
     def execute(self, userdata):
         transition = 1

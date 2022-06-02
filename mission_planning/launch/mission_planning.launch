@@ -1,4 +1,0 @@
-<launch>
-    <node name='dummy_publisher' pkg='dummy_publisher' type='dummy_publisher.py' />
-</launch>
-
