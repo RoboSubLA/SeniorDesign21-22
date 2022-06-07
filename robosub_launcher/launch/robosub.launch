@@ -7,5 +7,5 @@
     </node>
     <node name='imu' pkg='sensing_and_actuation' type='imu' />
     <node name='instrument_monitor' pkg='mission_planning' type='instrument_monitor.py' />
-    <node name='state_machine' pkg='mission_planning' type='start.py' args='$(arg start_state)' output='screen' />
+    <node name='state_machine' pkg='mission_planning' type='__init__.py' output='screen' />
 </launch> 
