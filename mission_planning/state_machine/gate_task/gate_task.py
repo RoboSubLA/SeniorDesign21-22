@@ -2,6 +2,8 @@ import smach
 import rospy
 from utilities.reset_for_reattempt import ResetForReattempt
 from utilities.lost_target import LostTarget
+from utilities.subscriber import Subscriber
+from robosub_messages.msg import CV
 
 # State machine for the gate task.
 class GateTask(smach.StateMachine):
@@ -19,11 +21,20 @@ class AlignWithGate(smach.State):
     def __init__(self):
         smach.State.__init__(self, outcomes=['success','failed'])
         self.aligned = False
-        self.cv_subscriber = None
-        self.xoffset = None
-        self.yoffset = None
+        self.cv_subscriber = Subscriber('cv_topic') #Array with objects. Object form: object, xoffset, yoffset, distance
+        self.cv_data = cv_subscriber.get_data()
+        self.is_centered = False
 
     def execute(self, userdata):
+        # Center Sub
+        while self.cv_data:
+            #centerObject(cv_data)
+            if(abs(self.cv_data.xoffset) < 5 and abs(self.cv_data.yoffset) < 5):
+                print('Is centered')
+                self.is_centered = True
+            else:
+                self.is_centered = False
+
         transition = 1
         if transition == 1:
             rospy.loginfo("success")
@@ -31,6 +42,7 @@ class AlignWithGate(smach.State):
         else:
             rospy.loginfo("failed")
             return 'failed'
+    def center(self):
 
 class MoveForwardVision(smach.State):
     def __init__(self):
