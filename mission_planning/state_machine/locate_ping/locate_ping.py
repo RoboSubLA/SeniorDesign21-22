@@ -14,8 +14,8 @@ class FindDirection(smach.State):
         smach.State.__init__(self, outcomes=['success','failed'])
     
     def execute(self, userdata):
-        #Subscribe to hydrophones and find direction. There might be difference frequencies for different tasks. 
-
+        #Subscribe to hydrophones and find direction.
+        hydrophones_subscriber = Subscriber('hydrophones_topic')
         #Turn the sub in the right direction by adjusting the yaw. Then continue to Move Forward state
         transition = 1
         if transition == 1:

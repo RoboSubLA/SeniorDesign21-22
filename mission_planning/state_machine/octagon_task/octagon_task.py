@@ -8,9 +8,7 @@ class OctagonTask(smach.StateMachine):
     def __init__(self):
         smach.StateMachine.__init__(self, outcomes=['success','failed'])
         with self:
-            smach.StateMachine.add('position_sub', PositionSub(), transitions={'success': 'move_forward_vision', 'failed': 'reset_for_reattempt'})
-            smach.StateMachine.add('move_forward_vision', MoveForwardVision(), transitions={'success':'move_forward_no_vision', 'failed':'reset_for_reattempt'})
-            smach.StateMachine.add('move_forward_no_vision', MoveForwardNoVision(), transitions={'success':'success', 'failed':'reset_for_reattempt'})
+            smach.StateMachine.add('position_sub', PositionSub(), transitions={'success': 'success', 'failed': 'reset_for_reattempt'})
             smach.StateMachine.add('lost_target', LostTarget(), transitions={'target_found':'position_sub', 'timeout':'failed'})
             smach.StateMachine.add('reset_for_reattempt', ResetForReattempt(), transitions={'complete':'position_sub', 'lost_target':'lost_target'})
       
@@ -27,21 +25,4 @@ class PositionSub(smach.State):
         else:
             rospy.loginfo("failed")
             return 'failed'
-
-class MoveForwardVision(smach.State):
-    def __init__(self):
-        smach.State.__init__(self, outcomes=['success','failed'])
-
-    def execute(self, userdata):
-        #Move forward while cv object x and y is center of frame.
-        return 'success'
-        
-
-class MoveForwardNoVision(smach.State):
-    def __init__(self):
-        smach.State.__init__(self, outcomes=['success','failed'])
-
-    def execute(self, userdata):
-       #Move forward
-       return 'success'
 
