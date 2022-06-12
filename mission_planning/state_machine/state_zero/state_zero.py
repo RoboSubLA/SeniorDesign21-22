@@ -3,8 +3,7 @@ import smach
 import smach_ros
 import time
 import threading
-from robosub_messages.msg import test
-from utilities.comms import Subscriber
+from utilities.subscriber import Subscriber
 
 # this state takes the data test from the instrument_tests node and checks whether or not all of
 # the tests return true
@@ -12,7 +11,7 @@ from utilities.comms import Subscriber
 class StateZero(smach.State):
     def __init__(self):
         smach.State.__init__(self, outcomes=['passed', 'failed'])
-        self.instrument_status = Subscriber("instrument_tests", test)
+        self.instrument_status = Subscriber("instrument_monitor")
 
     def execute(self, userdata):
         # for 5 seconds check
@@ -20,31 +19,31 @@ class StateZero(smach.State):
         # return state1
         rate = rospy.Rate(1)
         counter = 0
-        all_tests_passed = False
+        all_instruments_active = False
 
-	while counter < 5:
-            data = self.instrument_status.get_data()
-            imu_passed = data.imu
-            barometer_passed = data.barometer
-            sonar_passed = data.sonar
-            hydrophones_passed = data.hydrophones
-            cv_passed = data.cv
+        while counter < 5:
+            status = self.instrument_status.get_data()
+            imu_active = status.imu
+            barometer_active = status.barometer
+            sonar_active = status.sonar
+            hydrophones_active = status.hydrophones
+            cv_active = status.cv
 
-            rospy.loginfo("imu: " + str(imu_passed))
-            rospy.loginfo("barometer: " + str(barometer_passed))
-            rospy.loginfo("sonar: " + str(sonar_passed))
-            rospy.loginfo("hydrophones: " + str(hydrophones_passed))
-            rospy.loginfo("cv: " + str(cv_passed))
+            rospy.loginfo("imu: " + str(imu_active))
+            rospy.loginfo("barometer: " + str(barometer_active))
+            rospy.loginfo("sonar: " + str(sonar_active))
+            rospy.loginfo("hydrophones: " + str(hydrophones_active))
+            rospy.loginfo("cv: " + str(cv_active))
 
-            if imu_passed and barometer_passed and sonar_passed and hydrophones_passed and cv_passed:
-                all_tests_passed = True
+            if imu_active and barometer_active and sonar_active and hydrophones_active:
+                all_instruments_active = True
             else:
-                all_tests_passed = False
+                all_instruments_active = False
             counter = counter + 1
             rate.sleep()
 
 
-        if all_tests_passed:
-            return 'passed'
+            if all_instruments_active:
+                return 'passed'
 
         return 'failed'

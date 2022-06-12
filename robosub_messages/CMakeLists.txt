@@ -53,7 +53,7 @@ add_message_files(
   Hydrophones.msg
   IMU.msg
   DVL.msg
-  test.msg
+  InstrumentMonitor.msg
   CV.msg
   Action.msg
   ControlCommand.msg

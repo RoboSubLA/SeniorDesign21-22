@@ -110,7 +110,7 @@ class UserInterface(tk.Frame):
 	self.hydrophones_publisher.publish(self.hydrophones)
 
 	# loops through function after 1 sec
-	self.after(1000, self.publish_data)
+	self.after(10, self.publish_data)
 
 if __name__ == '__main__':
     rospy.init_node('user_interface', anonymous=True)

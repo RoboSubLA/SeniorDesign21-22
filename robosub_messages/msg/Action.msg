@@ -5,3 +5,4 @@ float32 distance_set
 float32 depth_set
 bool surface
 bool bumpIntoBuoy
+bool rotateTowardsPinger
