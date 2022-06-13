@@ -1,0 +1,6 @@
+float32 yaw_setpoint
+float32 pitch_setpoint
+float32 roll_setpoint
+float32 distance_setpoint
+float32 depth_setpoint
+bool final_command

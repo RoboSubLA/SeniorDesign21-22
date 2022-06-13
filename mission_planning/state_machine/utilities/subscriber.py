@@ -1,17 +1,18 @@
 import rospy
 import time
 import threading
-from robosub_messages.msg import Barometer, Sonar, DVL, IMU, Hydrophones, InstrumentMonitor, CV
+from robosub_messages.msg import Barometer, Sonar, DVL, IMU, Hydrophones, InstrumentMonitor, CV, ControlSetpoints
 
 
-topic_datatype = { 
+topic_datatype = {
     'barometer_topic': Barometer,
     'sonar_topic': Sonar,
     'dvl_topic': DVL,
     'imu_topic': IMU,
     'hydrophones_topic': Hydrophones,
     'instrument_monitor': InstrumentMonitor,
-    'cv_topic': CV
+    'cv_topic': CV,
+    'control_setpoints': ControlSetpoints
 }
 
 class Subscriber():
@@ -32,4 +33,3 @@ class Subscriber():
 
     def is_active(self):
         return time.time() - self.last_updated < .5
-    

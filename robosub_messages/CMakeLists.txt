@@ -56,7 +56,7 @@ add_message_files(
   InstrumentMonitor.msg
   CV.msg
   Action.msg
-  ControlCommand.msg
+  ControlSetpoints.msg
 )
 
 ## Generate services in the 'srv' folder
