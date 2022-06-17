@@ -57,6 +57,7 @@ add_message_files(
   CV.msg
   Action.msg
   ControlSetpoints.msg
+  RobosubStatus.msg
 )
 
 ## Generate services in the 'srv' folder

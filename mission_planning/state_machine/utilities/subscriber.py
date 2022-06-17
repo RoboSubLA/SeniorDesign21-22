@@ -1,7 +1,8 @@
 import rospy
 import time
 import threading
-from robosub_messages.msg import Barometer, Sonar, DVL, IMU, Hydrophones, InstrumentMonitor, CV, ControlSetpoints
+from robosub_messages.msg import Barometer, Sonar, DVL, IMU, Hydrophones
+from robosub_messages.msg import InstrumentMonitor, CV, ControlSetpoints, RobosubStatus, Action
 
 
 topic_datatype = {
@@ -12,7 +13,9 @@ topic_datatype = {
     'hydrophones_topic': Hydrophones,
     'instrument_monitor': InstrumentMonitor,
     'cv_topic': CV,
-    'control_setpoints': ControlSetpoints
+    'control_setpoints': ControlSetpoints,
+    'robosub_status': RobosubStatus,
+    'desired_action': Action
 }
 
 class Subscriber():

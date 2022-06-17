@@ -1,16 +1,19 @@
 #! /usr/bin/env python
 import rospy
-from robosub_messages.msg import ControlSetpoints, SensorInfo
+from robosub_messages.msg import ControlSetpoints, SensorInfo, Action
 from subscriber import Subscriber
 
 class ControlInterface(object):
     def __init__(self) -> None:
+        self.action_publisher = rospy.Publisher('desired_action', Action, queue_size=10)
         self.setpoints_publisher = rospy.Publisher("control_setpoints", ControlSetpoints, queue_size=1)
         self.barometer_subscriber = Subscriber('barometer_topic')
         self.sonar_subscriber = Subscriber('sonar_topic')
         self.imu_subscriber = Subscriber('imu_topic')
         self.dvl_subscriber = Subscriber('dvl_topic')
         self.hydrophones_subscriber = Subscriber('hydrophones_topic')
+        self.robosub_status_subscriber = Subscriber('robosub_status')
+
 
     def getCurrentData(self):
         setpoints = ControlSetpoints()
@@ -23,6 +26,12 @@ class ControlInterface(object):
 
     def publish(self, setpoints):
         self.setpoints_publisher.publish(setpoints)
+
+    def isStabilized(self):
+        if robosub_status_subscriber.get_data().isStabilized:
+            return True
+
+        return False
 
     def setYaw(self, yaw):
         setpoints = getCurrentData()
@@ -44,16 +53,26 @@ class ControlInterface(object):
         setpoints.depth_setpoint = depth
         self.publish(setpoints)
 
+    def setDistance(self, distance):
+        setpoints = getCurrentData()
+        setpoints.distance_setpoint = distance
+        self.publish(setpoints)
+
+    def bumpIntoBuoy(self):
+        action = Action()
+        action.bumpIntoBuoy = True
+        self.action_publisher.publish(action)
+
     # TO DO
     def setStrafe(self, strafe):
         setpoints = getCurrentData()
         self.publish(setpoints)
         pass
 
-    def setForward(self, forward):
-        setpoints = getCurrentData()
-        self.publish(setpoints)
+
+    def centerCVObject(self, object):
         pass
+
 
     def setYawStrafe(self, yaw, strafe):
         setpoints = getCurrentData()
