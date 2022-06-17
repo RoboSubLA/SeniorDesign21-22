@@ -9,6 +9,9 @@ Get the current data for yaw, roll, pitch & depth
 #### publish(setpoints)
 Pass in the setpoints that you want to publish
 
+#### isInstrumentsConnected()
+Function that checks if all the sensors are connected.
+
 #### isStabilized()
 Returns if the Robosub is stabilized or not.
 

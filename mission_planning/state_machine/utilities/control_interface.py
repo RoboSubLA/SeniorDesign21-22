@@ -27,6 +27,26 @@ class ControlInterface(object):
     def publish(self, setpoints):
         self.setpoints_publisher.publish(setpoints)
 
+    def isInstrumentsConnected(self):
+        counter = 0
+        while counter < 5000:
+            all_active = True
+            if not imu_subscriber.is_active():
+                all_active = False
+            elif not barometer_subscriber.is_active():
+                all_active = False
+            elif not sonar_subscriber.is_active():
+                all_active = False
+            elif not hydrophones_subscriber.is_active():
+                all_active = False
+            elif not dvl_subscriber.is_active():
+                all_active = False
+
+            if all_active:
+                return True
+
+        return False
+
     def isStabilized(self):
         if robosub_status_subscriber.get_data().isStabilized:
             return True
